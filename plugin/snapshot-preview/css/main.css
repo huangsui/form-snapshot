@@ -1,0 +1,37 @@
+
+.demo-btn{
+	display: block;
+    position: fixed;
+    right: .76923077em;
+    bottom: .76923077em;
+    color: #fff;
+    background-color: #04be02;
+    line-height: 1;
+    font-size: 1.07692308em;
+    padding: .61538462em 1.23076923em;
+    z-index: 10000;
+    border-radius: .30769231em;
+    box-shadow: 0 0 0.61538462em rgba(0,0,0,.4);
+}
+
+.ss-mask{
+	display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+label{
+	width:120px;
+	text-align: right;
+}
+
+.form-inline .form-group {
+    margin-bottom: 7.5px;
+}
+
+
+
+
+

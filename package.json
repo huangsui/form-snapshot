@@ -1,0 +1,19 @@
+{
+  "name": "form-snapshot",
+  "version": "1.0.0",
+  "description": "Fast record various content of submit by Json and has the ability to convert the json to html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sam-huang/form-snapshot.git"
+  },
+  "author": "huangsui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sam-huang/form-snapshot/issues"
+  },
+  "homepage": "https://github.com/sam-huang/form-snapshot#readme"
+}
