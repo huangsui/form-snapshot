@@ -75,14 +75,13 @@
 </div>
 
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="../src/snapshot.js"></script>
-<script type="text/javascript" src="../src/snapshot-root.js"></script>
-<script type="text/javascript" src="../src/snapshot-plain.js"></script>
-<script type="text/javascript" src="../src/snapshot-formitem-group.js"></script>
-<script type="text/javascript" src="../src/snapshot-dkselect.js"></script>
-<script type="text/javascript" src="../src/snapshot-button.js"></script>
-<script type="text/javascript" src="../src/snapshot-checkbox.js"></script>
+<script type="text/javascript" src="../src/snapshot-new.js"></script>
+<script type="text/javascript" src="../src/processor/default-processor.js"></script>
+<script type="text/javascript" src="../src/filter/default-filter.js"></script>
 
+<script type="text/javascript" src="../src/snapshot-convert.js"></script>
+<script type="text/javascript" src="../src/convertor/root-convertor.js"></script>
+<script type="text/javascript" src="../src/convertor/default-convertor.js"></script>
 
 <script>
 var mixedMode = {
@@ -132,17 +131,16 @@ function submitTryit() {
     var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
     ifrw.document.open();
     if(text){
-        var json = snapshot.takeSnap( $(text)[0] );
-        console.log(JSON.stringify(json, null, 4) );
-        ifrw.document.write(snapshot.resolve(json)); 
+        var result = snapshot.takeSnap( $(text)[0] );
+        console.log(JSON.stringify(result, null, 4) );
+        ifrw.document.write(snapshot.convert(result)); 
     }
     ifrw.document.close();
     autodivheight();
 }
 
 
-var snapshot = new Snapshot({visible:false});
-snapshot.register(rootParser, Snapshot.defaultParser, formitemGroupParser);
+var snapshot = new Snapshot();
 
 submitTryit();
 autodivheight();

@@ -1,19 +1,27 @@
 {
   "name": "form-snapshot",
   "version": "1.0.0",
-  "description": "Fast record various content of submit by Json and has the ability to convert the json to html",
-  "main": "index.js",
+  "description": "A lightweight, extendable front-end form sanpshot tool for web page.",
+  "main": "dist/snapshot.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack",
+    "server": "webpack-dev-server --open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sam-huang/form-snapshot.git"
+    "url": "git+https://github.com/huangsui/form-snapshot.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jquery": "^3.2.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.0"
   },
   "author": "huangsui",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sam-huang/form-snapshot/issues"
+    "url": "https://github.com/huangsui/form-snapshot/issues"
   },
-  "homepage": "https://github.com/sam-huang/form-snapshot#readme"
+  "homepage": "https://github.com/huangsui/form-snapshot#readme"
 }

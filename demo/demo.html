@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>表单快照</title>
 <!-- Bootstrap core CSS -->
-<link href="http://v3.bootcss.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="lib/bootstrap/bootstrap.css" rel="stylesheet">
 <!-- Documentation extras -->
-<link href="http://v3.bootcss.com/assets/css/docs.min.css" rel="stylesheet">
-<link href="http://v3.bootcss.com/assets/css/patch.css" rel="stylesheet">
+<link href="lib/bootstrap/docs.css" rel="stylesheet">
+<link href="lib/bootstrap/patch.css" rel="stylesheet">
 <!--[if lt IE 9]><script src="http://v3.bootcss.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="http://v3.bootcss.com/assets/js/ie-emulation-modes-warning.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -59,7 +59,6 @@
     <div class="container bs-docs-container">
       <div class="row">
         <div class="col-md-9" role="main">
-          
 
         </div>  
         <div class="col-md-3" role="complementary">
@@ -89,7 +88,10 @@
   </div>
 </footer>
 
-<input id="snapshot-btn" type="button" style="display: none; position: absolute;" class="btn btn-default" name="snapshot-btn" value="Snapshot" data-toggle="modal" data-target="#exampleModal"/>
+<div id="case-btn-group" class="btn-group" style="display: none; position: absolute;" >
+    <button type="button" class="btn btn-default">Snapshot</button>
+    <button type="button" class="btn btn-default">By code</button>
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -101,13 +103,13 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="http://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-<script type="text/javascript" src="../src/snapshot.js"></script>
-<script type="text/javascript" src="../src/snapshot-root.js"></script>
-<script type="text/javascript" src="../src/snapshot-plain.js"></script>
-<script type="text/javascript" src="../src/snapshot-formitem-group.js"></script>
-<script type="text/javascript" src="../src/snapshot-dkselect.js"></script>
-<script type="text/javascript" src="../src/snapshot-button.js"></script>
-<script type="text/javascript" src="../src/snapshot-checkbox.js"></script>
+<script type="text/javascript" src="../src/snapshot-new.js"></script>
+<script type="text/javascript" src="../src/processor/default-processor.js"></script>
+<script type="text/javascript" src="../src/filter/default-filter.js"></script>
+
+<script type="text/javascript" src="../src/snapshot-convert.js"></script>
+<script type="text/javascript" src="../src/convertor/root-convertor.js"></script>
+<script type="text/javascript" src="../src/convertor/default-convertor.js"></script>
 
 <script type="text/javascript" src="./js/demo-config.js"></script>
 <script type="text/javascript" src="./js/tmpl.js"></script>
@@ -148,54 +150,59 @@
         $(".bs-docs-sidenav").append(tmpl("nav_tmpl", sect));
     }
 
+    var cms = [], cmIdx = 0;
+
     $(".snp-frag-render").each(function(){
         var fragUrl = $(this).data("example-url");
         var node = $(this)[0];
-        (function(url, $node){
+        (function(url, $node, cmIdx){
             $.ajax({
-            url:url,
-            success:function(data){
-                $node.prevObject.html(data);
-                CodeMirror($node[0], {value:data});        
-            }
-        });
-        })(fragUrl, $(node).next());
+                url:url,
+                success:function(data){
+                    $node.prevObject.html(data);
+                    var cm = CodeMirror($node[0], {value:data, lineNumbers: true});
+                    $node.attr("cm-idx", cmIdx);
+                    cms.push(cm);        
+                }
+            });
+        })(fragUrl, $(node).next(), cmIdx++);
     });
-
 
     var $exampleNode = null;
     $(".snp-frag-render").on("mouseover", function(){
         $exampleNode = $(this);
-        $("#snapshot-btn").css("top", ($(this).offset().top+10));
-        $("#snapshot-btn").css("left", ($(this).offset().left+$(this).width()-85));
-        $("#snapshot-btn").show();
+        $("#case-btn-group").css("top", ($(this).offset().top+10));
+        $("#case-btn-group").css("left", ($(this).offset().left+$(this).width()-150));
+        $("#case-btn-group").show();
     });
-    $(".snp-frag-render").on("mouseout", function(){
-        //$("#snapshot-btn").hide();
-    });
-
-
   
 </script>
 <script type="text/javascript">
-  var snapshot = new Snapshot().register(rootParser, Snapshot.defaultParser, formitemGroupParser);
 
-  function test($node){
-      var json = snapshot.takeSnap($node[0]);
-      console.log(json);
-      var html = snapshot.resolve(json);
+  var snapshot = new Snapshot({visible:false});
+
+  function test($node, evt){
+      var target = evt.target;
+      if($(target).index()==1){
+          var cmIdx = $node.next().attr("cm-idx");
+          var cm = cms[cmIdx];
+          $node.html(cm.getValue());
+      }
+
+      var result = snapshot.takeSnap($node[0]);
+      console.log(result);
+      var html = snapshot.convert(result);
       console.log(html);
       $node.siblings(".snp-json-render").html(html);
-      $node.siblings(".snp-json").text(JSON.stringify(json, null, 4));
+      $node.siblings(".snp-json").text(JSON.stringify(result, null, 4));
   }
 
-  $("#snapshot-btn").on("click", function(){
-      test($exampleNode);
+  $("#case-btn-group").on("click", function(evt){
+      test($exampleNode, evt);
   });
 
 </script>
 <script type="text/javascript">
-  
   function caseToggle(){
       $(".snp-frag-render ul").toggle();
   }

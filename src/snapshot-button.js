@@ -22,11 +22,7 @@
                 desc.type="OTHER";
                 return desc;
             }
-
-            
         }
-
-
     };
 
     global.buttonParser = buttonParser;

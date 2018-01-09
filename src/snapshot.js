@@ -1,5 +1,3 @@
-
-
 /**
  * 工单快照核心组件（由描述器，解析器，组装器构成）
  * 描述器：节点描述
@@ -481,7 +479,4 @@
     }
 
 })( typeof window !== "undefined" ? window : this, jQuery );
-
-
-
 
