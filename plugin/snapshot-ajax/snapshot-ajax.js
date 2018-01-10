@@ -3,7 +3,7 @@
 
     "use strict";
 
-    var proxyAjax:function() {
+    var proxyAjax: function() {
         var _ajax_ = $.ajax;
         $.ajax = function () {
 

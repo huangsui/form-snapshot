@@ -1,27 +1,26 @@
 {
-  "name": "form-snapshot",
-  "version": "1.0.0",
-  "description": "A lightweight, extendable front-end form sanpshot tool for web page.",
-  "main": "dist/snapshot.min.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack",
-    "server": "webpack-dev-server --open"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/huangsui/form-snapshot.git"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "jquery": "^3.2.1",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.10.0"
-  },
-  "author": "huangsui",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/huangsui/form-snapshot/issues"
-  },
-  "homepage": "https://github.com/huangsui/form-snapshot#readme"
+    "name": "form-snapshot",
+    "version": "1.0.0",
+    "description": "A lightweight, extendable front-end form sanpshot tool for web page.",
+    "main": "./dist/snapshot.min.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack",
+        "start:dev": "webpack-dev-server --open"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/huangsui/form-snapshot.git"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "webpack": "^3.10.0",
+        "webpack-dev-server": "^2.10.1"
+    },
+    "author": "huangsui",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/huangsui/form-snapshot/issues"
+    },
+    "homepage": "https://github.com/huangsui/form-snapshot#readme"
 }
