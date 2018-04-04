@@ -1,0 +1,28 @@
+<li>
+    <label class="item"></label>
+    <em id="tradeType" class="radio checked">买入</em><em id="tradeType2" class="radio">卖出</em>
+</li>
+<li>
+    <label class="item"></label>
+    <em id="tradeType1" class="radio checked">买入</em><em id="tradeType3" class="radio">卖出</em>
+</li>
+<li id="bankFlag">
+    <label class="item"><i>*</i>收款行：</label>
+    <label class="radio-analog choosed">
+        <input type="radio" name="col-bank" checked="" value="1" datatype="*" nullmsg="请选择收款行">同行</label>
+    <label class="radio-analog ml10">
+        <input type="radio" name="col-bank" value="2" datatype="*" nullmsg="请选择收款行">他行</label>
+</li>
+<li id="resFlag">
+    <label class="item"><i>*</i>转账时间：</label>
+    <label class="radio-analog choosed">
+        <input type="radio" name="appointment" checked="" value="0" datatype="*" nullmsg="请选择转账方式">实时</label>
+    <label class="radio-analog ml10">
+        <input type="radio" name="appointment" value="1" datatype="*" nullmsg="请选择转账方式">预约次日转账</label>
+    <label class="radio-analog ml10 other-time">
+        <input type="radio" name="appointment" value="1" datatype="*" nullmsg="请选择转账方式">预约其他时间</label>
+    <div class="time-box ml10">
+        <input class="input-date" id="resDate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+        <input class="input-time ml5" id="resTime" type="text" onfocus="WdatePicker({dateFmt:'HH:mm:ss'})">
+    </div>
+</li>

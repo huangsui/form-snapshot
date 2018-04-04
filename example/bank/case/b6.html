@@ -1,0 +1,131 @@
+<div class="form-group tbsp-form-item col-xs-12 col-md-8" style="background-color: #ddd;width: 84%;height: 35px;margin-left: 60px;">
+    <label class="col-xs-12 col-md-3 control-label pl-0 pr-5" style="text-align:left">通知类别</label>
+    <div class="col-xs-12 col-md-9 pl-0 " style="">
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+    <label class="col-xs-12 col-md-1 control-label pl-0 pr-5" style="margin-right: -7px;"></label>
+    <div class="col-xs-12 col-md-9 pl-0 " style="">    <!-- Nav tabs -->
+        <ul class="nav nav-tabs" style="border-bottom:0">
+            <li class="active"><a href="#changeNotice" data-toggle="tab" aria-expanded="true">启用动账通知</a></li>
+            <li class=""><a href="#alarmNotice" data-toggle="tab" aria-expanded="false">启用预警通知</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+<div class="tab-content ">
+    <div class="tab-pane active" id="changeNotice">
+        <div class="well well-sm  clearfix ">
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+                    <label class="col-xs-12 col-md-5 control-label pl-0 pr-5" style="">
+                        <font color="red">* </font>动账类别：</label>
+                    <div class="col-xs-12 col-md-7 pl-0 " style="">
+                        <select name="changeType" class="form-control select2"
+                                style="display: none;" id="changeTypeId"
+                                hasoptionofempty="true" emptyname="请选择" "="" tabindex="-1">
+                        <option value="" selected="selected"> 请选择</option>
+
+                        <option value="01">收款,入金,充值</option>
+                        <option value="02">付款,出金,提现</option>
+                        </select>
+                        <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100px;">
+                        <span class="selection">
+                            <span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list"
+                                  aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                  aria-labelledby="select2-changeTypeId-container">
+                                <span class="select2-selection__rendered" id="select2-changeTypeId-container"
+                                      title=" 请选择"> 请选择</span>
+                                <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                            </span>
+                        </span>
+                        <span class="dropdown-wrapper" aria-hidden="true">
+                        </span>
+                    </span>
+                        <script type="text/javascript">
+                            $(function () {
+                                $.extend($.fn.select2.defaults.defaults.language, {
+                                    noResults: function () {
+                                        return '无数据';
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="col-xs-12 col-md-0 valid-msg"></div>
+                </div>
+
+                <div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+                    <label class="col-xs-12 col-md-5 control-label pl-0 pr-5" style="">付款限额(&gt;=)</label>
+                    <div class="col-xs-12 col-md-7 pl-0 " style="">
+                        <input type="text" name="payAmt" value="0.00" class="form-control input-text" maxlength="15"
+                               errormsg="付款限额为0~999999999999.99之间且小数点后最多两位数字"
+                               nullmsg="付款限额不为空" readonly="ture" data-value="0.00">
+                    </div>
+                    <div class="col-xs-12 col-md-0 valid-msg"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+                    <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style=""></label>
+                    <div class="col-xs-12 col-md-8 pl-0 " style=""></div>
+                    <div class="col-xs-12 col-md-0 valid-msg"></div>
+                </div>
+
+                <div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+                    <label class="col-xs-12 col-md-5 control-label pl-0 pr-5" style="">收款限额(&gt;=)</label>
+                    <div class="col-xs-12 col-md-7 pl-0 " style="">
+                        <input type="text" name="rcvAmt" value="0.00" class="form-control input-text" maxlength="15"
+                               errormsg="收款限额为0~999999999999.99之间且小数点后最多两位数字"
+                               nullmsg="收款限额不为空" readonly="ture" data-value="0.00">
+                    </div>
+                    <div class="col-xs-12 col-md-0 valid-msg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane" id="alarmNotice">
+        <div class="well well-sm  clearfix " style="margin: 0px 75px 10px 60px; background-color:#fff"
+        "="">
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+                <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style=""></label>
+                <div class="col-xs-12 col-md-8 pl-0 " style="">
+                    <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                        <input type="checkbox" name="alarm" id="check467871150" value="00100000" data-value="00100000" checked="checked">
+                        <label for="check467871150" class="cursor-hand">低于预警限额</label>
+                    </div>
+                    <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                        <input type="checkbox" name="alarm" id="check1763215006" value="00010000" data-value="00010000">
+                        <label for="check1763215006" class="cursor-hand">高于预警限额</label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-0 valid-msg"></div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+                <label class="col-xs-12 col-md-5 control-label pl-0 pr-5" style="">低于预警限额(&lt;=)</label>
+                <div class="col-xs-12 col-md-7 pl-0 " style="">
+                    <input type="text" name="alarmFloor" value="0.00" class="form-control input-text" maxlength="15"
+                           errormsg="预警限额为0~999999999999.99之间且小数点后最多两位数字" nullmsg="预警限额不为空" readonly="ture" data-value="0.00">
+                </div>
+                <div class="col-xs-12 col-md-0 valid-msg"></div>
+            </div>
+            <div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+                <label class="col-xs-12 col-md-5 control-label pl-0 pr-5" style="">高于预警限额(&gt;=)</label>
+                <div class="col-xs-12 col-md-7 pl-0 " style="">
+                    <input type="text" name="alarmCeiling" value="0.00" class="form-control input-text" maxlength="15"
+                           errormsg="预警限额为0~999999999999.99之间且小数点后最多两位数字" nullmsg="预警限额不为空" readonly="ture" data-value="0.00">
+                </div>
+                <div class="col-xs-12 col-md-0 valid-msg"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

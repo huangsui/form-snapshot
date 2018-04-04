@@ -1,0 +1,192 @@
+@charset "utf-8";
+.account .transfer-patch-info{width: 803px; float: left; border-right: 1px solid #ccc; padding: 0 22px 45px;}
+.account .transfer-patch-list{width: 278px; float: left; border-left: 1px solid #ccc; margin-left: -1px;}
+.account .title-line{font-size: 16px; line-height: 1; color: #333; min-width: 98px; padding-right: 12px; position: relative; font-weight: bolder; display: inline-block; text-align: right;}
+.account .title-line:after{content: ""; width: 620px; height: 1px; background-color: #ccc; position: absolute; left: 110px; top: 50%;}
+.account .transfer-patch-info .form-con{padding-left: 55px; padding-top: 12px; margin-bottom: -8px;}
+.account .transfer-patch-info .form-con .form-l-ipt{width: 330px;}
+.account .transfer-patch-info .pl-adjust{margin-left: 263px;}
+.account .transfer-patch-list-top{padding: 11px 12px; background-color: #EDF6FE;}
+.account .transfer-patch-list-top .title{font-size: 14px; color: #333; line-height: 28px; font-weight: bolder; float: left;}
+.account .query-sel{float: left; width: 340px; height: 26px; border: 1px solid #ccc; line-height: 26px; font-size: 14px; color: #666; background: url(../images/select_triangle.png) no-repeat #fff; background-position: 317px 0;}
+.account .query-sel:hover{background-position: 317px -28px; border-color: #0270D7;}
+.account .transfer-patch-list .query-sel{float: right; width: 118px; background-position: 95px 0;}
+.account .transfer-patch-list .query-sel:hover{background-position: 95px -28px;}
+.account .transfer-patch-list-search{padding: 5px 13px; background-color: #E5E4E4; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;}
+.account .bank-list>label{font-size: 0; padding: 10px 13px; height: 38px; position: relative; cursor: pointer; border: 1px solid #ccc; background-color: #fff; margin: -1px -1px 0 -1px; display: block;}
+.account .bank-list>label:hover{border-color: #0270D7; z-index: 10;}
+.account .bank-list>label:after{content: ""; display: table; clear: both;}
+.account .bank-list>label>input[type="radio"]{position: absolute; left: 0; top: 0; opacity: 0; filter: alpha(opacity=0)}
+.account .bank-list .dot{background: url(../images/small_icon.png) no-repeat 0 0; width: 26px; height: 18px; display: inline-block; vertical-align: middle;}
+.account .bank-list>label.choosed .dot{background-position: 0 -35px;}
+.account .bank-list .bank-logo{width: 32px; height: 32px; display: inline-block; vertical-align: middle;}
+.account .bank-list .info{font-size: 14px; line-height: 20px; color: #333; padding-left: 6px; display: inline-block; vertical-align: middle;}
+.account .bank-list .info .text{font-size: 12px; line-height: 17px; color: #999; padding-top: 1px;}
+.account .bank-list .oper{position: absolute; right: 16px; top: 10px; display: none;}
+.account .bank-list>label:hover .oper{display: block;}
+.account .bank-list .oper .edit{cursor: pointer; width: 16px; height: 16px; background: url(../images/icon_edit.png) no-repeat center; display: block;}
+.account .bank-list .oper .delete{cursor: pointer; width: 16px; height: 16px; background: url(../images/icon_close.png) no-repeat center; display: block; margin-top: 6px;}
+/*.account .form-con .query-bank{float: left; width: 272px; height: 20px; padding: 3px 23px 3px 5px; border: 1px solid #ccc; line-height: 20px; font-size: 14px; color: #666; background: url(../images/select_triangle.png) no-repeat 277px 0; cursor: pointer;}
+.account .form-con .query-bank:hover{background-position: 277px -28px; border-color: #0270D7;}
+.account .bank-box{width: 600px; min-height: 200px; border: 1px solid #ccc; position: absolute; top: 27px; left: 208px; z-index: 5; background-color: #fff; display: none;}
+.account .bank-box .tab>li{float: left; width: 100px; background-color: #E5E4E4; font-size: 14px; color: #333; line-height: 30px; text-align: center; border-left: 1px solid #ccc; border-bottom: 1px solid #ccc; cursor: pointer; box-sizing: border-box;}
+.account .bank-box .tab>li:first-child{border-left: 0;}
+.account .bank-box .tab>li.on,
+.account .bank-box .tab>li:hover{border-bottom-color: #fff; background-color: #fff;}
+.account .bank-box-patch{padding: 18px 0 2px;}
+.account .bank-box-patch p{width: 20%; float: left; font-size: 14px; color: #333; line-height: 20px; margin-bottom: 16px; text-align: center; cursor: pointer; padding: 0 5px; box-sizing: border-box;}
+.account .bank-box-patch p:hover{color: #0270D7;}
+.account .bank-detail-box{width: 600px; min-height: 200px; border: 1px solid #ccc; position: absolute; top: 27px; left: 208px; z-index: 6; background-color: #fff; display: none;}
+.account .bank-detail-box-top{font-size: 14px; line-height: 38px; color: #509ADD; padding-left: 30px; position: relative;}
+.account .bank-detail-box-top .closed{cursor: pointer; width: 16px; height: 16px; background: url(../images/icon_close.png) no-repeat center; position: absolute; right: 6px; top: 6px;}
+.account .bank-detail-box-cont{padding: 0 100px 15px;}
+.account .bank-detail-box-cont .query-sel{width: 150px; background-position: 127px 0;}
+.account .bank-detail-box-cont .query-sel:hover{background-position: 127px -28px;}
+.account .bank-detail-box-cont .text{font-size: 14px; line-height: 28px; color: #333; float: left; padding: 0 21px 0 8px;}
+.account .bank-detail-box-cont .searchbox>input[type='text']{width: 100%; box-sizing: border-box; height: 28px;}
+.account .bank-detail-box-cont .info-grid th{background-color: #E5E4E4; color: #333;}
+.account .bank-detail-box-cont .info-grid tbody tr:hover td{color: #0270D7; cursor: pointer;}*/
+.payee-layer{width: 500px; box-sizing: border-box;}
+.payee-box{padding: 20px 15px;}
+.payee-layer .form-con .item{width: 150px;}
+.payee-layer .form-con .query-sel{width: 100px; background-position: 77px 0;}
+.payee-layer .form-con .query-sel:hover{background-position: 77px -28px;}
+.payee-layer .scrollbox{position: relative; margin-left: 153px; margin-top: 20px;}
+.account .transfer-confirm{padding: 0 22px;}
+.account .transfer-confirm .title-line:after{width: 950px;}
+.account .transfer-confirm-row{padding-left: 200px; margin-top: 20px;}
+.account .transfer-confirm-row:after{content: ""; display: table; clear: both;}
+.account .transfer-confirm-row p{font-size: 14px; line-height: 17px; color: #333; text-align: right; margin-bottom: 20px;}
+.account .text-digital{display: inline-block; width: 70%; text-align: left;}
+.account .veri-box{line-height: 28px;}
+.account .veri-box>i{font-style: normal; color: #D0011B; margin-right: 2px;}
+.account .transfer-confirm-row .form-s-ipt{width: 130px;}
+.account .oper-result{padding-top: 20px;}
+.account .transfer-batch-list{padding-left: 255px; padding-top: 20px;}
+.account .transfer-batch-row-tip{font-size: 12px; line-height: 17px; color: #666; margin-top: 3px;}
+.account .transfer-batch-row-msg{font-size: 14px; line-height: 20px; color: #333; margin-top: 5px;}
+.account .transfer-batch-row-msg .closed{background: url(../images/icon_close.png) no-repeat center; width: 16px; height: 20px; display: inline-block; vertical-align: middle; cursor: pointer; margin-left: 12px;}
+.account .transfer-batch-btn{padding: 10px 0 30px 463px;}
+.account .transfer-batch-grid{padding: 0 12px 30px;}
+.account .transfer-batch-grid .summary{font-size: 14px; line-height: 17px; color: #333; margin: 6px 50px 8px 0; float: left;}
+.account .transfer-batch-grid .grid-scroll-cont{height: 350px;}
+.account .transfer-batch-grid .veri-box{padding: 20px 0; display: inline-block;}
+.account .transfer-batch-grid .form-con .form-s-ipt{width: 140px;}
+.account .transfer-batch-cont .cont-top{border: none;}
+/*.account .account-scroll-box{float: left; position: relative;}
+.account .account-scroll-box .input-scroll{width: 340px; background-position: 316px 0;}
+.account .account-scroll-box .input-scroll:hover{background-position: 316px -28px; cursor: pointer;}
+.account .input-scroll-cont-account{width: 340px; border: 1px solid #ccc; position: absolute; top: 27px; left: 0; font-size: 14px; color: #333; line-height: 17px; overflow: hidden; background-color: #fff; z-index: 20; box-sizing: border-box; display: none;}
+.account .input-scroll-cont-account .search{padding: 6px 9px; background-color: #E5E4E4;}
+.account .input-scroll-cont-account .search>input{width: 100%; border: 1px solid #ccc; padding: 5px; line-height: 16px; color: #333; box-sizing: border-box;}
+.account .input-scroll-cont-account .search>input:hover{border-color: #0270D7;}
+.account .input-scroll-cont-account .cont{overflow: hidden; height: 170px; position: relative;}
+.account .input-scroll-cont-account .cont>p{font-size: 14px; color: #333; line-height: 16px; padding: 5px 9px;}
+.account .input-scroll-cont-account .cont>p:hover{cursor: pointer; background-color: #EDF6FE;}*/
+.account .query-box .query-list .query-item{min-width: 110px; box-sizing: border-box;}
+.account .query-box .query-list .hyphen.long{padding: 0 7px;}
+.account .btn-box{position: relative;}
+.account .btn_filter{float: left;}
+.account .btn-box .srch-btn{position: absolute; left: 460px; top: 0;}
+.account .query-sel.long{width: 338px; background-position: 316px 0;}
+.account .query-sel.long:hover{background-position: 316px -28px;}
+.account .query-sel.w200{width: 198px; background-position: 176px 0;}
+.account .query-sel.w200:hover{background-position: 176px -28px;}
+.account .summary-box{padding: 0 15px;}
+.account .summary-box>p{font-size: 14px; line-height: 20px; color: #333; margin: 0 100px 6px 0; float: left;}
+.account .ao-left{width: 248px; float: left; border: 1px solid #ccc; background-color: #fff; box-sizing: border-box;}
+.account .ao-right{width: 868px; float: right;}
+.account .ao-left-total{padding: 0 12px; height: 44px; line-height: 44px; background-color: #5F81AA; font-size: 14px; color: #fff;}
+.account .ao-left-search{background-color: #F4F2F2; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 8px 0 8px 12px;}
+.account .ao-left-search .searchbox>input[type='text']{/*width: 150px;*/width: 184px; border-color: #509ADD; border-radius: 3px;}
+.account .ao-left-search .icon-filter{margin-left: 6px;}
+.account .icon-filter{width: 28px; height: 28px; position: relative;}
+.account .icon-filter .icon{width: 100%; height: 100%; display: block; background: url(../images/screen.png) no-repeat center; cursor: pointer;}
+.account .icon-filter-list{position: absolute; width: 67px; top: 33px; left: -27px; box-sizing: border-box; border: 1px solid #ccc; z-index: 8; background-color: #fff; display: none;}
+.account .icon-filter-list .arrow{position: absolute; top: -6px; left: 35px; z-index: 9; width: 12px; height: 8px; background: url(../images/small_icon.png) no-repeat 0 -159px;}
+.account .icon-filter-list li{font-size: 12px; line-height: 20px; color: #333; padding-left: 12px; position: relative;}
+.account .icon-filter-list li.on:after{position: absolute; left: 44px; top: 0; width: 14px; height: 20px; content: ""; background: url(../images/bg_check_mark_small.png) no-repeat center;}
+.account .icon-filter-list li:hover{background-color: #EDF6FE; cursor: pointer;}
+.account .ao-left-list{position: relative; font-size: 12px; line-height: 16px; color: #333; /*min-height: 300px;*/height: 443px;overflow: auto}
+.account .ao-left-list li{line-height: 18px; margin-bottom: 5px; padding: 5px 10px; border-left: solid 3px #fff;cursor: pointer;}
+.account .ao-left-list .on {background: #EDF6FE;border-left: solid 3px #FF8903;}
+.account .ao-left-list li:hover {background: #EDF6FE;border-left: solid 3px #EDF6FE;}
+.account .ao-left-list .on:hover{border-left: solid 3px #FF8903;}
+.account .ao-left-list .icon-shrink{position: absolute; top: 50%; right: 0; width: 33px; height: 66px; margin-top: -33px; background: url(../images/icon_shrink.png) no-repeat 0 -1px;}
+.account .ao-left-list .icon-shrink:hover{background-position: 0 -85px; cursor: pointer;}
+.account .ao-right-total{background-image: linear-gradient(90deg, #509ADD 0%, #50CDEE 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#509ADD',endColorstr='#50CDEE',grandientType=1); border-radius: 5px; height: 110px;}
+.account .dpy{width: 58%; height: 100%; float: left; position: relative; color: #fff; box-sizing: border-box; border-right: 1px solid #fff; padding: 27px 0 20px 67px;}
+.account .dpy .separate{position: absolute; right: -3px; top: 50%; width: 8px; height: 12px; margin-top: -6px; background: url(../images/small_icon.png) no-repeat 0 -178px;}
+.account .dpy .tip{position: absolute; top: 0; left: 10px; width: 30px; height: 30px; background: url(../images/state.png) no-repeat center; font-size: 12px; letter-spacing: -0.31px; line-height: 14px; padding-top: 5px; color: #509ADD; text-align: center; box-sizing: border-box;}
+.account .dpy .date{font-size: 12px; line-height: 14px; letter-spacing: -0.31px; position: absolute; top: 8px; right: 21px;}
+.account .dpy .num{width: 300px; font-size: 16px; line-height: 22px; text-align: left;}
+.account .dpy .mark{width: 70px; height: 22px; display: inline-block; vertical-align: middle; line-height: 22px; font-size: 12px; background-color: #14CAA1; border-radius: 3px; text-align: center;}
+.account .dpy .text{width: 300px; margin-top: 3px; font-size: 14px; line-height: 18px; text-align: left; height: 36px; overflow: hidden;}
+.account .dpy-link{font-size: 14px; line-height: 17px; letter-spacing: -0.36px; color: #fff; position: absolute; bottom: 9px; right: 21px;}
+.account .dpy-link:hover{cursor: pointer; color: #9EF5FB;}
+.account .aut{width: 42%; height: 100%; float: left; position: relative; color: #fff; box-sizing: border-box; padding: 27px 0 20px 14px;}
+.account .aut-top{font-size: 12px; line-height: 14px; position: absolute; top: 8px; right: 14px;}
+.account .aut-top .refresh{width: 12px; height: 14px; display: inline-block; vertical-align: middle; background: url(../images/small_icon.png) no-repeat 0 -206px; margin-left: 4px; cursor: pointer;}
+.account .aut .num_big{font-size: 16px; line-height: 19px; margin-bottom: 3px; text-align: left;}
+.account .aut .num{font-size: 14px; line-height: 18px; text-align: left;}
+.account .aut .num_big .name,
+.account .aut .num .name{width: 126px; text-align: right; display: inline-block; vertical-align: middle;}
+.account .aut-link{font-size: 14px; line-height: 17px; color: #fff; position: absolute; bottom: 9px; right: 14px;}
+.account .aut-link:hover{cursor: pointer; color: #9EF5FB;}
+.account .ao-right-product{background-color: #fff; border: 1px solid #ccc; margin-top: 12px;}
+.account .slider-box{position: relative; width: 100%; overflow: hidden;}
+.account .slider-list{padding: 0 12px 12px;}
+.account .slider-box .slider-arrow{width: 10px; height: 10px; position: absolute; top: 22px; right: 16px; background: url(../images/icon_triangle3.png) no-repeat;}
+.account .slider-box .slider-arrow:hover{cursor: pointer;}
+.account .slider-box .slider-arrow.prev{background-position: 2px -90px;}
+.account .slider-box .slider-arrow.next{margin-left: 4px; background-position: 2px -111px; right: 6px;}
+.account .slider-list li{font-size: 14px; letter-spacing: -0.36px; line-height: 30px; color: #fff; height: 30px; width: 111px; text-align: center; background-color: #509ADD; border: 1px solid #509ADD; border-radius: 4px; margin-right: 33px; float: left;}
+.account .slider-list li:hover{background-color: #4FA1EC; cursor: pointer;}
+.account .ao-right-detail-search{margin-top: 8px; margin-right: 12px; float: right;}
+.account .ao-right-detail-search .search-btn{height: 28px; width: 28px; border-radius: 14px; background: url(../images/icon_top_function.png) no-repeat #5f81aa; float: left; margin-left: 12px; background-position: -2px -2px;}
+.account .ao-right-detail-search .search-btn:hover{background-color: #39577a; cursor: pointer;}
+.account .ao-right-detail-list{padding: 0 12px 12px;}
+.account .ao-right-detail-list .type-list li{height: 36px; line-height: 36px;}
+.account .am-right-total{background-color: #EDF6FE; border: 1px solid #ccc; height: 110px;}
+.account .am-right-total .dpy{color: #333; border-right-color: #ccc; padding-left: 28px;}
+.account .am-right-total .dpy .mark{color: #fff; margin-left: 10px;}
+.account .am-right-total .dpy .date{right: 14px;}
+.account .am-right-total .dpy-link,
+.account .am-right-total .aut-link{color: #0270D7; font-size: 12px; line-height: 14px; right: 14px;}
+.account .am-right-total .dpy-link:hover,
+.account .am-right-total .dpy-link:hover{text-decoration: underline;}
+.account .am-right-total .aut{color: #333;}
+.account .am-right-total .aut-top .refresh{background-position: 0 -232px;}
+.account .am-right-total .aut .num_big .name,
+.account .am-right-total .aut .num .name{width: 108px;}
+.account .am-right-total .aut-top .refresh{margin-left: 2px;}
+.account .am-left-total{padding: 0 12px; font-size: 14px; line-height: 44px; color: #fff; background-color: #5F81AA; position: relative;}
+.account .am-left-total .arrow{width: 10px; height: 10px; position: absolute; top: 19px; right: 12px; background: url(../images/icon_triangle2.png) no-repeat 0 -126px;}
+.account .am-left-total:hover .arrow{background-position: 0 -142px; cursor: pointer;}
+.account .am-left-total-list{position: absolute; top: 44px; left: -1px; width: 100%; z-index: 8; border-left: 1px solid #ccc; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; display: none;}
+.account .am-left-total-list .input-scroll-cont{display: block; width: 246px; position: relative; top: 0; border: none;}
+.account .am-left-search{background-color: #F4F2F2; padding: 10px 12px;}
+.account .am-left-search .searchbox>input[type='text']{width: 184px; border-color: #509ADD; border-radius: 3px; display: block;}
+.account .am-left-list{min-height: 300px;}
+.account .am-left-list-box{font-size: 12px; line-height: 26px; color: #333; padding-left: 10px;}
+.account .am-left-list-box>ul{display: none;}
+.account .am-left-list-text{font-size: 12px; line-height: 26px; color: #333; padding-left: 23px;}
+.account .am-left-list-box>p{font-size: 0;}
+.account .am-left-list-box .text{font-size: 12px; line-height: 26px; color: #333; display: inline-block; vertical-align: middle;}
+.account .am-left-list-box .icon{width: 13px; height: 26px; display: inline-block; vertical-align: middle; background-repeat: no-repeat; background-position: center;}
+.account .am-left-list-box .icon.spread{background-image: url(../images/reduce.png);}
+.account .am-left-list-box .icon.shrink{background-image: url(../images/add.png);}
+.account .am-left-list-box .icon.spread,
+.account .am-left-list-box .icon.shrink{cursor: pointer;}
+
+.account .second-table-title{height: 30px;background: #EDF6FE;color:#333;line-height: 30px;padding-left: 38px;margin-bottom: 12px;}
+.account .query-box{border: 0;margin-bottom: 0px;}
+
+
+/* 表头样式 */
+.second-table th{
+    background-color: #E5E4E4;
+    color: #333333;
+}
+/*常用收款人查询列表附加样式*/
+.account .bankListStyle{width:100px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;float:left;}

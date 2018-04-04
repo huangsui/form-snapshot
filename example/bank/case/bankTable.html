@@ -1,0 +1,75 @@
+<head>
+<meta charset="utf-8">
+<link href="../lib/bootstrap/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" src="../../../lib/jquery/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="../../../dist/snapshot-1.0.0.dev.js"></script>
+<script type="text/javascript" src="../../../src/plugin/snapshot-ajax/snapshot-ajax.js"></script>
+</head>
+
+<button id="delBtn">批量删除</button>
+<table width="400" border="1" id="table1">
+ <tr>
+  <th align="left"><input type="checkbox" name=""></th>
+  <th align="left">消费项目....</th>
+  <th align="right">一月</th>
+  <th align="right">二月</th>
+  <th align="right">操作</th>
+ </tr>
+ <tr>
+  <td align="left"><input type="checkbox" name=""></td>
+  <td id="1" align="left">衣服</td>
+  <td align="right">$241.10</td>
+  <td align="right">$50.20</td>
+  <td align="right" rid="11"><a onclick="submit1(event, '11')">删除</a></td>
+ </tr>
+ <tr>
+  <td align="left"><input type="checkbox" checked="checked" name=""></td>
+  <td id="2" align="left">化妆品</td>
+  <td align="right">$30.00</td>
+  <td align="right">$44.45</td>
+  <td align="right" rid="12"><a onclick="submit1(event, '12')">删除</a></td>
+ </tr>
+ <tr>
+  <td align="left"><input type="checkbox" name=""></td>
+  <td id="3" align="left">食物</td>
+  <td align="right">$730.40</td>
+  <td align="right">$650.00</td>
+  <td align="right" rid="13"><a onclick="submit1(event, '13')">删除</a></td>
+ </tr>
+ <tr>
+  <td align="left">总计</td>
+  <td align="right"></td>
+  <td align="right">$1001.50</td>
+  <td align="right">$744.65</td>
+  <td align="right"></td>
+ </tr>
+</table>
+<div id="snp-json-render" style="margin-top: 30px;width: 60%"></div>
+
+<script type="text/javascript">
+  
+  function submit1(event, id) {
+      event.preventDefault();
+      $.ajax({
+          method:"post",
+          data: {"a":id},
+          ss:["#table1", "td[rid="+id+"]"],
+          "convert-type":"html",
+          success: function(data) {
+              console.log(data);
+          }
+      });
+//    console.log(event);
+  }
+
+  $("#delBtn").on("click",function () {
+      $.ajax({
+          method:"post",
+          data: {"a":"b"},
+          ss:"#table1",
+          success: function(data) {
+              console.log(data);
+          }
+      });
+  });
+</script>

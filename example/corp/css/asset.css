@@ -1,0 +1,258 @@
+/*.asset .page{padding-bottom: 78px; padding-top: 0}*/
+/*.asset .footer{width: 1123px;height: 54px;padding-top: 12px;margin-left: 75px;margin-top: -68px;background: #fff;border: 1px solid #ccc;}*/
+
+
+/* 资产池首页 */
+.asset .property-box{width: 100%;padding-top: 10px;}
+.asset .property-box li{float: left;width: 251px;height: 85px;margin: 0 20px;border-radius: 5px;color: #fff;overflow: hidden;position: relative;cursor: pointer;}
+.asset .property-box .total{margin-left: 0;background: #69B979;}
+.asset .property-box .debt{background: #E96767;}
+.asset .property-box .usable-limit{background: #FBA53A;}
+.asset .property-box .account{margin-right: 0;background: #509ADD;}
+.asset .property-box .value{padding-left: 20px;padding-top: 10px;font-size: 18px;}
+.asset .property-box .type{padding-left: 20px;font-size: 14px;}
+.asset .property-box li .icon{position: absolute;bottom: 5px;right: 12px;width: 36px;height: 36px;background: url(../images/icon_property_type.png) no-repeat;}
+.asset .property-box .total .icon{background-position: 0 0;}
+.asset .property-box .debt .icon{background-position: 0 -36px;}
+.asset .property-box .usable-limit .icon{background-position: 0 -72px;}
+.asset .property-box .account .icon{background-position: 0 -108px;}
+.asset .property-box .total:hover{background: #5CA56B;}
+.asset .property-box .debt:hover{background: #D75D5D;}
+.asset .property-box .usable-limit:hover{background: #EC9B36;}
+.asset .property-box .account:hover{margin-right: 0;background: #498DCA;}
+/*.asset .property-info-box{padding-top: 10px;}*/
+/* 首页视图 */
+.asset .chart-info-box{float: left;width: 658px;border: 1px solid #ccc;background: #fff;}
+.asset .chart-info-box .tit-row{height: 40px;padding-left: 20px;line-height: 40px;font-size: 16px;color: #333;font-weight: 600;}
+.asset .chart-info-box .detail-link{float: right;margin-right: 15px;line-height: 40px;font-size: 14px;color: #333;font-weight: normal;}
+.asset .chart-info-box .detail-link:hover{text-decoration: underline;}
+.asset .chart-info-box .chart-box{width: 658px;height: 330px;margin-bottom: 28px;position: relative;}
+.asset .chart-info-box .chart-box .chart{width: 658px;height: 330px;}
+.asset .chart-info-box .chart-center{position: absolute;top: 50%;left: 50%;margin: -55px 0 0 -55px;width: 110px;height: 110px;border-radius: 55px;z-index: 1;cursor: pointer;}
+.asset .chart-info-box .chart-center p{height: 48px;width: 100%;margin-top: 31px;font-size: 20px;color: #3F3B3A;line-height: 24px;text-align: center;overflow: hidden;}
+.asset .chart-info-box .chart-item-box{height: 121px;width: 100%;border-top: 1px solid #ccc;position: relative;}
+.asset .chart-info-box .chart-item-box .triangle{width: 0px;height: 0px;border-width: 0 10px 10px 10px;border-color:transparent transparent #ccc transparent;border-style: solid;position: absolute;left: 50%;top: -10px;margin-left: -10px;}
+.asset .chart-info-box .chart-item-box .triangle-p{width: 0px;height: 0px;border-width: 0 10px 10px 10px;border-color:transparent transparent #fff transparent;border-style: solid;position: absolute;top:1px;margin-left: -10px;z-index: 1;}
+.asset .chart-info-box .chart-item-box .item-info-list{padding: 9px 0 9px 20px;height: 100px;display: none;overflow: hidden;}
+.asset .chart-info-box .chart-item-box .item-info-list li{float: left;height: 30px;margin: 10px 10px 12px 0;width: 140px;padding-left: 4px;border-left: 3px solid #2D4868;font-size: 12px;color: #333333;overflow: hidden;}
+.asset .chart-info-box .chart-item-box .item-info-list .item,.asset .chart-info-box .chart-item-box .item-info-list .value{line-height: 14px;margin-top: 1px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.asset .chart-info-box .chart-item-box .item-info-list .item em{margin-left: 5px;}
+.asset .chart-info-box .chart-item-box .item-info-list .total{width: 150px;margin-right: 0;border-left: 0;font-size: 14px;color: #333;font-weight: 600;padding-left: 0;}
+.asset .chart-info-box .chart-item-box .item-info-chart{width: 100%;height: 120px;position: relative;}
+.asset .chart-info-box .chart-item-box .item-info-canvas{width: 658px;height: 120px;}
+.asset .chart-info-box .chart-item-box .assets-scale,.asset .chart-info-box .chart-item-box .debt-scale{position: absolute;left: 210px;top: 60px;height: 30px;width: 30px;margin: -15px 0 0 -15px;border-radius: 15px;line-height: 30px;text-align: center;font-size: 16px;color: #55A465;z-index: 1;}
+.asset .chart-info-box .chart-item-box .debt-scale{left: 560px;color: #e96767;}
+.asset .chart-info-box .chart-item-box .assets-info,.asset .chart-info-box .chart-item-box .debt-info{position: absolute;top: 28px;left: 50px;color: #333;}
+.asset .chart-info-box .chart-item-box .debt-info{left: 400px;}
+.asset .chart-info-box .chart-item-box .assets-info .item,.asset .chart-info-box .chart-item-box .debt-info .item{font-size: 14px;line-height: 16px;}
+.asset .chart-info-box .chart-item-box .assets-info .value,.asset .chart-info-box .chart-item-box .debt-info .value{font-size: 12px;line-height: 14px;}
+/* 首页日历 */
+.asset .date-info-box{float: right;width: 456px;}
+.asset .date-info-box .date-box{width: 454px;border: 1px solid #ccc;background: #fff;position: relative;}
+.asset .calendar-box{width: 100%;}
+.asset .calendar-box .calendar-tit{height: 40px;line-height: 40px;text-align: center;font-size: 14px;color: #3F3B3A;position: relative;}
+.asset .calendar-box .calendar-tit .set-box{float: right;position: relative;}
+.asset .calendar-box .set-box .set-btn{display: block;width: 40px;height: 40px;margin-right: 5px;background: url(../images/icon_detail.png) no-repeat center center;cursor: pointer;}
+.asset .calendar-box .set-box .set-list{position: absolute;top: 35px;left: -26px;width: 90px;border: 1px solid #ccc;background: #fff;z-index: 1;display: none;}
+.asset .calendar-box .set-box .set-list li{height: 30px;line-height: 30px;font-size: 12px;color: #333;text-indent: 30px;background: url(../images/icon_date_set.png) no-repeat;text-align: left;}
+.asset .calendar-box .set-box .set-list li:hover{background-color: #EDF6FE;}
+.asset .calendar-box .set-box .set-list li a{display: block;}
+.asset .calendar-box .set-box .set-list .triangle{width: 0px;height: 0px;border-width: 0 5px 6px 5px;border-color:transparent transparent #ccc transparent;border-style: solid;position: absolute;left: 50%;top: -6px;margin-left: -5px;}
+.asset .calendar-box .set-box .set-list .triangle-p{width: 0px;height: 0px;border-width: 0 5px 6px 5px;border-color:transparent transparent #fff transparent;border-style: solid;position: absolute;top:1px;margin-left: -5px;z-index: 1;}
+.asset .calendar-box .set-box .set-list .set{background-position: 11px 0;}
+.asset .calendar-box .set-box .set-list .detail{background-position: 11px -30px;border-top: 1px solid #ccc;}
+.asset .calendar-box .calendar-tit .name{position: absolute;left: 0;top: 0;line-height: 40px;padding-left: 14px;font-size: 14px;color: #333;}
+.asset .calendar-box .calendar-tit .date-btn{display: inline-block;width: 15px;height: 40px;margin-left: 5px;background: url(../images/icon_arrows.png) no-repeat;background-position: 0 14px;vertical-align: top;cursor: pointer;}
+.asset .calendar-box .calendar-tit .date-btn:hover{background-position: -15px 14px;}
+.asset .calendar-box .week-label{height: 30px;width: 448px;margin: 0 auto;background: #F2F3F4;font-size: 12px;color: #3F3B3A;}
+.asset .calendar-box .week-label em{float: left;width: 64px;line-height: 30px;text-align: center;}
+.asset .calendar-box .calendar{width: 448px;height: 190px;margin: 0 auto;overflow: hidden;}
+.asset .calendar-box .calendar li{float: left;width: 64px;height: 38px;line-height: 38px;text-align: center;position: relative;cursor: pointer;}
+.asset .calendar-box .calendar li em{font-size: 12px;color: #fefefe;}
+.asset .calendar-box .calendar li .flag{position: absolute;top: 0;right: 0;width: 18px;height: 20px;background: url(../images/bg_date.png) no-repeat top left;line-height: 14px;font-size: 10px;color: #fff;}
+.asset .calendar-box .explain-box .explain{float: left;height: 36px;line-height: 36px;font-size: 12px;color: #3F3B3A;margin-left: 18px;}
+.asset .calendar-box .explain-box .explain div{float: left;width: 36px;height: 2px;margin: 17px 2px 0 0;}
+.asset .calendar-box .explain-box .explain .red{background: #E96767;}
+.asset .calendar-box .explain-box .explain .green{background: #69B979;}
+.asset .date-info-box .schedule-box{width: 100%;border-top: 1px solid #ccc;position: relative;margin-top: 9px;height: 66px;cursor: pointer;}
+.asset .date-info-box .schedule-box .triangle{width: 0px;height: 0px;border-width: 0 8px 10px 8px;border-color:transparent transparent #ccc transparent;border-style: solid;position: absolute;left: 50%;top: -10px;margin-left: -8px;}
+.asset .date-info-box .schedule-box .triangle-p{width: 0px;height: 0px;border-width: 0 8px 10px 8px;border-color:transparent transparent #fff transparent;border-style: solid;position: absolute;top:1px;margin-left: -8px;z-index: 1;}
+.asset .date-info-box .schedule-box .tit-line{height: 18px;padding: 4px 0 0 18px;line-height: 18px;font-size: 14px;color: #333;}
+.asset .date-info-box .schedule-box .tit-line .add-btn{float: right;margin-right: 18px;height: 18px;width: 18px;background: url(../images/icon_enter.png) no-repeat center center;cursor: pointer;}
+.asset .date-info-box .schedule-box .schedule-list{padding: 6px 0;}
+.asset .date-info-box .schedule-box .schedule-list li{height: 22px;padding: 0 35px 0 18px;line-height: 22px;font-size: 12px;color: #333;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;cursor: pointer;position: relative;}
+.asset .date-info-box .schedule-box .schedule-list li .delete-btn{display: none;position: absolute;top: 0;right: 16px;height: 22px;width: 22px;background: url(../images/icon_delete.png) no-repeat center center;cursor: pointer;}
+.asset .date-info-box .schedule-box .schedule-list li:hover{background: #EDF6FE;}
+.asset .date-info-box .schedule-box .schedule-list li:hover .delete-btn{display: block;}
+.asset .date-info-box .schedule-box .empty{text-align: center;font-size: 12px;color: #999;}
+.asset .date-info-box .schedule-box .empty em{display: inline-block;height: 36px;padding-left: 46px;line-height: 36px;background: url(../images/icon_coffee.png) no-repeat left center;}
+.asset .date-info-box .schedule-hover-box{position: absolute;left: -1px;top: 296px;height: auto;border: 1px solid #ccc;background: #fff;z-index: 1;display: none;}
+.asset .date-info-box .remind-box{width: 454px;height: 210px;border: 1px solid #ccc;background: #fff;margin-top: 12px;}
+.asset .date-info-box .remind-box .tab-box{height: 26px;border-bottom: 1px solid #ccc;}
+.asset .date-info-box .remind-box .more-link{float: right;margin-right: 18px;line-height: 26px;font-size: 12px;color: #333;}
+.asset .date-info-box .remind-box .more-link:hover{color: #0270D7;}
+.asset .date-info-box .remind-box span{float: left;width: 114px;height: 26px;border-right: 1px solid #ccc;background: #F5F3F3;line-height: 26px;font-size: 14px;color: #333;text-align: center;cursor: pointer;}
+.asset .date-info-box .remind-box .on,.date-info-box .remind-box span:hover{background: #fff;height: 27px;}
+.asset .date-info-box .remind-box .remind-list{padding-top: 5px;}
+.asset .date-info-box .remind-box .remind-list li{height: 24px;padding: 0 18px;line-height: 24px;font-size: 12px;color: #333;cursor: pointer;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.asset .date-info-box .remind-box .remind-list li:hover{background: #EDF6FE;}
+.asset .date-info-box .remind-box .empty{text-align: center;padding-top: 6px;display: none;}
+.asset .date-info-box .remind-box .empty p{font-size: 12px;color: #B3B3B3;}
+/* 普通用户-首页 */
+.asset .account-box{margin-bottom: 12px;width: 100%;height: 86px;border-radius: 5px;overflow: hidden;}
+.asset .account-box li{float: left;width: 281.75px;position: relative;}
+.asset .account-box .line{height: 68px;width: 1px;border-right: 1px dashed #2D4868;margin: 8px 0;}
+.asset .account-box .total{height: 86px;background: #509ADD;border-radius: 5px 0 0 5px;color: #fff;z-index: 1;}
+.asset .account-box .current{height: 84px;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;background: #EDF6FE;color: #38577A;}
+.asset .account-box .regular{height: 84px;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;background: #EDF6FE;color: #38577A;}
+.asset .account-box .loans{height: 84px;border: 1px solid #ccc;border-left: 0;border-radius: 0 5px 5px 0;background: #EDF6FE;color: #38577A;}
+.asset .account-box .icon{float: left;width: 36px;height: 36px;margin:22px 0 0 23px;background: url(../images/icon_property_type.png) no-repeat;}
+.asset .account-box .type{font-size: 14px;margin-left: 80px;margin-top: 15px;}
+.asset .account-box .value{font-size: 20px;margin-left: 80px;margin-top: 2px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.asset .account-box .check-link{float: right;font-size: 12px;color: #fff;margin: 5px 10px 0 0;}
+.asset .account-box .total .icon{background-position: 0 -108px;}
+.asset .account-box .current .icon{background-position: 0 -144px;}
+.asset .account-box .regular .icon{background-position: 0 -180px;}
+.asset .account-box .loans .icon{background-position: 0 -216px;}
+.asset .account-box .regular:after,.asset .account-box .current:after{position: absolute;right: 0;top: 8px;height: 68px;width: 1px;border-right: 1px dashed #2D4868;content: "";display: table;}
+.asset .account-box .total:after{width: 0px;height: 0px;border-width: 9px 12px 9px 0;border-color:transparent #EDF6FE transparent transparent;border-style: solid;position: absolute;right: 0;top: 50%;margin-top: -9px;content: "";}
+.asset .current-chart-box{position: relative;padding-top: 2px;}
+.asset .funds-chart-box{position: relative;padding-top: 1px;}
+.asset .current-chart-box .tip,.asset .funds-chart-box .tip{position: absolute;right: 30px;top: 34px;font-size: 12px;color: #666;}
+.asset .current-chart-box .current-chart,.asset .funds-chart-box .funds-chart{width: 658px;height: 258px;}
+.asset .funds-chart-box{border-top: 1px solid #ccc;}
+
+/* 内页 */
+.asset .branch-box{width: 386px;}
+.asset .branch-box .tit-row{font-size: 14px;}
+.asset .branch-box .chart-box{width: 388px;height: 350px;margin-bottom: 20px;}
+.asset .branch-box .chart-box .chart{width: 658px;height: 350px;}
+.asset .branch-box .chart-center p{font-size: 18px;}
+.asset .branch-box .chart-center .hover{margin-top: 25px;height: 30px;padding-top: 30px;background: url(../images/icon_return.png) no-repeat center top;}
+.asset .branch-box .chart-item-box{height: auto;}
+.asset .branch-box .chart-item-box .item-info-canvas{width: 388px;}
+.asset .branch-box .chart-item-box .item-info-list{padding: 7px 0 7px 10px;height: auto;display: block;overflow: hidden;}
+.asset .branch-box .chart-item-box .item-info-list li{margin: 6px 4px 4px 0;width: 114px;border-left: 3px solid #FF8903;}
+.asset .branch-box .chart-item-box .item-info-chart{height: 150px;}
+.asset .branch-box .chart-item-box .item-info-canvas{height: 110px;}
+.asset .branch-box .chart-item-box .assets-scale{left: 95px;top: 55px;}
+.asset .branch-box .chart-item-box .debt-scale{left: 290px;top: 55px;}
+.asset .branch-box .chart-item-box .assets-info{top: 108px;left: 35px;width: 120px;text-align: center;font-weight: 600;}
+.asset .branch-box .chart-item-box .debt-info{top: 108px;left: 230px;width: 120px;text-align: center;font-weight: 600;}
+.asset .grid-info-box{float: right;width: 728px;}
+/* 查询框 待确认 */
+/*.query-box{border: 1px solid #ccc;background: #fff;margin-bottom: 10px;padding-top: 14px;}
+.query-box .query-list .query-btn{float: left;width: 50px;padding-left: 40px;height: 28px;background: #FF8903 url(../images/icon_search.png) no-repeat 20px center;border-radius: 4px;;line-height: 28px;font-size: 14px;color: #fff;cursor: pointer;}
+.query-box .query-list .query-btn:hover{background-color: #e19820;}
+.query-box .query-list .more-btn{float: left;margin-left: 9px;height: 28px;width: 45px;background: url(../images/icon_triangle.png) no-repeat;background-position: 27px 1px;line-height: 28px;font-size: 12px;color: #333;cursor: pointer;}
+.query-box .query-list .more-btn:hover{background-position: 27px -27px;color: #0270D7;}
+.query-box .query-list .more-showing{background-position: 27px -55px;}
+.query-box .query-list .more-showing:hover{background-position: 27px -83px;}
+.query-box .query-list .query-item{float: left;padding: 0 5px 0 20px;height: 28px;line-height: 28px;font-size: 14px;color: #333;text-align: right;}
+.query-box .query-list .query-ipt{float: left;width: 138px;height: 20px;border: 1px solid #ccc;padding: 3px 5px;line-height: 20px;font-size: 14px;color: #666;}
+.query-box .more-query-list{display: none;}*/
+/* 设置日历 */
+.asset .property-date-box{float: left;width: 454px;height: 378px;border: 1px solid #ccc;background: #fff;}
+.asset .property-grid-box{float: right;width: 657px;border: 1px solid #ccc;background: #fff;}
+.asset .property-grid-box .tit-line{height: 36px;padding: 0 10px;line-height: 36px;font-size: 14px;color: #333;}
+.asset .property-grid-box .tit-line .tit{font-weight: 600;}
+.asset .property-grid-box .tit-line .date{float: right;}
+.asset .property-grid-box .total-box{height: 40px;padding-right: 10px;border-top: 1px solid #ccc;line-height: 40px;text-align: right;font-size: 16px;color: #333;font-weight: 600;}
+.asset .property-grid-box .total-box .total span{color: #e2384d;}
+.asset .property-detail-table{width: 637px;margin: 0 auto;border-top: 1px solid #ccc;border-left: 1px solid #ccc;}
+.asset .property-detail-table td{border-bottom: 1px solid #ccc;border-right: 1px solid #ccc;font-size: 12px;color: #333;line-height: 16px;}
+.asset .property-detail-table .b-item{width: 30%;background: #EDF6FE;padding: 5px 5px;}
+.asset .property-detail-table .b-value{width: 20%;background: #EDF6FE;padding: 5px 10px;}
+.asset .property-detail-table .r-item{width: 30%;background: #FEF0F1;padding: 5px 5px;}
+.asset .property-detail-table .r-value{width: 20%;background: #FEF0F1;padding: 5px 10px;}
+.asset .ad-box{padding-top: 12px;}
+.asset .ad-box img{width: 1126px;display: block;border: 1px solid #ccc;}
+.asset .property-date-box1{height: 414px;}
+.asset .property-date-set-box{float: right;width: 659px;}
+.asset .limit-set-box{border: 1px solid #ccc;background: #fff;margin-bottom: 10px;}
+.asset .limit-set-box .tit-line{height: 40px;padding-left: 10px;border-bottom: 1px solid #ccc;background: #EDF6FE;line-height: 40px;}
+.asset .limit-set-box .tit-line span{font-size: 14px;color: #333;font-weight: 600;}
+.asset .limit-set-box .tit-line .edit-btn{float: right;margin: 7px 10px 0 0;}
+.asset .limit-set-box .limit-list{padding: 10px 0;}
+.asset .limit-set-box .limit-list li{float: left;width: 50%;height: 75px;}
+.asset .limit-set-box .limit-list li:last-child{width: 49%;border-left: 1px dashed #5F81AA;}
+.asset .limit-set-box .limit-list .item{height: 24px;margin: 0 0 6px 18px;padding-left: 18px;line-height: 24px;font-size: 14px;color: #333;background: url(../images/icon_limit.png) no-repeat;}
+.asset .limit-set-box .limit-list .upper{background-position: 0 0;}
+.asset .limit-set-box .limit-list .lower{background-position: 0 -24px;}
+.asset .limit-set-box .limit-list .ipt{width: 238px;height: 20px;margin-left: 18px;padding: 6px 10px;border: 1px solid #ccc;line-height: 20px;text-align: right;}
+.asset .limit-set-box .limit-list .ipt[disabled]{background: #fff;color: #999;}
+.asset .liquidity-set-box{border: 1px solid #ccc;background: #fff;}
+.asset .liquidity-set-box .tit-line{height: 40px;padding-left: 10px;border-bottom: 1px solid #ccc;background: #EDF6FE;line-height: 40px;font-size: 14px;color: #333;font-weight: 600;}
+.asset .liquidity-set-box .tit-line .range{float: right;width: 220px;}
+.asset .liquidity-set-box .type-box{float: left;width: 150px;height: 184px;border-right: 1px solid #ccc;overflow: hidden;}
+.asset .liquidity-set-box .own-box{float: left;width: 150px;height: 184px;border-right: 1px solid #ccc;overflow: hidden;}
+.asset .liquidity-set-box .btn-box{float: left;width: 90px;height: 184px; border-right: 1px solid #ccc;}
+.asset .liquidity-set-box .btn-box .right-btn{display: block;margin: 70px auto 0 auto;height: 28px;width: 28px;background: url(../images/icon_bothway.png) no-repeat;background-position: 0 0;cursor: pointer;}
+.asset .liquidity-set-box .btn-box .left-btn{display: block;margin: 30px auto 0 auto;height: 28px;width: 28px;background: url(../images/icon_bothway.png) no-repeat;background-position: 0 -30px;cursor: pointer;}
+.asset .liquidity-set-box .range-box{float: left;width: 264px;height: 184px;overflow: hidden;position: relative;}
+.asset .liquidity-set-box .range-box p{height: 26px;line-height: 26px;padding: 0 10px;font-size: 12px;color: #333;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;cursor: pointer;}
+.asset .liquidity-set-box .range-box p em{padding-right: 12px;margin-right: 5px;background: url(../images/sharp_corner.png) no-repeat right center;}
+.asset .liquidity-set-box .range-box p:hover,.asset .liquidity-set-box .range-box .on{background: #e7f3fe;}
+.asset .liquidity-set-box .save-btn-box{border-top: 1px solid #ccc;height: 40px;}
+.asset .liquidity-set-box .edit-btn{float: right;margin: 7px 10px 0 0;}
+.asset .tree-list{padding-top: 4px;}
+.asset .tree-list .tree-item{padding-left: 12px}
+.asset .tree-list .tree-option{background: url(../images/icon_triangle2.png) no-repeat;background-position: 0 -18px;}
+.asset .tree-list .expand{background-position: 0 0;}
+.asset .tree-list p{height: 18px;line-height: 18px;font-size: 12px;color: #333;padding-left: 12px;cursor: pointer;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.asset .tree-list p:hover,.tree-list p.on{color: #0270D7;}
+/* 全能额度 */
+.asset .versatile-limit-box{padding-top: 10px;}
+.asset .versatile-limit-box .chart-info-box{width: 360px;height: 545px;}
+.asset .versatile-limit-box .chart-info-box .tit-row{font-size: 14px;}
+.asset .versatile-limit-box .chart-box{width: 360px;}
+.asset .versatile-limit-box .chart-type-box{padding-top: 10px;}
+.asset .versatile-limit-box .chart-type-box em{display: inline-block;height: 32px;width: 73px;margin: 0 28px;border: 1px solid #979797;border-radius: 16px;line-height: 32px;font-size: 12px;color: #333;padding-left: 45px;background: url(../images/icon_checke.png) no-repeat;background-position: 17px 0;cursor: pointer;}
+.asset .versatile-limit-box .chart-type-box .on,.asset .versatile-limit-box .chart-type-box em:hover{border-color: #509ADD;background-color: #EDF6FE;background-position: 17px -34px;}
+.asset .versatile-limit-box .grid-info-box{width: 750px;height: 545px;background: #fff;border: 1px solid #ccc;}
+.asset .versatile-limit-box .grid-box{border: 0;}
+.asset .versatile-limit-box .tab-box{height: 44px;border-bottom: 1px solid #ccc;}
+.asset .versatile-limit-box .tab-list li{float: left;height: 44px;width: 100px;line-height: 44px;text-align: center;font-size: 14px;color: #333;font-weight: 500;cursor: pointer;}
+.asset .versatile-limit-box .tab-list .on{height: 40px;border-bottom: 4px solid #FF8903;}
+.asset .versatile-limit-box .tab-list li:hover{color: #FF8903;}
+.asset .versatile-limit-box .btn-box{float: right;}
+.asset .versatile-limit-box .btn-box .btn{margin: 8px 10px 0 0;height: 28px;width: 91px;border: 1px solid #2D4868;border-radius: 4px;background: #fff;font-size: 14px;color: #2D4868;cursor: pointer;}
+.asset .versatile-limit-box .btn-box .btn:hover{background: #ecf6fe;}
+/* 入池申请 */
+.asset .leave-note-box{width: 760px;height: 183px;border: 1px solid #ccc;margin: 25px auto 20px auto;}
+/* 记录查询 */
+.asset .records-query-box{padding-top: 0px;}
+/* 错误页面404、500 */
+.asset .error-404-box{padding-left: 310px;padding-top: 270px;height: 230px;margin-top: 10px;border: 1px solid #ccc;background: #fff url(../images/bg_404.png) no-repeat center;}
+.asset .error-404-box p{font-size: 12px;color: #2D4868;}
+.asset .error-404-box .btn-box{margin-top: 15px;}
+.asset .error-404-box .btn-box .btn{float: left;margin-right: 20px;}
+.asset .error-500-box{padding-left: 225px;padding-top: 90px;height: 410px;margin-top: 10px;border: 1px solid #ccc;background: #fff url(../images/bg_sorry.png) no-repeat 390px 40px;}
+.asset .error-500-box .sorry{font-size: 20px;color: #5F81AA;margin-top: 5px;}
+.asset .error-500-box .tip{font-size: 12px;color: #5F81AA;width: 150px;margin-top: 5px;}
+.asset .error-500-box .btn{display: block;margin-top: 15px;}
+/* 快速资产负债维护 */
+.asset .lblts-maintain-box{width: 635px;margin: 0 0 0 45px;padding-bottom: 20px;}
+.asset .lblts-maintain-box .tip{padding: 15px 0 15px 10px;font-size: 12px;color: #3F3F3F;}
+.asset .lblts-maintain-box .tip em{color: #E2384D;}
+.asset .lblts-maintain-box .type-btn-box{zoom: 1;margin-left: -20px;}
+.asset .lblts-maintain-box .type-btn-box:after{content: "";display: table;clear: both;}
+.asset .lblts-maintain-box .type-btn-box .type-btn{float: left;margin: 0 0 20px 30px;}
+.asset .lblts-maintain-box .type-btn-box .on{background: #5F81AA;color: #fff;border-color: #5F81AA;}
+.asset .lblts-maintain-box .line{height: 1px;border-bottom: 1px dashed #979797;margin-bottom: 20px;}
+/* 日程编辑 */
+.asset .schedule-add-box{position: absolute;left: 0;top: 0;z-index: 10000;width: 320px;height: 233px;border: 1px solid #ccc;background: #fff;display: none;}
+.asset .schedule-add-box .tit{height: 28px;padding-left: 15px;line-height: 28px;font-size: 14px;color: #333;font-weight: 600;}
+.asset .schedule-add-box .date{position: absolute;height: 28px;padding-right: 15px;line-height: 28px;right: 0;top: 0;font-size: 12px;color: #333;}
+.asset .schedule-add-box .time-quantum-box{padding: 6px 0 10px 15px;}
+.asset .schedule-add-box .time-quantum-box span{float: left;line-height: 28px;font-size: 14px;color: #333;}
+.asset .schedule-add-box .time-quantum-box em{float: left;line-height: 28px;padding: 0 5px;color: #ccc;}
+.asset .schedule-add-box .time-quantum-box .sel{float: left;width: 68px;height: 26px;border: 1px solid #ccc;line-height: 26px;font-size: 14px;color: #666;background: url(../images/select_triangle.png) no-repeat;background-position: 50px 0;}
+.asset .schedule-add-box .time-quantum-box .sel:hover{background-position: 50px -28px;}
+.asset .schedule-add-box .schedule-ipt-box{text-align: center;position: relative;}
+.asset .schedule-add-box .schedule-text{width: 280px;height: 78px;padding: 5px;border: 1px solid #ccc;line-height: 20px;font-size: 12px;color: #333;resize: none;}
+.asset .schedule-add-box .text-num{position: absolute;bottom: 5px;right: 20px;font-size: 12px;color: #999;}
+.asset .schedule-add-box .schedule-btn-box{padding-right: 15px;padding-top: 15px;}
+.asset .schedule-add-box .cancel-btn{float: right;font-size: 14px;color: #38577A;line-height: 28px;cursor: pointer;margin-right: 15px;}
+.asset .schedule-add-box .sure-btn{float: right;}
+.asset .schedule-add-box .cancel-btn:hover{color: #253950;}

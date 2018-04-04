@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+  <title>快照演示</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-collapse collapse" role="navigation">
+        <ul class="nav navbar-nav" style="padding: 5px;">
+          <li><button class="btn btn-primary btn-shadow" type="button" onclick="tryTable1()">Try Table 1</button>
+            <button class="btn btn-primary btn-shadow" type="button" onclick="tryTable2()">Try Table 2</button>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right hidden-sm">
+          <li><a href="javascript:history.go(-1);">返回</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container projects clearfix" style="margin-top:100px;">
+    <h3>表格1</h3>
+    <table id="table1" class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><input type="checkbox" checked="checked" name=""></th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row"><input type="checkbox" name=""></th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row"><input type="checkbox" name=""></th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>表格2</h3>
+    <table id="table2" class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" rowId="1">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row" rowId="2">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row" rowId="3">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>表格3</h3>
+    <table id="table3" class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+          <th>Operate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td><a href="#">删除/冻结</a></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+          <td><a href="#">删除/冻结</a></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+          <td><a href="#">删除/冻结</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer style="height: 100px;"> --------- </footer>
+
+  <script type="text/javascript" src="../../lib/jquery/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../../dist/snapshot.standard-1.0.0.js"></script>
+  <script type="text/javascript" src="./js/snapshot.poc.js"></script>
+  <script type="text/javascript" src="../../plugin/snapshot-preview/snapshot-preview.js"></script>
+  <script>
+    function tryTable1() {
+      $.ajax({
+        url: "http://www.baidu.com",
+        method: "post",
+        ss: "#table1",
+        data: {
+          "a": "b"
+        },
+        success: function() {}
+      });
+    }
+
+    function tryTable2() {
+      var rowId = 2;
+      $.ajax({
+        url: "http://www.baidu.com",
+        method: "post",
+        ss: ["#table2", "th[rowId="+rowId+"]"],
+        data: {
+          "a": "b"
+        },
+        success: function() {}
+      });
+    }
+
+    function tryTable3(event) {
+      $.ajax({
+        url: "http://www.baidu.com",
+        method: "post",
+        ss: ["#table3", event],
+        data: {
+          "a": "b"
+        },
+        success: function() {}
+      });
+    }
+
+    $("#table3").on("click", function(event){
+      if($(event.target).is("a")){
+        tryTable3(event);
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+

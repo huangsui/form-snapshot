@@ -1,0 +1,240 @@
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="form-group tbsp-form-item col-xs-12 col-md-6">
+            <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style=""><font color="red">*</font>签约方式：</label>
+            <div class="col-xs-12 col-md-8 pl-0 " style="">
+                <select name="signType" class="form-control select2"
+                        style="height: 32px; display: none;" id="signtypeid" "=""
+                tabindex="-1">
+
+                <option value="1">非核心签约</option>
+                <option value="2">核心签约</option>
+                </select>
+                <span class="select2 select2-container select2-container--default select2-container--below" dir="ltr"
+                      style="width: 100px;">
+                    <span class="selection">
+                        <span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-signtypeid-container">
+                            <span class="select2-selection__rendered" id="select2-signtypeid-container" title="核心签约">核心签约</span>
+                            <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                        </span>
+                    </span>
+                    <span class="dropdown-wrapper" aria-hidden="true"></span>
+                </span>
+                <!--<script type="text/javascript">-->
+                    <!--$(function () {-->
+                        <!--$.extend($.fn.select2.defaults.defaults.language, {-->
+                            <!--noResults: function () {-->
+                                <!--return '无数据';-->
+                            <!--}-->
+                        <!--});-->
+                    <!--});-->
+                <!--</script>-->
+            </div>
+            <div class="col-xs-12 col-md-0 valid-msg"></div>
+        </div>
+
+        <!--<div class="form-group tbsp-form-item col-xs-12 col-md-6">-->
+            <!--<label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style=""><font color="red">*</font>查询方式：</label>-->
+            <!--<div class="col-xs-12 col-md-8 pl-0 " style="">-->
+                <!--<select name="searchtype" class="form-control select2" style="height: 32px; display: none;" id="searchtypeid"-->
+                <!--"=""tabindex="-1">-->
+                <!--<option value="0" selected="selected">按核心客户号</option>-->
+                <!--<option value="1">按组织机构代码</option>-->
+                <!--</select>-->
+                <!--<span class="select2 select2-container select2-container&#45;&#45;default" dir="ltr" style="width: 100px;"><span-->
+                        <!--class="selection">-->
+                    <!--<span class="select2-selection select2-selection&#45;&#45;single" role="combobox"-->
+                          <!--aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0"-->
+                          <!--aria-labelledby="select2-searchtypeid-container">-->
+                        <!--<span class="select2-selection__rendered" id="select2-searchtypeid-container" title="按核心客户号">按核心客户号</span><span-->
+                            <!--class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>-->
+                    <!--</span>-->
+                <!--</span><span class="dropdown-wrapper" aria-hidden="true"></span>-->
+                <!--</span>-->
+                <!--<script type="text/javascript">-->
+                    <!--$(function () {-->
+                        <!--$.extend($.fn.select2.defaults.defaults.language, {-->
+                            <!--noresults: function () {-->
+                                <!--return '无数据';-->
+                            <!--}-->
+                        <!--});-->
+                    <!--});-->
+                <!--</script>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12 col-md-0 valid-msg"></div>-->
+        <!--</div>-->
+
+        <div class="form-group tbsp-form-item col-xs-12 col-md-6">
+            <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style=""><font color="red">*</font>企业证件类型：</label>
+            <div class="col-xs-12 col-md-8 pl-0 " style="">
+                <select name="epcertificatetype" class="form-control select2" style="height: 32px; display: none;"
+                        id="epcertificatetypeid" datatype="*" nullmsg="请选择企业证件类型！" hasoptionofempty="true" emptyname="请选择" "=""
+                tabindex="-1" disabled="disabled">
+                <option value="" selected="selected"> 请选择</option>
+                <option value="01">全国法人营业执照</option>
+                <option value="02">军队单位开户核准通知书</option>
+                <option value="03">武警部队单位开户核准通知书</option>
+                <option value="04">民办非企业登记证书</option>
+                <option value="05">外国企业常驻代表机构登记证</option>
+                <option value="06">组织机构代码</option>
+                <option value="07">社会统一信用代码</option>
+                <option value="08">批文或证明</option>
+                <option value="09">税务登记证</option>
+                <option value="99">其它</option>
+                </select>
+                <span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr"
+                      style="width: 100px;"><span class="selection">
+                <span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list"
+                      aria-haspopup="true" aria-expanded="false" tabindex="-1"
+                      aria-labelledby="select2-epcertificatetypeid-container">
+                    <span class="select2-selection__rendered" id="select2-epcertificatetypeid-container"
+                          title=" 请选择">全国法人营业执照</span><span
+                        class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                </span>
+                </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                </span>
+                <!--<script type="text/javascript">-->
+                    <!--$(function () {-->
+                        <!--$.extend($.fn.select2.defaults.defaults.language, {-->
+                            <!--noresults: function () {-->
+                                <!--return '无数据';-->
+                            <!--}-->
+                        <!--});-->
+                    <!--});-->
+                <!--</script>-->
+                <input type="hidden" name="epcertificatetype" data-value="" value="01">
+            </div>
+            <div class="col-xs-12 col-md-0 valid-msg"></div>
+        </div>
+
+        <div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+            <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">法人证件类型：</label>
+            <div class="col-xs-12 col-md-8 pl-0 " style="">
+                <select name="lpCertificateType" class="form-control select2" style="height: 32px; display: none;"
+                        id="lpCertificateTypeId" datatype="*" nullmsg="请选择法人证件类型！" hasoptionofempty="true" ignore="ignore"
+                        emptyname="请选择" "="" tabindex="-1">
+                <option value="" selected="selected"> 请选择</option>
+                <option value="01">身份证</option>
+                <option value="02">军官证</option>
+                <option value="03">警官证</option>
+                <option value="04">士兵证</option>
+                <option value="05">护照</option>
+                <option value="06">户口簿</option>
+                <option value="07">港澳通行证</option>
+                <option value="08">台湾通行证</option>
+                <option value="09">外国人永久居留证</option>
+                <option value="99">其它</option>
+                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100px;">
+                <span class="selection">
+                    <span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list"
+                          aria-haspopup="true" aria-expanded="false" tabindex="0"
+                          aria-labelledby="select2-lpCertificateTypeId-container">
+                        <span class="select2-selection__rendered" id="select2-lpCertificateTypeId-container"
+                              title=" 请选择">身份证</span>
+                        <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                    </span>
+                </span>
+                <span class="dropdown-wrapper" aria-hidden="true"></span>
+            </span>
+                <!--<script type="text/javascript">-->
+                    <!--$(function () {-->
+                        <!--$.extend($.fn.select2.defaults.defaults.language, {-->
+                            <!--noResults: function () {-->
+                                <!--return '无数据';-->
+                            <!--}-->
+                        <!--});-->
+                    <!--});-->
+                <!--</script>-->
+            </div>
+            <div class="col-xs-12 col-md-0 valid-msg"></div>
+        </div>
+
+        <div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+            <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">账户种类：</label>
+            <div class="col-xs-12 col-md-8 pl-0 " style="">
+                <select name="accType" class="form-control select2" style="height: 32px; display: none;" id="accTypeId"
+                        hasoptionofempty="true" disabled="" emptyname="请选择" "="" tabindex="-1">
+                <option value="" selected="selected"> 请选择</option>
+                <option value="01">活期</option>
+                <option value="02">定期</option>
+                <option value="03">通知</option>
+                <option value="04">贷款</option>
+                <option value="05">内部账</option>
+                <option value="06">表外账</option>
+                </select>
+                <span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr"
+                      style="width: 100px;">
+            <span class="selection">
+                <span class="select2-selection select2-selection--single" role="combobox"
+                      aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="-1"
+                      aria-labelledby="select2-accTypeId-container">
+                <span class="select2-selection__rendered" id="select2-accTypeId-container" title=" 请选择"> 请选择</span>
+                <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+            </span>
+            </span>
+            <span class="dropdown-wrapper" aria-hidden="true"></span>
+        </span>
+                <!--<script type="text/javascript">-->
+                    <!--$(function () {-->
+                        <!--$.extend($.fn.select2.defaults.defaults.language, {-->
+                            <!--noResults: function () {-->
+                                <!--return '无数据';-->
+                            <!--}-->
+                        <!--});-->
+                    <!--});-->
+                <!--</script>-->
+            </div>
+            <div class="col-xs-12 col-md-0 valid-msg"></div>
+        </div>
+
+    </div>
+</div>
+
+<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+    <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style=""><font color="red">* </font>账号：</label>
+    <div class="col-xs-12 col-md-8 pl-0 " style="">
+        <select name="acno" class="form-control select2" value="" datatype="*" nullmsg="请选择账号" emptyname="请选择账号" tabindex="-1" style="display: none;">
+            <option curcode="01" acname="小伙子有前途" acno="11111111111111111">11111111111111111</option>
+            <option curcode="01" acname="小伙子有前途" acno="222222222222222222">222222222222222222</option>
+            <option curcode="01" acname="小伙子有前途" acno="333333333333333">333333333333333</option>
+            <option curcode="01" acname="小伙子有前途" acno="444444444444444444">444444444444444444</option>
+        </select>
+        <span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" style="width: 100px;">
+            <span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-acno-mi-container">
+                <span class="select2-selection__rendered" id="select2-acno-mi-container" title="222222222222222222">222222222222222222</span>
+                <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span>
+            </span>
+            <span class="dropdown-wrapper" aria-hidden="true"></span>
+        </span>
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+    <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">
+        <font color="red">* </font>币种：</label>
+    <div class="col-xs-12 col-md-8 pl-0 " style="">
+        <select name="curCode" value="" class="form-control select2" id="curCodeId" disabled="" "="" tabindex="-1" style="display: none;">
+        <option value="01">人民币</option>
+        <option value="12">英镑</option>
+        <option value="13">港币</option>
+        <option value="14">美元</option>
+        <option value="15">瑞士法郎</option>
+        <option value="21">瑞典克郎</option>
+        <option value="22">丹麦克郎</option>
+        <option value="23">挪威克郎</option>
+        <option value="27">日元</option>
+        <option value="28">加拿大元</option>
+        <option value="29">澳大利亚元</option>
+        <option value="32">新加坡元</option>
+        <option value="38">欧元</option>
+        <option value="81">澳门元</option>
+        </select><span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr" style="width: 100px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-labelledby="select2-curCodeId-container"><span class="select2-selection__rendered" id="select2-curCodeId-container" title="人民币">人民币</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+        <input type="hidden" name="curCode" value="01" data-value="">
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+

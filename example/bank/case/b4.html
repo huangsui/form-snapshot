@@ -1,0 +1,57 @@
+<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+    <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">开始日期：</label>
+    <div class="col-xs-12 col-md-8 pl-0 " style="">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" name="startDate" class="form-control " id="dateput1061797911" value="2018-01-01" style="background: #fff;"
+                   maxdate="2099-12-31" mindate="1900-01-01" readonly="readonly">
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                var dateFormat = 'YYYY-MM-DD';
+                dateFormat = dateFormat ? dateFormat : 'yyyy-MM-dd';// HH:mm:ss
+                dateFormat = dateFormat.replace(/Y/g, "y").replace("ii", "mm").replace(/D/g, "d");
+                $("#dateput1061797911").on("click", function () {
+                    WdatePicker({
+                        minDate: "1900-01-01",
+                        maxDate: "",
+                        startDate: '%y-%M-01 00:00:00', dateFmt: dateFormat,
+                        onpicked: function () {
+                            $("input[name='startDate']").trigger('change').trigger('blur')
+                        }
+                    })
+                });
+            });
+        </script>
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+    <label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">结束日期：</label>
+    <div class="col-xs-12 col-md-8 pl-0 " style="">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" name="endDate" class="form-control " id="dateput786644971" value="2018-01-31" style="background: #fff;"
+                   maxdate="2099-12-31" readonly="readonly">
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                var dateFormat = 'YYYY-MM-DD';
+                dateFormat = dateFormat ? dateFormat : 'yyyy-MM-dd';// HH:mm:ss
+                dateFormat = dateFormat.replace(/Y/g, "y").replace("ii", "mm").replace(/D/g, "d");
+                $("#dateput786644971").on("click", function () {
+                    WdatePicker({
+                        minDate: "",
+                        maxDate: "",
+                        startDate: '%y-%M-01 00:00:00', dateFmt: dateFormat,
+                        onpicked: function () {
+                            $("input[name='endDate']").trigger('change').trigger('blur')
+                        }
+                    })
+                });
+            });
+        </script>
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>

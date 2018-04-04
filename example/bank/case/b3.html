@@ -1,0 +1,379 @@
+<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+    <label class="col-xs-12 col-md-2 control-label pl-0 pr-5" style="">开通渠道：</label>
+    <div class="col-xs-12 col-md-10 pl-0 " style="">
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="channel" id="check477494964" value="23" data-value="23">
+            <label for="check477494964" class="cursor-hand">柜面</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="channel" id="check1290859173" value="11" data-value="11" checked="checked">
+            <label for="check1290859173" class="cursor-hand">企业客户端</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="channel" id="check246658474" value="21" data-value="21">
+            <label for="check246658474" class="cursor-hand">企业网银</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="channel" id="check1971114852" value="13" data-value="13" checked="checked">
+            <label for="check1971114852" class="cursor-hand">企业直连</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="channel" id="check120289917" value="12" data-value="12">
+            <label for="check120289917" class="cursor-hand">移动APP</label>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="margin-bottom:30px">
+    <div class="form-group tbsp-form-item col-xs-12 col-md-12" style="" id="channelLable">
+        <label class="col-xs-12 col-md-2 control-label pl-0 pr-5" style="">
+            <font color="red">* </font>渠道限制：</label>
+        <div class="col-xs-12 col-md-10 pl-0 " style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="channelCheckAll" id="check272804301" value="channelCheckAll"
+                       data-value="channelCheckAll">
+                <label for="check272804301" class="cursor-hand">全选</label>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    var checkval = [];
+                    var checkvalstr = "";
+                    checkval = checkvalstr.split(",");
+                    $("input[name=channelCheckAll]").each(function (e) {
+                        if (checkval.indexOf(this.value) > -1) {
+                            this.checked = true;
+                        } else {
+                            this.checked = false;
+                        }
+                    });
+                })
+            </script>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="channelList" id="check747015215" value="11" data-value="11" checked="checked">
+                <label for="check747015215" class="cursor-hand">企业PC客户端</label>
+            </div>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="channelList" id="check360547833" value="12" data-value="12">
+                <label for="check360547833" class="cursor-hand">企业APP客户端</label>
+            </div>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="channelList" id="check79764871" value="13" data-value="13" checked="checked">
+                <label for="check79764871" class="cursor-hand">银企直连</label>
+            </div>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="channelList" id="check1157715495" value="21" data-value="21">
+                <label for="check1157715495" class="cursor-hand">网上银行</label>
+            </div>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="channelList" id="check1123903151" value="22" data-value="22" checked="checked">
+                <label for="check1123903151" class="cursor-hand">手机银行</label>
+            </div>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="channelList" id="check599523319" value="23" data-value="23">
+                <label for="check599523319" class="cursor-hand">柜面系统</label>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-0 valid-msg"></div>
+    </div>
+    <input type="hidden" name="channelList" value="" data-value="">
+</div>
+
+<div class="form-group tbsp-form-item col-xs-12 col-md-9" style="margin-bottom:20px">
+    <label class="col-xs-12 col-md-2 control-label pl-0 pr-5" style=""><font color="red">* </font>账户权限：</label>
+    <div class="col-xs-12 col-md-10 pl-0 " style="">                    <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+        <input type="checkbox" name="assetCheckAll" id="check1941820403" value="assetCheckAll" data-value="assetCheckAll">
+        <label for="check1941820403" class="cursor-hand">全部</label>
+    </div>
+        <script type="text/javascript">
+            $(function(){
+                var checkval=[];
+                var checkvalstr="";
+                checkval=checkvalstr.split(",");
+                $("input[name=assetCheckAll]").each(function(e){
+                    if(checkval.indexOf(this.value)>-1){
+                        this.checked=true;
+                    }else{
+                        this.checked=false;
+                    }
+                });
+            })
+        </script>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="authFlagList" id="check384819248" value="0000000000000000100000000000000000000000000000000000000000000000" data-value="0000000000000000100000000000000000000000000000000000000000000000">
+            <label for="check384819248" class="cursor-hand">招标通</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="authFlagList" id="check1878204389" value="0000000000001000000000000000000000000000000000000000000000000000" data-value="0000000000001000000000000000000000000000000000000000000000000000">
+            <label for="check1878204389" class="cursor-hand">智能存款</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="authFlagList" id="check1357672227" value="0000000010000000000000000000000000000000000000000000000000000000" data-value="0000000010000000000000000000000000000000000000000000000000000000">
+            <label for="check1357672227" class="cursor-hand">多级账簿</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="authFlagList" id="check1894403779" value="0000100000000000000000000000000000000000000000000000000000000000" data-value="0000100000000000000000000000000000000000000000000000000000000000">
+            <label for="check1894403779" class="cursor-hand">资金归集</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="authFlagList" id="check1916957215" value="0010000000000000000000000000000000000000000000000000000000000000" data-value="0010000000000000000000000000000000000000000000000000000000000000">
+            <label for="check1916957215" class="cursor-hand">账户设置</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="authFlagList" id="check1519252101" value="0100000000000000000000000000000000000000000000000000000000000000" data-value="0100000000000000000000000000000000000000000000000000000000000000">
+            <label for="check1519252101" class="cursor-hand">账户支付</label>
+        </div>
+        <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="authFlagList" id="check1036715370" value="1000000000000000000000000000000000000000000000000000000000000000" data-value="1000000000000000000000000000000000000000000000000000000000000000">
+            <label for="check1036715370" class="cursor-hand">账户查询</label>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                var checkval=[];
+                var checkvalstr="";
+                checkval=checkvalstr.split(",");
+                $("input[name=authFlagList]").each(function(e){
+                    if(checkval.indexOf(this.value)>-1){
+                        this.checked=true;
+                    }else{
+                        this.checked=false;
+                    }
+                });
+            })
+        </script>
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+<div class="form-group tbsp-form-item col-xs-12 col-md-9" style="margin-bottom:20px">
+    <label class="col-xs-12 col-md-2 control-label pl-0 pr-5" style="">
+        <font color="red">* </font>账户权限：
+    </label>
+    <div class="col-xs-12 col-md-10 pl-0 " style="">
+        <div id="accountRight">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+            <input type="checkbox" name="assetCheckAll" id="check1658080579" value="assetCheckAll">
+            <label for="check1658080579" class="cursor-hand">全部</label>
+        </div>
+            <script type="text/javascript">
+                $(function(){
+                    var checkval=[];
+                    var checkvalstr="";
+                    checkval=checkvalstr.split(",");
+                    $("input[name=assetCheckAll]").each(function(e){
+                        if(checkval.indexOf(this.value)>-1){
+                            this.checked=true;
+                        }else{
+                            this.checked=false;
+                        }
+                    });
+                })
+            </script>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="authFlagList" id="check206205096" value="1000000000000000000000000000000000000000000000000000000000000000">
+                <label for="check206205096" class="cursor-hand">账户查询</label>
+            </div>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="authFlagList" id="check1129152271" value="0100000000000000000000000000000000000000000000000000000000000000">
+                <label for="check1129152271" class="cursor-hand">账户支付</label>
+            </div>
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="authFlagList" id="check642388994" value="0010000000000000000000000000000000000000000000000000000000000000">
+                <label for="check642388994" class="cursor-hand">账户设置</label>
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                    var checkval=[];
+                    var checkvalstr="";
+                    checkval=checkvalstr.split(",");
+                    $("input[name=authFlagList]").each(function(e){
+                        if(checkval.indexOf(this.value)>-1){
+                            this.checked=true;
+                        }else{
+                            this.checked=false;
+                        }
+                    });
+                })
+            </script>
+            <script type="text/javascript">
+                $(function () {
+                    var assetauth = $("input[name='authFlagList']");
+                    $("input[name=assetCheckAll]").prop("checked",assetauth.length == $("input[name='authFlagList']:checked").length ? true : false);
+                    $("input[name=assetCheckAll]").click(function() {
+                        $('input[name="authFlagList"]').prop("checked",this.checked);
+                    });
+                    assetauth.click(function(){
+                        $("input[name=assetCheckAll]").prop("checked",assetauth.length == $("input[name='authFlagList']:checked").length ? true : false);
+                    });
+                })
+            </script>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+        <h4 class="panel-title">
+            自有虚户设置
+        </h4>
+    </div>
+    <div class="panel-body">
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check389647725" value="90000001" onclick="return false"
+                       data-value="90000001">
+                <label for="check389647725" class="cursor-hand">90000001贷款本金户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check42848699" value="90000002" onclick="return false"
+                       data-value="90000002">
+                <label for="check42848699" class="cursor-hand">90000002贷款费用户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check1144709601" value="90000003" onclick="return false"
+                       data-value="90000003">
+                <label for="check1144709601" class="cursor-hand">90000003贷款利息户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check1422729363" value="90000004" onclick="return false"
+                       data-value="90000004">
+                <label for="check1422729363" class="cursor-hand">90000004投资汇总户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check1890271406" value="90000005" onclick="return false"
+                       data-value="90000005">
+                <label for="check1890271406" class="cursor-hand">90000005还款汇总户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check227258850" value="90000006" onclick="return false"
+                       data-value="90000006">
+                <label for="check227258850" class="cursor-hand">90000006平台收益户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check905039530" value="90000007" onclick="return false"
+                       data-value="90000007">
+                <label for="check905039530" class="cursor-hand">90000007风险准备金户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check207013173" value="99997001" onclick="return false"
+                       data-value="99997001">
+                <label for="check207013173" class="cursor-hand">99997001佣金费用户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check1800963481" value="99998001" onclick="return false"
+                       data-value="99998001">
+                <label for="check1800963481" class="cursor-hand">99998001积分户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check1137040864" value="99998002" onclick="return false"
+                       data-value="99998002">
+                <label for="check1137040864" class="cursor-hand">99998002红包户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check677238316" value="99998003" onclick="return false"
+                       data-value="99998003">
+                <label for="check677238316" class="cursor-hand">99998003卡券户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check998790648" value="99999994" onclick="return false"
+                       data-value="99999994">
+                <label for="check998790648" class="cursor-hand">99999994跨行清算专户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check569305127" value="99999995" onclick="return false"
+                       data-value="99999995">
+                <label for="check569305127" class="cursor-hand">99999995备付金专户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check1642578202" value="99999996" onclick="return false"
+                       data-value="99999996">
+                <label for="check1642578202" class="cursor-hand">99999996轧差清算专户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check686389083" value="99999997" onclick="return false"
+                       data-value="99999997">
+                <label for="check686389083" class="cursor-hand">99999997手续费专户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check2094136165" value="99999998" onclick="return false"
+                       data-value="99999998">
+                <label for="check2094136165" class="cursor-hand">99999998结息专户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check559764616" value="99999999" onclick="return false"
+                       data-value="99999999">
+                <label for="check559764616" class="cursor-hand">99999999清分专户</label>
+            </div>
+        </div>
+        <div class="form-group tbsp-form-item col-xs-12 col-md-4" style="">
+            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+                <input type="checkbox" name="virAccs" id="check1730663883" value="99997002" onclick="return false"
+                       data-value="99997002">
+                <label for="check1730663883" class="cursor-hand">99997002佣金费用2</label>
+            </div>
+        </div>
+        <script type="text/javascript">
+//            $(function () {
+//                var checkval = [];
+//                checkval.push("90000005");
+//                checkval.push("90000006");
+//                checkval.push("90000007");
+//                checkval.push("90000003");
+//                checkval.push("90000004");
+//                checkval.push("99999999");
+//                checkval.push("99998001");
+//                checkval.push("99998002");
+//                checkval.push("99998003");
+//                checkval.push("99997001");
+//                checkval.push("99999998");
+//                checkval.push("99999997");
+//                checkval.push("99999996");
+//                checkval.push("99999995");
+//                checkval.push("99999994");
+//                checkval.push("99997002");
+//                checkval.push("90000002");
+//                $("input[name=virAccs]").each(function (e) {
+//                    if (checkval.indexOf(this.value) > -1) {
+//                        this.checked = true;
+//                    } else {
+//                        this.checked = false;
+//                    }
+//                });
+//            })
+        </script>
+    </div>
+
+</div>

@@ -1,0 +1,165 @@
+<div id="infoOne">
+    <div class="step-bar">
+        <div class="step-img-1"></div>
+        <em class="on">单笔转账交易录入</em><em>确认转账信息</em><em>提交成功</em>
+    </div>
+    <div>
+        <p class="title-line">付款账号信息</p>
+        <ul class="form-con">
+            <li>
+                <label class="item"><i>*</i>付款账户：</label>
+                <div id="payAcctNo"><div class="clearfix account-scroll-box valid_element_type1">
+
+                    <input type="text" name="" class="input-scroll" readonly="readonly" datatype="*" nullmsg="请选择账户！">
+
+                    <div class="input-mask"></div>
+                    <div class="input-scroll-cont-account" style="display: none;">
+                        <div class="search">
+                            <input id="searchIpt" type="text" name="">
+                            <div class="account-clear"></div>
+                            <div class="account-query"></div>
+                        </div>
+
+                        <div class="cont ps-container"><p data-id="0">10000011111111111<span class="ml15">人民币</span><br>小伙子有前途</p><p data-id="1">1122334455<span class="ml15">人民币</span><br>小伙子有前途</p><div class="ps-scrollbar-x-rail" style="width: 338px; display: none; left: 0px; bottom: 1px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 84px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div></div>
+                </div></div>
+            </li>
+            <li>
+                <label class="item">账面可用余额：</label>
+                <span class="text"><em id="availableBal"></em></span>
+            </li>
+            <!--<li>-->
+            <!--<label class="item"><i>*</i>虚账户：</label>-->
+            <!--<select class="query-sel select-analog" id="assetAsacNo">-->
+            <!--<option>选择1</option>-->
+            <!--<option>选择2</option>-->
+            <!--<option>选择3</option>-->
+            <!--</select>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div>
+        <p class="title-line">收款账号信息</p>
+        <ul class="form-con">
+            <li id="bankFlag">
+                <label class="item"><i>*</i>收款行：</label>
+                <label class="radio-analog choosed">
+                    <input type="radio" name="col-bank" checked="" value="1" datatype="*" nullmsg="请选择收款行">同行</label>
+                <label class="radio-analog ml10">
+                    <input type="radio" name="col-bank" value="2" datatype="*" nullmsg="请选择收款行">他行</label>
+            </li>
+            <li>
+                <label class="item"><i>*</i>收款账号：</label>
+                <div class="dk_container dk_theme_default query-sel select-analog" id="dk_container_rcvAcctNo" tabindex="0" aria-hidden="true" style="display: block;"><a class="dk_toggle dk_label" style="width: 340px;">&nbsp;</a><div class="dk_options"><ul class="dk_options_inner" role="main" aria-hidden="true"></ul></div><select class="query-sel select-analog" id="rcvAcctNo">
+                </select></div>
+                <input id="rcvAcctNoInput" class="form-l-ipt" type="text" maxlength="30" datatype="ss" errormsg="收款账号不能为空" nullmsg="收款账号不能为空！" style="width: 300px;position: absolute;left: 208px">
+                <div id="rcvAcctEvent" style="float:left;width: 30px;height: 28px;margin-left: -30px;cursor: pointer;"></div>
+            </li>
+            <li>
+                <label class="item"><i>*</i>收款户名：</label>
+                <input class="form-l-ipt" type="text" id="rcvAcctName" maxlength="70" datatype="ss" errormsg="收款户名含非法字符" nullmsg="收款户名不能为空">
+            </li>
+            <li>
+                <label class="item"><i>*</i>收款银行：</label>
+                <div id="rcvBankNo"><div class="bank-selecter-style clearfix valid_element_type1">
+
+                    <input type="text" name="" class="query-bank" readonly="readonly" datatype="*" nullmsg="请选择银行！">
+
+                    <div class="input-mask"></div>
+                    <div class="bank-box" style="display: none;">
+                        <ul class="tab clearfix">
+                            <li class="on">热门银行</li>
+                            <li>ABCDE</li>
+                            <li>FGHJ</li>
+                            <li>KLMN</li>
+                            <li>PQRST</li>
+                            <li>WXYZ</li>
+                        </ul>
+                        <div class="bank-box-patch"></div>
+                    </div>
+                    <div class="bank-detail-box">
+                        <div class="bank-detail-box-top">
+                            <p>已选择：中国银行</p>
+                            <i class="closed"></i>
+                        </div>
+                        <div class="bank-detail-box-cont">
+                            <div class="clearfix">
+                                <div class="dk_container dk_theme_default query-sel select-analog" id="dk_container_province" tabindex="0" aria-hidden="true" style="display: block;"><a class="dk_toggle dk_label" style="width: 150px;">全部</a><div class="dk_options"><ul class="dk_options_inner" role="main" aria-hidden="true"><li class="dk_option_current"><a data-dk-dropdown-value="">全部</a></li><li class=""><a data-dk-dropdown-value="9820">澳门特别行政区</a></li><li class=""><a data-dk-dropdown-value="9340">安徽省</a></li><li class=""><a data-dk-dropdown-value="9110">北京市</a></li><li class=""><a data-dk-dropdown-value="9350">福建省</a></li><li class=""><a data-dk-dropdown-value="9620">甘肃省</a></li><li class=""><a data-dk-dropdown-value="9520">贵州省</a></li><li class=""><a data-dk-dropdown-value="9450">广西壮族自治区</a></li><li class=""><a data-dk-dropdown-value="9440">广东省</a></li><li class=""><a data-dk-dropdown-value="9460">海南省</a></li><li class=""><a data-dk-dropdown-value="9410">河南省</a></li><li class=""><a data-dk-dropdown-value="9230">黑龙江省</a></li><li class=""><a data-dk-dropdown-value="9430">湖南省</a></li><li class=""><a data-dk-dropdown-value="9420">湖北省</a></li><li class=""><a data-dk-dropdown-value="9130">河北省</a></li><li class=""><a data-dk-dropdown-value="9360">江西省</a></li><li class=""><a data-dk-dropdown-value="9220">吉林省</a></li><li class=""><a data-dk-dropdown-value="9320">江苏省</a></li><li class=""><a data-dk-dropdown-value="9210">辽宁省</a></li><li class=""><a data-dk-dropdown-value="9640">宁夏回族自治区</a></li><li class=""><a data-dk-dropdown-value="9150">内蒙古自治区</a></li><li class=""><a data-dk-dropdown-value="9630">青海省</a></li><li class=""><a data-dk-dropdown-value="9610">陕西省</a></li><li class=""><a data-dk-dropdown-value="9310">上海市</a></li><li class=""><a data-dk-dropdown-value="9510">四川省</a></li><li class=""><a data-dk-dropdown-value="9140">山西省</a></li><li class=""><a data-dk-dropdown-value="9370">山东省</a></li><li class=""><a data-dk-dropdown-value="9120">天津市</a></li><li class=""><a data-dk-dropdown-value="9710">台湾省</a></li><li class=""><a data-dk-dropdown-value="9650">新疆维吾尔自治区</a></li><li class=""><a data-dk-dropdown-value="9810">香港特别行政区</a></li><li class=""><a data-dk-dropdown-value="9540">西藏自治区</a></li><li class=""><a data-dk-dropdown-value="9530">云南省</a></li><li class=""><a data-dk-dropdown-value="9500">重庆市</a></li><li class=""><a data-dk-dropdown-value="9330">浙江省</a></li></ul></div><select id="province" class="query-sel select-analog"><option value="">全部</option><option value="9820">澳门特别行政区</option><option value="9340">安徽省</option><option value="9110">北京市</option><option value="9350">福建省</option><option value="9620">甘肃省</option><option value="9520">贵州省</option><option value="9450">广西壮族自治区</option><option value="9440">广东省</option><option value="9460">海南省</option><option value="9410">河南省</option><option value="9230">黑龙江省</option><option value="9430">湖南省</option><option value="9420">湖北省</option><option value="9130">河北省</option><option value="9360">江西省</option><option value="9220">吉林省</option><option value="9320">江苏省</option><option value="9210">辽宁省</option><option value="9640">宁夏回族自治区</option><option value="9150">内蒙古自治区</option><option value="9630">青海省</option><option value="9610">陕西省</option><option value="9310">上海市</option><option value="9510">四川省</option><option value="9140">山西省</option><option value="9370">山东省</option><option value="9120">天津市</option><option value="9710">台湾省</option><option value="9650">新疆维吾尔自治区</option><option value="9810">香港特别行政区</option><option value="9540">西藏自治区</option><option value="9530">云南省</option><option value="9500">重庆市</option><option value="9330">浙江省</option></select></div>
+                                <span class="text">省</span>
+                                <div class="dk_container dk_theme_default query-sel select-analog" id="dk_container_city" tabindex="0" aria-hidden="true" style="display: block;"><a class="dk_toggle dk_label" style="width: 150px;">&nbsp;</a><div class="dk_options"><ul class="dk_options_inner" role="main" aria-hidden="true"></ul></div><select id="city" class="query-sel select-analog">
+                                </select></div>
+                                <span class="text">市</span>
+                            </div>
+                            <div class="searchbox mt12">
+                                <input id="bankQueryIpt" type="text" name="">
+                                <i class="bank-query-image"></i>
+                            </div>
+                            <table class="info-grid mt12" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="grid-page">
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <p class="title-line">转账信息</p>
+        <ul class="form-con">
+            <li id="urgencyFlag">
+                <label class="item"><i>*</i>加急方式：</label>
+                <label class="radio-analog">
+                    <input type="radio" name="mode" value="1" datatype="*" nullmsg="请选择加急方式">加急</label>
+                <label class="radio-analog ml10 choosed">
+                    <input type="radio" name="mode" checked="" value="0" datatype="*" nullmsg="请选择加急方式">普通</label>
+            </li>
+            <li>
+                <label class="item">转账金额：</label>
+                <div class="input-number">
+                    <input type="number" name="amt" id="amt">
+                    <span class="unit">元</span>
+                </div>
+                <span class="text ml15">服务费：<em id="feeAmt"></em></span>
+                <input id="charges" type="hidden">
+                <!--<a href="#" class="link ml15">收费标准</a>-->
+            </li>
+            <li>
+                <label class="item">大写金额：</label>
+                <span class="text" id="cnAmt"></span>
+            </li>
+            <li id="resFlag">
+                <label class="item"><i>*</i>转账时间：</label>
+                <label class="radio-analog choosed">
+                    <input type="radio" name="appointment" checked="" value="0" datatype="*" nullmsg="请选择转账方式">实时</label>
+                <label class="radio-analog ml10">
+                    <input type="radio" name="appointment" value="1" datatype="*" nullmsg="请选择转账方式">预约次日转账</label>
+                <label class="radio-analog ml10 other-time">
+                    <input type="radio" name="appointment" value="1" datatype="*" nullmsg="请选择转账方式">预约其他时间</label>
+                <div class="time-box ml10">
+                    <input class="input-date" id="resDate" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+                    <input class="input-time ml5" id="resTime" type="text" onfocus="WdatePicker({dateFmt:'HH:mm:ss'})">
+                </div>
+            </li>
+            <li>
+                <label class="item"><i>*</i>用途：</label>
+                <input class="form-l-ipt" type="text" id="purpose" datatype="ss" errormsg="用途含非法字符" nullmsg="用途不能为空">
+            </li>
+            <li>
+                <label class="item">附言：</label>
+                <input class="form-l-ipt" type="text" id="postscript" datatype="empty|ss" errormsg="附言含非法字符">
+            </li>
+            <li>
+                <label class="item">通知手机号：</label>
+                <input class="form-l-ipt" type="number" id="mobileNo" maxlength="11">
+            </li>
+        </ul>
+    </div>
+    <!--<label class="dealbox pl-adjust">-->
+    <!--<input type="checkbox">通知收款人</label>-->
+    <div class="clearfix mt12 pl-adjust">
+        <button class="btn_oper" id="next-step">下一步</button>
+        <a style="cursor:pointer" class="link_com ml20" id="resetBtn">重置</a>
+    </div>
+</div>

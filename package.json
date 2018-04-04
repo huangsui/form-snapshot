@@ -5,8 +5,8 @@
     "main": "./dist/snapshot.min.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack",
-        "start:dev": "webpack-dev-server --open"
+        "build": "webpack --config webpack.config.js",
+        "server": "webpack-dev-server --colors --progress --open --config webpack.config.js"
     },
     "repository": {
         "type": "git",
@@ -17,10 +17,10 @@
         "webpack": "^3.10.0",
         "webpack-dev-server": "^2.10.1"
     },
-    "author": "huangsui",
+    "author": "tbsp@hundsun",
     "license": "UNLICENSED",
     "bugs": {
-        "url": "https://github.com/huangsui/form-snapshot/issues"
+        "url": "http://git02.hundsun.com/tbsp/webfrontexample/issues"
     },
-    "homepage": "https://github.com/huangsui/form-snapshot#readme"
+    "homepage": "http://git02.hundsun.com/tbsp/webfrontexample"
 }

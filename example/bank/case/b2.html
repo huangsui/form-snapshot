@@ -1,0 +1,65 @@
+<div id="orgSelect">
+
+<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="margin-left:-21px">
+    <label class="col-xs-12 col-md-2 control-label pl-0 pr-5" style="">
+        <font color="red">*</font>开户机构：
+    </label>
+    <div class="col-xs-12 col-md-10 pl-0 " style="width:80.5%">
+        <a class="search-dialog-wrapper" data-target="#openOrgSearchDialog" data-toggle="modal" data-height="600" data-width="700"
+           modal-title="机构选择" href="/bankmain/bank/main/dialog/orgsearch/page">
+            <div class="input-group" id="openOrgSearchDialogId">
+                <input type="text" name="openOrgName" value="交易银行私人银行第180117140701分行" class="form-control" data-value="">
+                <input type="hidden" name="openOrgLevel" value="43" data-value="">
+                <input type="hidden" name="openOrgCode" value="180117140701" data-value="">
+                <input type="hidden" name="openOrgId" value="43180117140701" data-value="">
+                <span class="input-group-addon" style="width:1%">
+            <i class="fa fa-search"></i>        </span>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    var $wrapper = $("#openOrgSearchDialogId").closest(".search-dialog-wrapper");
+                    var sTarget = $wrapper.attr("data-target");
+                    $(sTarget).off("dialogConfirm").bind("dialogConfirm", function (event, data) {
+                        if (!data) {
+                            //清空
+                            $("#openOrgSearchDialogId").children("input").val("");
+                            return;
+                        }
+                        var targetAttrName = "orgName";
+                        var sVal = "";
+                        if (targetAttrName.indexOf(",") > 0) {
+                            var aNames = targetAttrName.split(",");
+                            for (var i = 0; i < aNames.length; i++) {
+                                var aName = aNames[i];
+                                sVal = sVal + (sVal == "" ? "" : ",") + data[aName];
+                            }
+                        } else {
+                            sVal = data[targetAttrName];
+                        }
+                        $("#openOrgSearchDialogId").children("input[name='openOrgName']").val(sVal);
+                        $("#openOrgSearchDialogId").children("input[name='openOrgName']").trigger("blur");
+                        $("#openOrgSearchDialogId").children("input[name='openOrgLevel']").val(data.orgLevel);
+                        $("#openOrgSearchDialogId").children("input[name='openOrgCode']").val(data.orgCode);
+                        $("#openOrgSearchDialogId").children("input[name='openOrgId']").val(data.id);
+
+                        $("#openOrgSearchDialogId").trigger("dataChange", data);
+                    });
+                });
+            </script>
+        </a>
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+<div class="form-group tbsp-form-item col-xs-12 col-md-6" id="enterpriseId">
+    <label class="col-xs-12 col-md-4 control-label pl-0 pr-5">
+        <font color="red">*</font>企业：
+    </label>
+    <div class="col-xs-12 col-md-8 pl-0 " style="">
+        <input type="text" name="enterpriseName" value="A企业" class="form-control" maxlength="30" errormsg="账号只能包含数字字母和 “-” " datatype="*" readonly="true" data-value="A企业">
+        <input type="hidden" name="enterpriseCode" value="100000000140" data-value="100000000140">
+    </div>
+    <div class="col-xs-12 col-md-0 valid-msg"></div>
+</div>
+
+</div>

@@ -1,0 +1,11 @@
+
+
+
+.CodeMirror{
+    background: inherit;
+ }
+
+
+.snp-json-render:after {
+	content: "快照："  !important;
+}

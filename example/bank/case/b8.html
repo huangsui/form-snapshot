@@ -1,0 +1,250 @@
+<div style="padding :10px;">
+    <div class="zTreeDemoBackground left">
+        <ul id="treeDemo" class="ztree menu-right-tree"></ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var loginCustNo= $("input[name=loginedOrgCode_public]").val();
+    var loginCustName = $("input[name=loginedOrgName_public]").val();
+    /*页面输入校验*/
+    $(function () {
+//        loadOrgList();
+        createTree();
+
+//        var treeObj = $.fn.zTree.getZTreeObj("#treeDemo");
+//        treeObj.expandAll(true);
+
+        $("#init").bind("change", createTree);
+        $("#last").bind("change", createTree);
+        reloadTree();
+
+        var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+        treeObj.expandAll(true);
+    });
+
+
+    var setting = {
+        view: {
+            selectedMulti: false
+        },
+        check: {
+            enable: true
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                rootPId:"000000000000"
+            }
+        },
+        callback: {
+            onCheck: onCheck,
+            onExpand:onExpand
+        }
+    };
+
+    var zNodes =[];
+    var clearFlag = false;
+
+    function onExpand(e){
+
+        $(e.target).find(".switch.center_docu").closest("li").addClass("horizontal-leaf");
+        $(e.target).find(".switch.bottom_docu").closest("li").addClass("horizontal-leaf");
+
+        return true;
+    }
+
+    function reloadTree(){
+//        $.ajax({
+//            method:"get",
+//            url:"${TINY_CONTEXT_PATH}/bank/role/org/rights",
+//            data:{},
+//            success:function(data){
+//                for(var i=0;i<data.length;i++){
+//                    var d = data[i];
+//                    d.pId = d.pId;
+//                }
+                zNodes = [{"id":"030101000000","name":"银行管理","pId":"000000000000","checked":true},{"id":"030101010000","name":"银行机构管理","pId":"030101000000","checked":true},{"id":"030101010100","name":"银行机构信息维护","pId":"030101010000","checked":true},{"id":"030101010101","name":"增加","pId":"030101010100","checked":true},{"id":"030101010102","name":"修改","pId":"030101010100"},{"id":"030101010103","name":"删除","pId":"030101010100","checked":true},{"id":"030101010104","name":"列表","pId":"030101010100"},{"id":"030101010105","name":"详情","pId":"030101010100","checked":true},{"id":"030101010200","name":"银行机构信息查询","pId":"030101010000"},{"id":"030101010204","name":"查看权限","pId":"030101010200"},{"id":"030101020000","name":"银行柜员管理","pId":"030101000000"},{"id":"030101020100","name":"银行柜员信息维护","pId":"030101020000"},{"id":"030101020101","name":"增加","pId":"030101020100"},{"id":"030101020102","name":"修改","pId":"030101020100"},{"id":"030101020103","name":"删除","pId":"030101020100"},{"id":"030101020104","name":"列表","pId":"030101020100"},{"id":"030101020105","name":"详情","pId":"030101020100"},{"id":"030101020106","name":"冻结","pId":"030101020100"},{"id":"030101020107","name":"解冻","pId":"030101020100"},{"id":"030101020108","name":"密码重置","pId":"030101020100"},{"id":"030101020200","name":"银行柜员信息查询","pId":"030101020000"},{"id":"030101020201","name":"柜员列表查询","pId":"030101020200"},{"id":"030101020400","name":"银行柜员角色维护","pId":"030101020000"},{"id":"030101020401","name":"增加","pId":"030101020400"},{"id":"030101020402","name":"修改","pId":"030101020400"},{"id":"030101020403","name":"删除","pId":"030101020400"},{"id":"030101020404","name":"列表","pId":"030101020400"},{"id":"030101020405","name":"详情","pId":"030101020400"}];
+                createTree();
+//                reloadRoleRights();
+//            }
+//        });
+
+    }
+
+    function renderRightTree(roleRights){
+        if(!roleRights)return;
+        for(var i=0;i<zNodes.length;i++){
+            var node = zNodes[i];
+            if(roleRights[node.id]){
+                node.checked=true;
+            }else{
+                node.checked=false;
+            }
+
+        }
+        createTree();
+    }
+
+    function onCheck(e, treeId, treeNode) {
+        afterCheckNode(treeNode);
+        count();
+        if (clearFlag) {
+            clearCheckedOldNodes();
+        }
+    }
+    function clearCheckedOldNodes() {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+            nodes = zTree.getChangeCheckedNodes();
+        for (var i=0, l=nodes.length; i<l; i++) {
+            nodes[i].checkedOld = nodes[i].checked;
+        }
+    }
+    function count() {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+            checkCount = zTree.getCheckedNodes(true).length,
+            nocheckCount = zTree.getCheckedNodes(false).length,
+            changeCount = zTree.getChangeCheckedNodes().length;
+    }
+    function createTree(){
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        clearFlag = $("#last").attr("checked");
+    }
+
+    function roleCfg(){
+        var win = Horn.getComp("roleCfgWin");
+        win.show();
+    }
+
+    function onNodeClcik(event, treeId, treeNode, clickFlag){
+        alert(treeNode.id+","+treeNode.name+","+treeNode.url);
+    }
+
+    function beforeNodeClcik(treeId, treeNode, clickFlag){
+        if(treeNode.id=="21"){
+            //返回 false之后，click绑定的事件将不被执行，如果数据中包含url，那么将跳转到url指向位置
+            return false;
+        }
+    }
+
+    function updateRoleCfg(){
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+        var ids = "";
+        var nodes = zTree.getCheckedNodes();
+        for(var idx in nodes){
+            var node = nodes[idx];
+            if(node.level==2){
+                ids += (ids?", ":"") +node.id +" "+node.name;
+            }
+        }
+        alert(ids);
+    };
+    function afterCheckNode(treeNode){
+        var flag = treeNode.id.substring(0,1);
+        if(treeNode.checked){//选中
+            checkedAB(treeNode);
+        }else{//反选
+            if(flag=="A"||flag=="B"){//详情或者列表
+                uncheckedAll(treeNode);
+            }
+        }
+    }
+
+    function checkedAB(treeNode) {
+        if(!treeNode.children) {
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            var pNode = treeNode.getParentNode();
+            var children = pNode.children;
+            for (var i = 0; i < children.length; i++) {
+                var child = children[i];
+                var flag = child.id.substring(0, 1);
+                if (flag == "A" || flag == "B") {
+                    if (!child.checked) {
+                        zTree.checkNode(child, true, true, false);
+                    }
+                }
+            }
+        }
+    }
+
+    function uncheckedAll(treeNode){
+        if(!treeNode.children) {
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            var pNode = treeNode.getParentNode();
+            var children = pNode.children;
+            for (var i = 0; i < children.length; i++) {
+                var child = children[i];
+                var flag = child.id.substring(0, 1);
+                if (child.checked) {
+                    zTree.checkNode(child, false, true, false);
+                }
+            }
+        }
+    }
+
+//    function loadOrgList() {
+//        //加载机构列表
+//        var roleLevel = "${roleDto?.level}";
+//        var obj_right = $("#roleToOrg-right");
+//        var obj_left = $("#roleToOrg-left");
+//        var option_right = "";
+//        var option_left = "";
+//
+//        $.ajax({
+//            url: "${TINY_CONTEXT_PATH}/bank/org/searchByLevel",
+//            type: "post",
+//            data: {
+//                "orgLevel": roleLevel
+//            },
+//            success: function (data) {
+//                /* 处理客户号带字母的情况，如果客户号带字母，后台数组直接转对象会报错 */
+//                var roleToOrgStr = "${roleDto?.custList}".replace(/\s/g,"");
+//                var roleToOrg = [];
+//                //排除没有分配机构的三种情况roleToOrgStr = [] roleToOrgStr="" null
+//                if(roleToOrgStr != null  && roleToOrgStr.length > 2) {
+//                    roleToOrg = roleToOrgStr.substring(1,roleToOrgStr.length-1).split(",");
+//                }
+//                var custNo = "";
+//                obj_left.empty();
+//                obj_right.empty();
+//
+//
+//
+//                if (data != null) {
+//                    for (var o in data) {
+//                        option_left += "<option value='" + data[o].custNo + "'>" + data[o].orgName + "</option>";
+//                    }
+//                }
+//
+//                option_right += "<option disabled value='" + loginCustNo + "'>" + loginCustName + "</option>";
+//                obj_left.append(option_left);
+//                if(roleToOrg != null) {
+//                    for (var j in roleToOrg) {
+//                        custNo += roleToOrg[j] + ",";
+//                        var orgName = obj_left.find("option[value="+roleToOrg[j]+"]").text();
+//                        obj_left.find("option[value="+roleToOrg[j]+"]").attr("disabled","disabled");
+//                        if(orgName != null && orgName != "" && custNo != loginCustNo+",") {
+//                            option_right += "<option value='" + roleToOrg[j] + "'>" + orgName + "</option>";
+//                        }
+//                    }
+//                }
+//                if(custNo != "") {
+//                    $("input[name=custNo]").val(custNo.substring(0, custNo.length-1));
+//                } else {
+//                    $("input[name=custNo]").val(custNo);
+//                }
+//                obj_right.append(option_right);
+//            }
+//        });
+//    }
+</script>
+
+
+<!--
+<div style="padding :10px;">
+    <div class="zTreeDemoBackground left">
+        <ul id="treeDemo" class="ztree menu-right-tree">
+            <li id="treeDemo_1" class="level0" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_1_switch" title="" class="button level0 switch roots_open" treenode_switch=""></span><span id="treeDemo_1_check" class="button chk checkbox_true_part" treenode_check=""></span><a id="treeDemo_1_a" class="level0" treenode_a="" onclick="" target="_self" style="" title="银行管理"><span id="treeDemo_1_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_1_span">银行管理</span></a><ul id="treeDemo_1_ul" class="level0 line" style=""><li id="treeDemo_2" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_2_switch" title="" class="button level1 switch center_open" treenode_switch=""></span><span id="treeDemo_2_check" class="button chk checkbox_true_part" treenode_check=""></span><a id="treeDemo_2_a" class="level1" treenode_a="" onclick="" target="_self" style="" title="银行机构管理"><span id="treeDemo_2_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_2_span">银行机构管理</span></a><ul id="treeDemo_2_ul" class="level1 line" style=""><li id="treeDemo_3" class="level2" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_3_switch" title="" class="button level2 switch center_open" treenode_switch=""></span><span id="treeDemo_3_check" class="button chk checkbox_true_part" treenode_check=""></span><a id="treeDemo_3_a" class="level2" treenode_a="" onclick="" target="_self" style="" title="银行机构信息维护"><span id="treeDemo_3_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_3_span">银行机构信息维护</span></a><ul id="treeDemo_3_ul" class="level2 line" style=""><li id="treeDemo_4" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_4_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_4_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_4_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="增加"><span id="treeDemo_4_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_4_span">增加</span></a></li><li id="treeDemo_5" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_5_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_5_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_5_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="修改"><span id="treeDemo_5_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_5_span">修改</span></a></li><li id="treeDemo_6" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_6_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_6_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_6_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="删除"><span id="treeDemo_6_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_6_span">删除</span></a></li><li id="treeDemo_7" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_7_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_7_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_7_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="列表"><span id="treeDemo_7_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_7_span">列表</span></a></li><li id="treeDemo_8" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_8_switch" title="" class="button level3 switch bottom_docu" treenode_switch=""></span><span id="treeDemo_8_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_8_a" class="level3 curSelectedNode" treenode_a="" onclick="" target="_self" style="" title="详情"><span id="treeDemo_8_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_8_span">详情</span></a></li></ul></li><li id="treeDemo_9" class="level2" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_9_switch" title="" class="button level2 switch bottom_open" treenode_switch=""></span><span id="treeDemo_9_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_9_a" class="level2" treenode_a="" onclick="" target="_self" style="" title="银行机构信息查询"><span id="treeDemo_9_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_9_span">银行机构信息查询</span></a><ul id="treeDemo_9_ul" class="level2 " style=""><li id="treeDemo_10" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_10_switch" title="" class="button level3 switch bottom_docu" treenode_switch=""></span><span id="treeDemo_10_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_10_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="查看权限"><span id="treeDemo_10_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_10_span">查看权限</span></a></li></ul></li></ul></li><li id="treeDemo_11" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_11_switch" title="" class="button level1 switch bottom_open" treenode_switch=""></span><span id="treeDemo_11_check" class="button chk checkbox_true_part" treenode_check=""></span><a id="treeDemo_11_a" class="level1" treenode_a="" onclick="" target="_self" style="" title="银行柜员管理"><span id="treeDemo_11_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_11_span">银行柜员管理</span></a><ul id="treeDemo_11_ul" class="level1 " style=""><li id="treeDemo_12" class="level2" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_12_switch" title="" class="button level2 switch center_open" treenode_switch=""></span><span id="treeDemo_12_check" class="button chk checkbox_true_part" treenode_check=""></span><a id="treeDemo_12_a" class="level2" treenode_a="" onclick="" target="_self" style="" title="银行柜员信息维护"><span id="treeDemo_12_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_12_span">银行柜员信息维护</span></a><ul id="treeDemo_12_ul" class="level2 line" style=""><li id="treeDemo_13" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_13_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_13_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_13_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="增加"><span id="treeDemo_13_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_13_span">增加</span></a></li><li id="treeDemo_14" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_14_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_14_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_14_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="修改"><span id="treeDemo_14_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_14_span">修改</span></a></li><li id="treeDemo_15" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_15_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_15_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_15_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="删除"><span id="treeDemo_15_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_15_span">删除</span></a></li><li id="treeDemo_16" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_16_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_16_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_16_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="列表"><span id="treeDemo_16_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_16_span">列表</span></a></li><li id="treeDemo_17" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_17_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_17_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_17_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="详情"><span id="treeDemo_17_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_17_span">详情</span></a></li><li id="treeDemo_18" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_18_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_18_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_18_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="冻结"><span id="treeDemo_18_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_18_span">冻结</span></a></li><li id="treeDemo_19" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_19_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_19_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_19_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="解冻"><span id="treeDemo_19_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_19_span">解冻</span></a></li><li id="treeDemo_20" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_20_switch" title="" class="button level3 switch bottom_docu" treenode_switch=""></span><span id="treeDemo_20_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_20_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="密码重置"><span id="treeDemo_20_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_20_span">密码重置</span></a></li></ul></li><li id="treeDemo_21" class="level2" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_21_switch" title="" class="button level2 switch center_open" treenode_switch=""></span><span id="treeDemo_21_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_21_a" class="level2" treenode_a="" onclick="" target="_self" style="" title="银行柜员信息查询"><span id="treeDemo_21_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_21_span">银行柜员信息查询</span></a><ul id="treeDemo_21_ul" class="level2 line" style=""><li id="treeDemo_22" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_22_switch" title="" class="button level3 switch bottom_docu" treenode_switch=""></span><span id="treeDemo_22_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_22_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="柜员列表查询"><span id="treeDemo_22_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_22_span">柜员列表查询</span></a></li></ul></li><li id="treeDemo_23" class="level2" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_23_switch" title="" class="button level2 switch bottom_open" treenode_switch=""></span><span id="treeDemo_23_check" class="button chk checkbox_true_part" treenode_check=""></span><a id="treeDemo_23_a" class="level2" treenode_a="" onclick="" target="_self" style="" title="银行柜员角色维护"><span id="treeDemo_23_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_23_span">银行柜员角色维护</span></a><ul id="treeDemo_23_ul" class="level2 " style=""><li id="treeDemo_24" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_24_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_24_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_24_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="增加"><span id="treeDemo_24_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_24_span">增加</span></a></li><li id="treeDemo_25" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_25_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_25_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_25_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="修改"><span id="treeDemo_25_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_25_span">修改</span></a></li><li id="treeDemo_26" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_26_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_26_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_26_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="删除"><span id="treeDemo_26_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_26_span">删除</span></a></li><li id="treeDemo_27" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_27_switch" title="" class="button level3 switch center_docu" treenode_switch=""></span><span id="treeDemo_27_check" class="button chk checkbox_false_full" treenode_check=""></span><a id="treeDemo_27_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="列表"><span id="treeDemo_27_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_27_span">列表</span></a></li><li id="treeDemo_28" class="level3 horizontal-leaf" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_28_switch" title="" class="button level3 switch bottom_docu" treenode_switch=""></span><span id="treeDemo_28_check" class="button chk checkbox_true_full" treenode_check=""></span><a id="treeDemo_28_a" class="level3" treenode_a="" onclick="" target="_self" style="" title="详情"><span id="treeDemo_28_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_28_span">详情</span></a></li></ul></li></ul></li></ul></li>
+        </ul>
+    </div>
+</div>-->

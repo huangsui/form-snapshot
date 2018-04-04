@@ -1,0 +1,67 @@
+<ul class="form-list clearfix">
+    <li>
+        <label class="item required">资产编号：</label>
+        <input id="assetNo" class="form-ipt" maxlength="30" datatype="/^([A-Za-z0-9-]+)$/" nullmsg="请输入资产编号！" errormsg="只能输入数字、字母和-号" disabled="">
+    </li>
+    <li>
+        <label class="item required">资产单位：</label>
+        <div class="dk_container dk_theme_default form-ipt form-sel" id="dk_container_assetUnit" tabindex="-1" aria-hidden="true" disabled="disabled" style="display: block;"><a class="dk_toggle dk_label" style="width: 188px;">人民币</a><div class="dk_options"><ul class="dk_options_inner" role="main" aria-hidden="true"><li class=""><a data-dk-dropdown-value="">请选择</a></li><li class="dk_option_current"><a data-dk-dropdown-value="01">人民币</a></li><li class=""><a data-dk-dropdown-value="12">英镑</a></li><li class=""><a data-dk-dropdown-value="13">港币</a></li><li class=""><a data-dk-dropdown-value="14">美元</a></li><li class=""><a data-dk-dropdown-value="15">瑞士法郎</a></li><li class=""><a data-dk-dropdown-value="21">瑞典克郎</a></li><li class=""><a data-dk-dropdown-value="22">丹麦克郎</a></li><li class=""><a data-dk-dropdown-value="23">挪威克郎</a></li><li class=""><a data-dk-dropdown-value="27">日元</a></li><li class=""><a data-dk-dropdown-value="28">加拿大元</a></li><li class=""><a data-dk-dropdown-value="29">澳大利亚元</a></li><li class=""><a data-dk-dropdown-value="32">新加坡元</a></li><li class=""><a data-dk-dropdown-value="38">欧元</a></li><li class=""><a data-dk-dropdown-value="81">澳门元</a></li></ul></div><select id="assetUnit" class="form-ipt form-sel" datatype="select" errormsg="请选择币种！" disabled="" data-complete="G00001"><option value="">请选择</option><option value="01">人民币</option><option value="12">英镑</option><option value="13">港币</option><option value="14">美元</option><option value="15">瑞士法郎</option><option value="21">瑞典克郎</option><option value="22">丹麦克郎</option><option value="23">挪威克郎</option><option value="27">日元</option><option value="28">加拿大元</option><option value="29">澳大利亚元</option><option value="32">新加坡元</option><option value="38">欧元</option><option value="81">澳门元</option></select></div>
+    </li>
+    <li>
+        <label class="item required">资产名称：</label>
+        <input id="assetName" class="form-ipt" maxlength="32" datatype="ss" nullmsg="请输入资产名称！">
+    </li>
+    <li>
+        <label class="item required">开户日期：</label>
+        <input id="openDate" readonly="readonly" class="form-ipt Wdate order-date" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" datatype="/^((?:19|20)\d\d)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/" nullmsg="请选择开户期日！" errormsg="请使用标准日期" value="">
+    </li>
+    <li>
+        <label class="item required">开户行号：</label>
+        <input id="bankNo" class="form-ipt" maxlength="12" datatype="/^\d+$/" errormsg="只能输入数字" nullmsg="请输入开户行号！">
+    </li>
+    <li>
+        <label class="item required">开户行名：</label>
+        <input id="bankName" class="form-ipt" maxlength="64" datatype="ss" nullmsg="请输入开户行名！">
+    </li>
+    <li>
+        <label class="item required">账户种类：</label>
+        <div class="dk_container dk_theme_default form-ipt form-sel" id="dk_container_acctType" tabindex="0" aria-hidden="true" style="display: block;"><a class="dk_toggle dk_label" style="width: 188px;">定期</a><div class="dk_options"><ul class="dk_options_inner" role="main" aria-hidden="true"><li class=""><a data-dk-dropdown-value="">请选择</a></li><li class=""><a data-dk-dropdown-value="01">活期</a></li><li class="dk_option_current"><a data-dk-dropdown-value="02">定期</a></li><li class=""><a data-dk-dropdown-value="03">通知</a></li><li class=""><a data-dk-dropdown-value="04">贷款</a></li><li class=""><a data-dk-dropdown-value="05">内部账</a></li><li class=""><a data-dk-dropdown-value="06">表外账</a></li></ul></div><select id="acctType" class="form-ipt form-sel" datatype="select" errormsg="请选择账户种类！" data-complete="G00085"><option value="">请选择</option><option value="01">活期</option><option value="02">定期</option><option value="03">通知</option><option value="04">贷款</option><option value="05">内部账</option><option value="06">表外账</option></select></div>
+    </li>
+    <li>
+        <label class="item required">汇钞标识：</label>
+        <div class="dk_container dk_theme_default form-ipt form-sel" id="dk_container_cashFlag" tabindex="0" aria-hidden="true" style="display: block;"><a class="dk_toggle dk_label" style="width: 188px;">汇户</a><div class="dk_options"><ul class="dk_options_inner" role="main" aria-hidden="true"><li class=""><a data-dk-dropdown-value="">请选择</a></li><li class=""><a data-dk-dropdown-value="1">钞户</a></li><li class="dk_option_current"><a data-dk-dropdown-value="2">汇户</a></li></ul></div><select id="cashFlag" class="form-ipt form-sel" datatype="select" errormsg="请选择汇钞标识！" data-complete="G00088"><option value="">请选择</option><option value="1">钞户</option><option value="2">汇户</option></select></div>
+    </li>
+    <li>
+        <label class="item">存期：</label>
+        <div class="dk_container dk_theme_default form-ipt form-sel" id="dk_container_duration" tabindex="0" aria-hidden="true" style="display: block;"><a class="dk_toggle dk_label" style="width: 188px;">一月</a><div class="dk_options"><ul class="dk_options_inner" role="main" aria-hidden="true"><li class=""><a data-dk-dropdown-value="">请选择</a></li><li class=""><a data-dk-dropdown-value="D00">活期</a></li><li class=""><a data-dk-dropdown-value="D01">一天</a></li><li class=""><a data-dk-dropdown-value="D07">七天</a></li><li class="dk_option_current"><a data-dk-dropdown-value="M01">一月</a></li><li class=""><a data-dk-dropdown-value="M03">三月</a></li><li class=""><a data-dk-dropdown-value="M06">六月</a></li><li class=""><a data-dk-dropdown-value="Y01">一年</a></li><li class=""><a data-dk-dropdown-value="Y02">二年</a></li><li class=""><a data-dk-dropdown-value="Y03">三年</a></li><li class=""><a data-dk-dropdown-value="Y05">五年</a></li></ul></div><select id="duration" class="form-ipt form-sel" datatype="empty|select" data-complete="G00032"><option value="">请选择</option><option value="D00">活期</option><option value="D01">一天</option><option value="D07">七天</option><option value="M01">一月</option><option value="M03">三月</option><option value="M06">六月</option><option value="Y01">一年</option><option value="Y02">二年</option><option value="Y03">三年</option><option value="Y05">五年</option></select></div>
+    </li>
+    <li>
+        <label class="item">利率：</label>
+        <input id="rate" class="form-ipt" datatype="empty|/^(([0][.][0-9]{1,6})|([1-9][0-9]{1}))$/" errormsg="整数仅允许输入0，小数最多6位">
+    </li>
+    <li>
+        <label class="item">存单号：</label>
+        <input id="depositNo" class="form-ipt" maxlength="32" datatype="empty|ss">
+    </li>
+    <li>
+        <label class="item required">到期日期：</label>
+        <input id="expiryDate" readonly="readonly" class="form-ipt Wdate order-date" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" datatype="/^((?:19|20)\d\d)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/" nullmsg="请选择到期日期！" errormsg="请使用标准日期" value="" disabled="">
+    </li>
+    <li>
+        <label class="item required">账户余额：</label>
+        <input id="assetBal" class="form-ipt" datatype="n22_6" nullmsg="请输入账户余额！">
+    </li>
+    <li>
+        <label class="item required">可用余额：</label>
+        <input id="assetAvlBal" class="form-ipt" datatype="n22_6" nullmsg="请输入可用余额！">
+    </li>
+    <li>
+        <label class="item required">冻结余额：</label>
+        <input id="assetFrzBal" class="form-ipt" value="0" disabled="">
+    </li>
+
+    <li>
+        <label class="item">备注：</label>
+        <textarea name="remark" class="form-text" id="remark" maxlength="128" cols="30" rows="10" datatype="empty|ss"></textarea>
+    </li>
+</ul>

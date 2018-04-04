@@ -75,7 +75,8 @@
 </div>
 
 <script type="text/javascript" src="../../lib/jquery/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="../../dist/snapshot.js"></script>
+<script type="text/javascript" src="../../dist/snapshot.standard-1.0.0.js"></script>
+<script type="text/javascript" src="./js/snapshot.example.default.js"></script>
 
 <script>
 var mixedMode = {
@@ -125,7 +126,7 @@ function submitTryit() {
     var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
     ifrw.document.open();
     if(text){
-        var result = snapshot.takeSnap( $(text)[0] );
+        var result = snapshot.takeSnap( $(text)[0],{visible:false} );
         console.log(JSON.stringify(result, null, 4) );
         ifrw.document.write(snapshot.convert(result)); 
     }
@@ -143,3 +144,4 @@ autodivheight();
 </script>
 </body>
 </html>
+

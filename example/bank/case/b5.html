@@ -1,0 +1,101 @@
+<div id="secOperId" class="">
+    <form name="secOperForm" action="" id="from798546714" method="post" class="form form-horizontal ">
+
+        <div class="bootstrap-table">
+            <div class="fixed-table-toolbar">
+                <!--<div class="bars pull-left">-->
+                <!--<div class="btn-group hidden-xs" id="secOperId-toolbar" role="group">-->
+                <!--<a id="addOper" class="btn btn-default"><i class="fa fa-plus"></i></a>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div class="fixed-table-container" style="padding-bottom: 0px;">
+                <div class="fixed-table-header" style="display: none;">
+                    <table></table>
+                </div>
+                <div class="fixed-table-body">
+                    <div class="fixed-table-loading" style="top: 1px; display: none;">正在努力地加载数据中，请稍候……</div>
+                    <table id="secOperId-table" data-url="/bankmain/rateService/secRateList?rateNo=" data-id-field="idx"
+                           data-show-refresh="false" data-show-pagination-switch="false" data-reorderable-columns="true"
+                           data-page-list="[10, 20, 50, 100, 200,all]" data-cache="false" data-show-columns="false"
+                           data-show-export="false" data-show-toggle="false" data-page-size="10" data-show-footer="false"
+                           data-resizable="true" data-toolbar="#secOperId-toolbar" data-click-to-select="true"
+                           data-pagination="false" data-search-on-enter-key="true" data-export-types="['excel','csv','xml']"
+                           data-side-pagination="server" data-search="false" class="table table-hover" style="margin-top: 0px;">
+                        <thead style="">
+                        <tr>
+                            <th style="" data-field="idx" tabindex="0">
+                                <div class="th-inner ">序号</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="" data-field="start" tabindex="0">
+                                <div class="th-inner ">起始金额</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="" data-field="end" tabindex="0">
+                                <div class="th-inner ">截止金额</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="" data-field="rateTypeNm" tabindex="0">
+                                <div class="th-inner ">利率类型</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="" data-field="4" tabindex="0">
+                                <div class="th-inner ">设置利率</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-index="1">
+                            <td>1</td>
+                            <td><input class="sRateform-control" type="text" value="0" disabled="disabled"></td>
+                            <td><input class="sRateform-control" type="text" value="100"></td>
+                            <td><input class="sRateform-control" type="text" value="固定利率" disabled="disabled" placeholder="请设置"
+                                       style="width: 85px;text-align:center"></td>
+                            <td style="vertical-align: middle"><a title="设置（点击可编辑）" modal-title="设置" data-target="#rateSet"
+                                                                  data-toggle="modal" data-height="450" data-width="650"
+                                                                  data-v0="1" data-v1="11" data-v2="D00" data-v3="1" data-v4=""
+                                                                  href="/bankmain/rateService/rateSet.pagelet?rateType=1&amp;fixedRate=11&amp;baseRateType=D00&amp;floatType=1&amp;floatValue= ">设置</a>&nbsp;&nbsp;<a
+                                    data-opera-type="remove" href="javascript:void(0)">删除</a></td>
+                        </tr>
+                        <tr data-index="2">
+                            <td>2</td>
+                            <td><input class="sRateform-control" type="text" value="100" disabled="disabled"></td>
+                            <td><input class="sRateform-control" type="text" value="200"></td>
+                            <td><input class="sRateform-control" type="text" value="浮动利率" disabled="disabled" placeholder="请设置"
+                                       style="width: 85px;text-align:center"></td>
+                            <td style="vertical-align: middle"><a title="设置（点击可编辑）" modal-title="设置" data-target="#rateSet"
+                                                                  data-toggle="modal" data-height="450" data-width="650"
+                                                                  data-v0="1" data-v1="22" data-v2="D00" data-v3="1" data-v4=""
+                                                                  href="/bankmain/rateService/rateSet.pagelet?rateType=1&amp;fixedRate=22&amp;baseRateType=D00&amp;floatType=1&amp;floatValue= ">设置</a>&nbsp;&nbsp;<a
+                                    data-opera-type="remove" href="javascript:void(0)">删除</a></td>
+                        </tr>
+                        <tr data-index="3">
+                            <td>3</td>
+                            <td><input class="sRateform-control" type="text" value="200" disabled="disabled"></td>
+                            <td><input class="sRateform-control" type="text" value="无限大" disabled="disabled"></td>
+                            <td><input class="sRateform-control" type="text" value="固定利率" disabled="disabled" placeholder="请设置"
+                                       style="width: 85px;text-align:center"></td>
+                            <td style="vertical-align: middle"><a title="设置（点击可编辑）" modal-title="设置" data-target="#rateSet"
+                                                                  data-toggle="modal" data-height="450" data-width="650"
+                                                                  data-v0="2" data-v1="" data-v2="D00" data-v3="1" data-v4="11"
+                                                                  href="/bankmain/rateService/rateSet.pagelet?rateType=2&amp;fixedRate=&amp;baseRateType=D00&amp;floatType=1&amp;floatValue=11 ">设置</a>&nbsp;&nbsp;<a
+                                    data-opera-type="remove" href="javascript:void(0)">删除</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fixed-table-footer" style="display: none;">
+                    <table>
+                        <tbody>
+                        <tr></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fixed-table-pagination" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+</div>

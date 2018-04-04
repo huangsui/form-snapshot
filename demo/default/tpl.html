@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+  <title>快照演示</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container clearfix" style="padding: 5px;">
+
+      <div class="navbar-collapse collapse" role="navigation">
+        <ul class="nav navbar-nav" style="padding: 5px;">
+          <li>
+            <button class="btn btn-primary btn-shadow" type="button" onclick="trytpl1()">Try Tpl 1</button>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right hidden-sm">
+          <li><a href="javascript:history.go(-1);">返回</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container projects clearfix" style="margin-top:100px;">
+    <h3>模板1</h3>
+    <form id="form1" class="form-horizontal">
+      <div class="form-group col-sm-6">
+        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-10">
+          <button class="btn btn-default">Sign in</button>
+        </div>
+      </div>
+    </form>
+    
+  </div>
+ <footer style="height: 100px;"> --------- </footer>
+
+  <script type="text/javascript" src="../../lib/jquery/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../../lib/tmpl.js"></script>
+  <script type="text/javascript" src="../../dist/snapshot.standard-1.0.0.js"></script>
+  <!-- <script type="text/javascript" src="./js/snapshot.poc.js"></script> -->
+  <script type="text/javascript" src="../../plugin/snapshot-preview/snapshot-preview.js"></script>
+
+  <script>
+    function trytpl1() {
+      $.ajax({
+        url: "http://www.baidu.com",
+        method: "post",
+        ss: ["./tpl/case1.tpl", {label1:"email", val1:"aaa@bbb.ccc", label2:"password", val2:"123456"}],
+        success: function() {}
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -4,10 +4,10 @@ var pkg = require('./package.json');
 
 module.exports = {
     devtool: false,
-    entry: './src/snapshot.js',
+    entry: './src/entry/snapshot-standard.js',
     output: {
         path: path.resolve(__dirname,'./dist/'),
-        filename: 'snapshot.js'
+        filename: 'snapshot.standard-1.0.0.js'
     },
     devServer: {
         port: 8080,

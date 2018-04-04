@@ -9,6 +9,8 @@
  * Manifest：货单，简单的节点描述规则，方便识别
  * 
  * !!TEXT~INPUTS~~!TEXT~INPUTS
+ *  
+ * 标签前缀：ss-
  * 
  */
 
@@ -16,8 +18,8 @@
 
     "use strict"
 
-    const JSON_VERSION = "1.0.0";/*json数据版本*/
     const VERSION = "1.0.0";/*版本*/
+
     var that = this;
 
     var NoteFactory = new function(){
@@ -41,6 +43,7 @@
         },
         baseInfo:function(node){
             this.attrs = {};
+            //factor: 0|1，文本和各输入框为快照基本因子
             switch(node.nodeName){
                 case "INPUT"://text,hidden,radio,checkbox,password
                     var iptType = node.getAttribute("type");
@@ -54,7 +57,7 @@
                     
                     break;
                 case "SELECT"://multiple
-                    this.nodeType="INPUTS";
+                    this.nodeType="INPUTS:SELECT";
                     break;
                 case "TEXTAREA":
                     this.nodeType="INPUTS";
@@ -119,10 +122,11 @@
         return x.replace(/^\s+|\s+$/gm,'');
     }
 
-    var ProcessContext = function(node){
+    var ProcessContext = function(node, opts){
         this.noteRoot = null;
         this.pnote = null;
         this.curNote = null;
+        this.opts = opts;
         this.depth = function(){
             if(this.pnote){
                 return this.pnote.depth+1;
@@ -218,13 +222,12 @@
 
     var Snapshot = function( options ) {
 
-        this.takeSnap = function( selector ){
+        this.takeSnap = function( selector, opts ){
             var node = $(selector)[0];
-            var pctx = new ProcessContext(node);
+            var pctx = new ProcessContext(node, opts);
             var note = NoteFactory.create(node, pctx);
             pctx.appendNote(note);
-            var rootNote = through(node, note, pctx);
-            var result = {root:true, version:JSON_VERSION, data:rootNote};
+            var result = through(node, note, pctx);
             return result;
         };
 
@@ -250,13 +253,42 @@
         }        
     };
 
+    var caches = {};
+    Snapshot.cache = function(){
+        if(arguments.length==0){
+            throw "arguments length must be greater then 0.";
+        }
+        if(arguments.length==1){
+            if(typeof arguments[0] == "string"){
+                return caches[arguments[0]];
+            }else if(arguments[0] && arguments[0].name){
+                caches[arguments[0].name] = arguments[0];
+            }
+        }else if(arguments.length==2){
+            caches[arguments[0]] = arguments[1];
+        }
+    }
+
+    var convertors = [];
+
     Snapshot.register = function(){
         for (var i = 0; i < arguments.length; i++) {
             var arg = arguments[i];
-            if(arg.name.indexOf("-processor")>0){
+            if(typeof arg == "string"){
+                var m = Snapshot.cache(arg);
+                if(m){
+                    Snapshot.register(m);
+                }else{
+                    throw "Snapshot cannot find \""+arg+"\" in caches ";
+                }
+            }else if(arg.name.indexOf("-processor")>0){
                 processorChain.add(arg);
             }else if(arg.name.indexOf("-filter")>0){
                 filterChain.add(arg);
+            }else if(arg.name.endsWith("-convertor")){
+                convertors.push(arg);
+            }else{
+                Snapshot.cache(arg);
             }            
         }
         return this;
@@ -270,6 +302,7 @@
             this.config = this.config||{};
             if( options ){
                 this.config.isVisible = options.isVisible;
+                this.config.convertType = options["convert-type"];
             }
             return this;
         }
@@ -278,6 +311,47 @@
 
     through = filterChain.weave(through);
 
+    
+    var convertArray = function(arr, ctx){
+        var html = "";
+        for (var i = 0; i < arr.length; i++) {
+            html += convert(arr[i], ctx);
+        }
+        return html;
+    }
+
+    var convert = function(arg, ctx){
+        if(!arg){
+            throw "convert param is required.";
+        }else if(arg instanceof Array){
+            return convertArray.call(this, arg, ctx);
+        }
+
+        if(!ctx || !ctx.root){
+            ctx = {root:arg};
+        }
+
+        var html = "", note = arg;
+        for (var i = 0; i < convertors.length; i++) {
+            var cvt = convertors[i];
+            if(cvt.match(note)){
+                html = cvt.convert(note, ctx);
+                break;
+            }
+        }
+
+        if( note.manifest == "GROUP" || note.subNotes){
+            ctx.parent = note;
+            html += convert(note.subNotes, ctx);
+            //ctx.parent is dirty here.
+        }      
+
+        return html;
+    };
+
+    Snapshot.convert = convert;
+    Snapshot.fn.convert = convert;
+    
     global.Snapshot = Snapshot;
 
     if ( typeof define === "function" && define.amd ) {
@@ -291,7 +365,4 @@
     }
 
 })( typeof window !== "undefined" ? window : this, jQuery );
-
-
-
 

@@ -1,0 +1,88 @@
+/*@charset "utf-8";
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td { margin: 0; padding: 0;}
+body {font: 14px/1.5 tahoma, "黑体", "宋体";background: #fff;color: #666;}
+html,body{height: 100%;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;}
+address, cite, dfn, em, var {font-style: normal;}
+ul, ol {list-style: none;}
+a {text-decoration: none;color: #333;}
+a:hover {text-decoration: none;}
+fieldset, img {border: 0;}
+button, input, select, textarea {font-size: 100%;}
+input,textarea{font-family: "黑体";}
+:focus {outline: 0;}
+.clearfix {zoom:1; !* IE < 8 *!}
+.clearfix:after {content: "";display: table;clear: both;}
+.f-r{float: right;}
+
+.w1200{width: 1200px;height: 100%;min-height: 100%;margin: 0 auto;}*/
+/* 页头 */
+.beforeLogin .top{height: 64px;width: 100%;border-bottom: 1px solid #999;}
+.beforeLogin .top .logo{float: left;margin-left: 53px;margin-top: 18px;}
+.beforeLogin .top .logo .ic-logo{height: 27px;}
+.beforeLogin .top .nav-list{float: left;margin-right: 75px;}
+.beforeLogin .top .nav-list li{float: left;width: 112px;border-bottom: 4px solid transparent;height: 60px;line-height: 60px;font-size: 16px;color: #333;text-align: center;cursor: pointer;}
+.beforeLogin .top .nav-list li a{display: block;}
+.beforeLogin .top .nav-list .on,.top .nav-list li:hover{border-bottom: 4px solid #FF8903;}
+.beforeLogin .top .function-list{float: left;margin-right: 45px;}
+.beforeLogin .top .function-list > li{float: left;height: 30px;margin: 17px 12px 0 0;}
+.beforeLogin .top .all-serve-btn{display: inline-block;height: 30px;width: 30px;border-radius: 15px;background: #5f81aa url(../images/icon_top_function.png) no-repeat;background-position: 0 -60px;cursor: pointer;}
+.beforeLogin .top .user-btn{display: inline-block;width: 99px;height: 30px;border-radius: 15px;background: #5f81aa;cursor: pointer;}
+.beforeLogin .top .user-btn span{margin-left: 11px;padding-left: 18px;line-height: 30px;font-size: 14px;color: #fff;background: url(../images/icon_user.png) no-repeat left center;}
+.beforeLogin .top .all-serve-btn:hover,.top .user-btn:hover{background-color: #39577a;}
+/* 页面内容 */
+/*.page{width: 1200px;margin: 0 auto;}*/
+.beforeLogin .page-tit{padding-left: 255px;margin-top: 25px;font-size: 24px;color: #333;font-weight: 600;}
+.beforeLogin .form-box{padding-left: 255px;padding-top: 12px;}
+.beforeLogin .form-con li{padding-bottom: 20px;position: relative;zoom: 1;}
+.beforeLogin .form-con li:after{content: "";display: table;clear: both;}
+.beforeLogin .form-con .item{float: left;width: 205px;padding-right: 3px;height: 28px;line-height: 28px;text-align: right;font-size: 14px;color: #151515;}
+.beforeLogin .form-con .item i{font-style: normal;color: #D0011B;margin-right: 2px;}
+.beforeLogin .form-con .form-ipt,.form-con .form-l-ipt,.form-con .form-s-ipt{float: left;width: 190px;height: 16px;padding: 5px;border: 1px solid #ccc;line-height: 16px;font-size: 14px;color: #333;}
+.beforeLogin .form-con .form-l-ipt{width: 390px;}
+.beforeLogin .form-con .form-s-ipt{width: 90px;}
+.beforeLogin .form-con .form-ipt:hover,.form-con .form-l-ipt:hover,.form-con .form-s-ipt:hover{border-color: #0270D7;}
+.beforeLogin .form-con .tip{height: 16px;line-height: 16px;font-size: 12px;color: #333;margin-left: 208px;clear: both;}
+.beforeLogin .form-con .right{float: left;width: 24px;height: 28px;margin-left: 8px;background: url(../images/bg_right.png) no-repeat center;}
+.beforeLogin .form-con .level-1,.form-con .level-2,.form-con .level-3,.form-con .level-4{float: left;width: 60px;height: 20px;margin: 4px 10px 0 0;background: #e2384d;line-height: 20px;font-size: 12px;color: #fff;text-align: center;}
+.beforeLogin .form-con .level-2{background: #ffb64e;}
+.beforeLogin .form-con .level-3{background: #8dd17a;}
+.beforeLogin .form-con .level-4{background: #4ca15d;}
+.beforeLogin .form-con .code-btn{float: left;width: 90px;height: 28px;margin-left: 10px;border-radius: 5px;background: #38577a;line-height: 28px;font-size: 12px;color: #fff;text-align: center;cursor: pointer;}
+.beforeLogin .form-con .code-btn:hover{background: #253950;}
+.beforeLogin .form-con .send{background: #253950;}
+.beforeLogin .form-con .tip1{position: absolute;top: 28px;left: 208px;height: 16px;line-height: 16px;font-size: 12px;color: #333;display: none;}
+.beforeLogin .form-con .item-value{float: left;height: 28px;line-height: 28px;font-size: 14px;color: #151515;}
+.beforeLogin .form-con .code-box{float: left;padding-left: 4px;}
+.beforeLogin .form-con .code-box img{height: 28px;float: left;}
+.beforeLogin .form-con .code-box .refresh-btn{float: left;padding-left: 4px;;height: 28px;width: 16px;background: url(../images/icon_refresh.png) no-repeat center center;cursor: pointer;}
+.beforeLogin .form-box .deal{margin-left: 208px;margin-bottom: 10px;font-size: 14px;color: #4A4A4A;}
+.beforeLogin .form-box .deal label{cursor: pointer;}
+.beforeLogin .form-box .deal input{vertical-align: -2px;margin-right: 3px;cursor: pointer;}
+.beforeLogin .form-box .deal a{color: #0270D7;}
+.beforeLogin .form-box .deal a:hover{text-decoration: underline;}
+.beforeLogin .form-box .btn-box{padding: 5px 0 15px 0;margin-left: 208px;}
+.beforeLogin .form-box .btn{width: 150px;height: 36px;border: 0;background: #FF8903;border-radius: 5px;line-height: 36px;font-size: 14px;color: #fff;cursor: pointer;}
+.beforeLogin .form-box .btn:hover{background: #FA9725;}
+.beforeLogin .form-box .disabled{background: #cbc9c8;cursor: default;}
+.beforeLogin .form-box .disabled:hover{background: #cbc9c8;}
+.beforeLogin .form-box .return-btn{margin-left: 24px;line-height: 36px;font-size: 14px;color: #333;cursor: pointer;}
+.beforeLogin .form-box .return-btn:hover{color: #0270D7;}
+.beforeLogin .step-bar{padding-top: 20px;text-align: center;font-size: 0;margin-bottom: 15px;}
+.beforeLogin .step-bar .step-img{display: block;margin: 0 auto;margin-bottom: 2px;}
+.beforeLogin .step-bar em{display: inline-block;width: 144px;font-size: 14px;color: #999;}
+.beforeLogin .step-bar .on{color: #FF8903;}
+.beforeLogin .reset-type-list{padding-top: 20px;}
+.beforeLogin .reset-type-list li{width: 537px;height: 98px;border: 1px solid #ccc;margin: 0 auto 20px;cursor: pointer;font-size: 14px;color: #333333;}
+.beforeLogin .reset-type-list li:hover{background-color: #EDF6FE;}
+.beforeLogin .reset-type-list .on{background: url(../images/icon_right.png) no-repeat 25px center;}
+.beforeLogin .reset-type-list .icon{float: left;width: 50px;height: 100%;margin-left: 75px;}
+.beforeLogin .reset-type-list .phone{background: url(../images/icon_reset_type.png) no-repeat;background-position: 0 0;}
+.beforeLogin .reset-type-list .email{background: url(../images/icon_reset_type.png) no-repeat;background-position: -50px 0;}
+.beforeLogin .reset-type-list .type{margin-top: 30px;margin-left: 130px;}
+.beforeLogin .reset-type-list .info{margin-left: 130px;}
+.beforeLogin .result-box{padding: 50px 0 15px;text-align: center;}
+.beforeLogin .result-box .success{padding-left: 45px;line-height: 36px;font-size: 32px;color: #333;background: url(../images/icon_right.png) no-repeat left center;}
+
+
+/* 两种top样式冲突 */

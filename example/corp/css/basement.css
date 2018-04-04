@@ -1,0 +1,330 @@
+.basement .page{padding-bottom: 68px;padding-left: 12px;padding-top: 12px;}
+.basement .op-btn{display: inline-block;width: 88px;height: 26px;background: #fff;border: 1px solid #2D4868;border-radius: 4px;line-height: 24px;text-align: center;font-size: 14px;color: #253950;cursor: pointer;}
+.basement .op-btn:hover{background: #EDF6FE;}
+.basement .query-box{background: #fff;padding-top: 14px;overflow: hidden;}
+.basement .query-box .query-list .query-item{float: left;width: 80px;height: 28px;line-height: 28px;font-size: 14px;color: #333;text-align: right;}
+.basement .query-box .query-list .query-ipt{float: left;width: 138px;height: 20px;border: 1px solid #ccc;padding: 3px 5px;line-height: 20px;font-size: 14px;color: #333;}
+
+/* 管理台首页 */
+.basement .login-info-box{height: 110px;background: #EDF6FE;border: 1px solid #CCCCCC;}
+.basement .login-info-box .user-img{float: left;margin: 14px 0 0 40px;width: 79px;height: 79px;vertical-align: middle;}
+.basement .login-info-box .welcome{margin-left: 160px;width: 930px;padding: 20px 0 10px 0;border-bottom: 1px dashed #253950;font-size: 18px;color: #253950;line-height: 24px;}
+.basement .login-info-box .welcome i{font-style: normal;margin: 0 30px;}
+.basement .login-info-box .login-info{margin-left: 160px;padding-top: 8px;font-size: 14px;color: #333333;}
+.basement .login-info-box .login-info em{margin-right: 80px;}
+.basement .login-info-box .login-info em:last-child{margin-right: 0;}
+.basement .common-info-box{padding-top: 15px;}
+.basement .common-function-box{float: left;width: 655px;border: 1px solid #ccc;background: #fff;}
+.basement .common-function-box .tit-row{height: 40px;border-bottom: 1px solid #ccc;padding-left: 25px;line-height: 40px;font-size: 14px;color: #333;font-weight: 600;}
+.basement .common-function-box .set-link{float: right;margin-right: 20px;line-height: 40px;font-size: 14px;color: #333;font-weight: normal;}
+.basement .common-function-box .set-link:hover{color: #0270D7;}
+.basement .common-function-box .fct-type-box{width: 100%;height: 488px;overflow: hidden;position: relative;}
+.basement .common-function-box .fct-item-box{width: 620px;margin-left: 14px;padding-bottom: 20px;}
+.basement .common-function-box .fct-item-tit{height: 40px;border-bottom: 1px solid #ccc;}
+.basement .common-function-box .fct-item-tit span{display: inline-block;width: 100px;height: 23px;padding-top: 14px;border-bottom: 4px solid #509ADD;line-height: 23px;font-size: 12px;color: #333333;text-align: center;}
+.basement .common-function-box .fct-item-tit .op-btn{float: right;height: 23px;margin-top: 14px;line-height: 23px;font-size: 12px;color: #333333;cursor: pointer;}
+.basement .common-function-box .fct-item-tit .op-btn:hover{color: #0270D7;}
+.basement .common-function-box .fct-list{margin-left: -42px;}
+.basement .common-function-box .fct-list li{float: left;width: 68px;height: 68px;margin-left: 42px;margin-top: 25px;background: url(../images/bg-function-btn.png) no-repeat top left;overflow: hidden;}
+.basement .common-function-box .fct-list li a{display: block;width: 68px;height: 68px;display: table;}
+.basement .common-function-box .fct-list li p{width: 100%;line-height: 16px;font-size: 12px;color: #253950;text-align: center;display: table-cell;vertical-align: middle;}
+.basement .common-function-box .more-fct-list{display: none;}
+/* 首页日历 */
+.basement .date-info-box{float: right;width: 456px;}
+.basement .date-info-box .date-box{width: 454px;border: 1px solid #ccc;background: #fff;position: relative;}
+.basement .calendar-box{width: 100%;}
+.basement .calendar-box .calendar-tit{height: 40px;line-height: 40px;text-align: center;font-size: 14px;color: #3F3B3A;position: relative;}
+.basement .calendar-box .calendar-list{padding-bottom: 35px;}
+.basement .calendar-box .calendar-tit .name{position: absolute;left: 0;top: 0;line-height: 40px;padding-left: 14px;font-size: 14px;color: #333;}
+.basement .calendar-box .calendar-tit .date-btn{display: inline-block;width: 15px;height: 40px;margin-left: 5px;background: url(../images/icon_arrows.png) no-repeat;background-position: 0 14px;vertical-align: top;cursor: pointer;}
+.basement .calendar-box .calendar-tit .date-btn:hover{background-position: -15px 14px;}
+.basement .calendar-box .week-label{height: 30px;width: 449px;border-bottom: 1px solid #38577A;margin: 0 auto;background: #ECF6FE;font-size: 12px;color: #253950;}
+.basement .calendar-box .week-label em{float: left;width: 64px;line-height: 30px;text-align: center;}
+.basement .calendar-box .calendar{width: 448px;height: 195px;border-right: 1px solid #E8E7E7;;margin: 0 auto;overflow: hidden;}
+.basement .calendar-box .calendar li{float: left;width: 63px;height: 38px;border-left: 1px solid #E8E7E7;border-bottom: 1px solid #E8E7E7;line-height: 38px;text-align: center;position: relative;cursor: pointer;}
+.basement .calendar-box .calendar li em{font-size: 12px;color: #333333;}
+.basement .calendar-box .calendar li .flag{position: absolute;top: 0;right: 0;width: 18px;height: 20px;background: url(../images/bg_date.png) no-repeat top left;line-height: 14px;font-size: 10px;color: #fff;}
+.basement .calendar-box .calendar li:hover{background: #F9E1B9;}
+.basement .calendar-box .calendar li.on{background: #FF8903;}
+.basement .date-info-box .schedule-box{width: 100%;border-top: 1px solid #ccc;position: relative;margin-top: 9px;height: 66px;cursor: pointer;}
+.basement .date-info-box .schedule-box .triangle{width: 0px;height: 0px;border-width: 0 8px 10px 8px;border-color:transparent transparent #ccc transparent;border-style: solid;position: absolute;left: 50%;top: -10px;margin-left: -8px;}
+.basement .date-info-box .schedule-box .triangle-p{width: 0px;height: 0px;border-width: 0 8px 10px 8px;border-color:transparent transparent #fff transparent;border-style: solid;position: absolute;top:1px;margin-left: -8px;z-index: 1;}
+.basement .date-info-box .schedule-box .tit-line{height: 18px;padding: 4px 0 0 18px;line-height: 18px;font-size: 14px;color: #333;}
+.basement .date-info-box .schedule-box .schedule-list{padding: 6px 0;}
+.basement .date-info-box .schedule-box .schedule-list li{height: 22px;padding: 0 35px 0 18px;line-height: 22px;font-size: 12px;color: #333;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;cursor: pointer;position: relative;}
+.basement .date-info-box .schedule-box .schedule-list li .delete-btn{display: none;position: absolute;top: 0;right: 16px;height: 22px;width: 22px;background: url(../images/icon_delete.png) no-repeat center center;cursor: pointer;}
+.basement .date-info-box .schedule-box .schedule-list li:hover{background: #EDF6FE;}
+.basement .date-info-box .schedule-box .schedule-list li:hover .delete-btn{display: block;}
+.basement .date-info-box .schedule-box .empty{text-align: center;font-size: 12px;color: #999;}
+.basement .date-info-box .schedule-box .empty em{display: inline-block;height: 36px;padding-left: 46px;line-height: 36px;background: url(../images/icon_coffee.png) no-repeat left center;}
+.basement .date-info-box .schedule-hover-box{position: absolute;left: -1px;top: 301px;height: auto;border: 1px solid #ccc;background: #fff;z-index: 1;display: none;}
+.basement .date-info-box .remind-box{width: 454px;height: 134px;border: 1px solid #ccc;background: #fff;margin-top: 15px;}
+.basement .date-info-box .remind-box .tab-box{height: 26px;border-bottom: 1px solid #ccc;}
+.basement .date-info-box .remind-box .more-link{float: right;margin-right: 18px;line-height: 26px;font-size: 12px;color: #333;}
+.basement .date-info-box .remind-box .more-link:hover{color: #0270D7;}
+.basement .date-info-box .remind-box span{float: left;width: 114px;height: 26px;border-right: 1px solid #ccc;background: #F5F3F3;line-height: 26px;font-size: 14px;color: #333;text-align: center;cursor: pointer;}
+.basement .date-info-box .remind-box .on,.date-info-box .remind-box span:hover{background: #fff;height: 27px;}
+.basement .date-info-box .remind-box .remind-list{padding-top: 5px;}
+.basement .date-info-box .remind-box .remind-list li{height: 24px;padding: 0 18px;line-height: 24px;font-size: 12px;color: #333;cursor: pointer;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.basement .date-info-box .remind-box .remind-list li:hover{background: #EDF6FE;}
+.basement .date-info-box .remind-box .empty{text-align: center;padding-top: 6px;display: none;}
+.basement .date-info-box .remind-box .empty p{font-size: 12px;color: #B3B3B3;}
+/* 选择首页 */
+.basement .chose-index-box{width: 848px;height: 470px;border: 1px solid #ccc;}
+.basement .chose-index-box .tit{height: 20px;border-left: 4px solid #fc7726;margin: 24px 0 0 45px;padding-left: 5px;line-height: 20px;font-size: 16px;color: #333;}
+.basement .chose-index-box .chose-box{width: 758px;height: 314px;margin: 16px auto 25px auto;border: 1px solid #ccc;}
+.basement .chose-index-box .chose-list{float: left;width: 448px;height: 100%;border-right: 1px solid #ccc;overflow: hidden;position: relative;}
+.basement .chose-index-box .index-box{float: left;width: 120px;margin: 12px 12px 0 12px;position: relative;cursor: pointer;}
+.basement .chose-index-box .index-box div{background: #ccc;}
+.basement .chose-index-box .index-box img{width: 120px;height: 80px;display: block;}
+.basement .chose-index-box .index-box p{width: 120px;height: 20px;margin-top: 9px;line-height: 20px;font-size: 14px;color: #333;text-align: center;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.basement .chose-index-box .index-box .checked-flag{display: none;position: absolute; top: 5px;right: 5px;width: 24px;height: 24px;background: url(../images/bg_right.png) no-repeat center center;}
+.basement .chose-index-box .checked .checked-flag{display: block;}
+.basement .chose-index-box .checked-box{text-align: center;padding-top: 53px;}
+.basement .chose-index-box .checked-box img{width: 268px;height: 182px;}
+.basement .chose-index-box .checked-box p{margin-top: 17px;font-size: 14px;color: #333;text-align: center;}
+/* 个人中心 */
+.basement .psnl-box{width: 100%;}
+.basement .psnl-nav{float: left;width: 200px;border: 1px solid #ccc;background-color: #fff;}
+.basement .psnl-nav .psnl-info{text-align: center;padding: 12px 0 24px 0}
+.basement .psnl-nav .psnl-info .portrait{width: 79px;height: 79px;}
+.basement .psnl-nav .psnl-info .name{font-size: 14px;color: #333;margin-top: 3px}
+.basement .psnl-nav .psnl-nav-list{border-top:1px solid #ccc;padding-bottom:20px;min-height: 300px;}
+.basement .psnl-nav .psnl-nav-list li{border-bottom: 1px solid #ccc;}
+.basement .psnl-nav .psnl-nav-list li a{display: block;height: 40px;border-left: 4px solid transparent;line-height: 40px;font-size: 14px;color: #333;text-align: center;}
+.basement .psnl-nav .psnl-nav-list li a:hover{background: #edf6fe;}
+.basement .psnl-nav .psnl-nav-list li .on{border-left: 4px solid #FF8903;background: #edf6fe;}
+.basement .psnl-con-box{float: left;width: 914px;margin-left: 12px;}
+.basement .cont-top .tit{height: 20px;border-left: 3px solid #FF8903;padding-left: 5px;line-height: 20px;font-size: 16px;color: #333;font-weight: 600;margin:12px;float: left;}
+.basement .psnl-con-box .portrait-box{float: right;margin-top: 54px;margin-right: 100px;}
+.basement .psnl-con-box .portrait-box .portrait{width: 79px;height: 79px;}
+.basement .psnl-con-box .portrait-box .edit-btn{display: block;margin: 5px auto 0;}
+.basement .psnl-info-box{padding: 43px 12px 12px 12px;background-color: #fff;border:1px solid #ccc;}
+.basement .psnl-info-box .info-item{height: 30px;line-height: 30px;font-size: 14px;color: #333;clear: left;}
+.basement .psnl-info-box .info-item .edit-btn{float: left;margin-top: 2px;margin-left: 10px;}
+.basement .psnl-info-box .info-item .ipt{float: left;margin-top: 1px;display: none;text-align: center;}
+.basement .psnl-info-box .info-item .name{float: left;height: 30px;line-height: 30px;}
+.basement .psnl-info-box .info-item .val{float: left;height: 30px;line-height: 30px;}
+/* 个人中心 - 任务 */
+.basement .type-list li{float: left;border-bottom: 4px solid transparent;height: 33px;padding: 0 20px;line-height: 34px;font-size: 14px;color: #333;cursor: pointer;position: relative;}
+.basement .type-list .sep:after{display: block;content: "";height: 24px;width: 1px;background: #ccc;position: absolute;right: 0px;top: 50%;margin-top: -12px;}
+.basement .type-list li:hover{color: #FF8903;}
+.basement .type-list .on{border-bottom: 4px solid #FF8903;color: #FF8903;}
+.basement .search-op{margin-top: 7px;}
+.basement .search-op .srch-slt{float: left;width: 198px;height: 26px;border: 1px solid #ccc;line-height: 26px;font-size: 14px;color: #333;background: url(../images/select_triangle.png) no-repeat;background-position: 176px 0;display: none;}
+.basement .search-op .srch-slt:hover{background-position: 176px -28px;}
+.basement .search-op .more{float: left;height: 28px;width: 50px;margin-left: 35px;margin-right: 20px;background: url(../images/icon_triangle2.png) no-repeat;background-position: 32px 1px;line-height: 28px;font-size: 14px;color: #333;cursor: pointer;}
+.basement .state-chose-list{position: absolute;top: 35px;width: 134px;background: #FCFBFB;border: 1px solid #ccc;display: none;}
+.basement .state-chose-list li{height: 34px;line-height: 34px;font-size: 12px;color: #333;text-align: center;cursor: pointer;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.basement .state-chose-list li:hover{background: #ecf6fe;}
+.basement .state-chose{cursor: pointer;}
+/* 个人中心 - 安全设置 */
+.basement .safe-degree{margin-top: 15px;font-size: 14px;color: #333;font-weight: 600;}
+.basement .safe-degree .level-4{margin-left: 20px;}
+.basement .level-1,.level-2,.level-3,.level-4{display: inline-block;width: 60px;height: 20px;background: #4CA15D;font-size: 12px;color: #fff;text-align: center;line-height: 20px;}
+.basement .level-1{background: #E2384D;}
+.basement .level-2{background: #FFB64E;}
+.basement .level-3{background: #8DD17A;}
+.basement .safe-set-list{border-top: 1px solid #ccc;margin-top: 10px;}
+.basement .safe-set-list li{padding-top: 10px;zoom: 1;}
+.basement .safe-set-list li:after{content: "";display: table;clear: both;}
+.basement .safe-set-list .check-mark{background: url(../images/bg_check_mark.png) no-repeat 22px 23px;}
+.basement .safe-set-list .question-mark{background: url(../images/bg_question_mark.png) no-repeat 27px 21px;}
+.basement .safe-set-list li .type{float: left;width: 122px;height: 40px;padding-right: 18px;line-height: 40px;font-size: 14px;color: #333;font-weight: 600;text-align: right;}
+.basement .safe-set-list li .info{float: left;width: 500px;height: 40px;padding-left: 15px;position: relative;}
+.basement .safe-set-list li .info:before{position: absolute;content: "";display: table;width: 1px;height: 38px;background: #ccc;top: 1px;left: 0;}
+.basement .safe-set-list li .info p{line-height: 20px;font-size: 14px;color: #333;}
+.basement .safe-set-list li .info a{color: #0270D7;}
+.basement .safe-set-list li .info a:hover{text-decoration: underline;}
+.basement .safe-set-list li .info .level-1{margin-top: 10px;margin-right: 10px;}
+.basement .safe-set-list li .info .level-2{margin-top: 10px;margin-right: 10px;}
+.basement .safe-set-list li .info .level-3{margin-top: 10px;margin-right: 10px;}
+.basement .safe-set-list li .info .level-4{margin-top: 10px;margin-right: 10px;}
+.basement .safe-set-list li .set-link{float: right;margin: 10px 60px 0 0;height: 20px;line-height: 20px;font-size: 14px;color: #0270D7;}
+.basement .safe-set-list li .set-link:hover{text-decoration: underline;}
+.basement .safe-set-list li .switch{float: right;width: 52px;height: 32px;margin: 4px 45px 0 0;background: url(../images/icon_switch.png) no-repeat;background-position: 0 0;cursor: pointer;}
+.basement .safe-set-list li .switch.off{background-position: 0 -32px;}
+.basement .safe-set-list li .bind-btn{float: right;width: 88px;height: 26px;margin: 6px 55px 0 0;border: 1px solid #2D4868;border-radius: 4px;line-height: 26px;text-align: center;font-size: 14px;color: #253950;}
+.basement .safe-set-list li .bind-btn:hover{background: #EDF6FE;}
+.basement .page-tit{height: 20px;border-left: 3px solid #FF8903;padding-left: 5px;line-height: 20px;font-size: 16px;color: #333;font-weight: 600;margin:12px;}
+.basement .step-bar{padding-top: 20px;text-align: center;font-size: 0;margin-bottom: 15px;}
+.basement .step-bar .step-img{display: block;margin: 0 auto;margin-bottom: 2px;}
+.basement .step-bar em{display: inline-block;width: 144px;font-size: 14px;color: #999;}
+.basement .step-bar .on{color: #FF8903;}
+.basement .form-box{padding-left: 265px;padding-top: 12px;}
+.basement .form-con li{padding-bottom: 20px;position: relative;zoom: 1;}
+.basement .form-con li:after{content: "";display: table;clear: both;}
+.basement .form-con .item{float: left;width: 205px;padding-right: 3px;height: 28px;line-height: 28px;text-align: right;font-size: 14px;color: #151515;}
+.basement .form-con .item i{font-style: normal;color: #D0011B;margin-right: 2px;}
+.basement .form-con .form-ipt,.form-con .form-l-ipt,.form-con .form-s-ipt{float: left;width: 190px;height: 16px;padding: 5px;border: 1px solid #ccc;line-height: 16px;font-size: 14px;color: #333;}
+.basement .form-con .form-l-ipt{width: 390px;}
+.basement .form-con .form-s-ipt{width: 90px;}
+/*.basement  .form-con .form-ipt:hover,.form-con .form-l-ipt:hover,.form-con .form-s-ipt:hover{border-color: #0270D7;} */
+.basement .form-con .tip{height: 16px;line-height: 16px;font-size: 12px;color: #333;margin-left: 208px;clear: both;}
+.basement .form-con .right{float: left;width: 24px;height: 28px;margin-left: 8px;background: url(../images/bg_right.png) no-repeat center;}
+.basement .form-con .level-1,.form-con .level-2,.form-con .level-3,.form-con .level-4{float: left;}
+.basement .form-con .code-btn{float: left;width: 90px;height: 28px;margin-left: 10px;border-radius: 5px;background: #38577a;line-height: 28px;font-size: 12px;color: #fff;text-align: center;cursor: pointer;}
+.basement .form-con .code-btn:hover{background: #253950;}
+.basement .form-con .tip1{position: absolute;top: 28px;left: 208px;height: 16px;line-height: 16px;font-size: 12px;color: #333;display: none;}
+.basement .form-con .item-value{float: left;height: 28px;line-height: 28px;font-size: 14px;color: #151515;}
+.basement .form-con .code-box{float: left;padding-left: 4px;}
+.basement .form-con .code-box img{height: 28px;float: left;}
+.basement .form-con .code-box .refresh-btn{float: left;padding-left: 4px;;height: 28px;width: 16px;background: url(../images/icon_refresh.png) no-repeat center center;cursor: pointer;}
+.basement .form-box .deal{margin-left: 208px;margin-bottom: 10px;font-size: 14px;color: #4A4A4A;}
+.basement .form-box .deal label{cursor: pointer;}
+.basement .form-box .deal input{vertical-align: -2px;margin-right: 3px;cursor: pointer;}
+.basement .form-box .deal a{color: #0270D7;}
+.basement .form-box .deal a:hover{text-decoration: underline;}
+.basement .form-box .btn-box{padding: 5px 0 15px 0;margin-left: 208px;}
+.basement .form-box .btn{width: 150px;height: 36px;border: 0;background: #FF8903;border-radius: 5px;line-height: 36px;font-size: 14px;color: #fff;cursor: pointer;}
+.basement .form-box .btn:hover{background: #FA9725;}
+.basement .form-box .disabled{background: #cbc9c8;cursor: default;}
+.basement .form-box .disabled:hover{background: #cbc9c8;}
+.basement .form-box .return-btn{margin-left: 24px;line-height: 36px;font-size: 14px;color: #333;cursor: pointer;}
+.basement .form-box .return-btn:hover{color: #0270D7;}
+.basement .result-box{padding: 50px 0 15px;text-align: center;}
+.basement .result-box .success{padding-left: 35px;line-height: 36px;font-size: 22px;color: #333;background: url(../images/bg_right.png) no-repeat left center;}
+/* 用户管理 */
+.basement .search-op-box .srch-ipt{width: 190px;height: 16px;border: 1px solid #ccc;padding: 5px;line-height: 16px;color: #333;}
+.basement .search-op-box .srch-btn{display: inline-block;margin-left: 5px;}
+.basement .search-op-box .srch-ipt:hover{border-color: #0270D7;}
+/* 工作流 */
+.basement .workflow-detail-box{padding-bottom: 30px;position: relative;}
+.basement .workflow-detail-box .disabled-btn,.workflow-detail-box .btnbox{position: absolute;top: 12px;right: 10px;}
+.basement .workflow-detail-box .btnbox .tip{font-size: 12px;line-height: 26px;color: #E2384D;background: url(../images/notice.png) no-repeat left center;padding-left: 17px;}
+.basement .wkflow-list-box{padding-left: 55px;}
+.basement .wkflow-list-box .item{float: left;}
+.basement .wkflow-list-box .step{padding-left: 52px;background: url(../images/arrows_b.png) no-repeat left 57px;}
+.basement .wkflow-list-box .step.gray,.basement .wkflow-list-box .over.gray{background-image: url(../images/arrows_g.png);}
+.basement .wkflow-list-box .add{padding-left: 52px;background: url(../images/arrows_g.png) no-repeat left 57px;}
+.basement .wkflow-list-box .over{padding-left: 52px;background: url(../images/arrows_b.png) no-repeat left 57px;display: none;}
+.basement .wkflow-list-box .item .item-con{width: 96px;padding-top: 45px;}
+.basement .wkflow-list-box .item .flag{width: 40px;height: 43px;margin: 0 28px;background: url(../images/workflow_item.png) no-repeat;}
+.basement .wkflow-list-box .start .flag{background-position: 0 3px;}
+.basement .wkflow-list-box .step .flag{background-position: 0 -47px;position: relative;}
+.basement .wkflow-list-box .add .flag{background-position: 0 -97px;}
+.basement .wkflow-list-box .over .flag{background-position: 0 -147px;}
+.basement .wkflow-list-box .step.gray .flag{background-position: 0 -215px;}
+.basement .wkflow-list-box .over.gray .flag{background-position: 0 -275px;}
+.basement .wkflow-list-box .item .del-btn{position: absolute;top: -24px;left: -1px;height: 25px;width: 44px;line-height: 20px;text-align: center;font-size: 12px;color: #E2384D;cursor: pointer;background: url(../images/bg_rectangle.png) no-repeat;background-position: 0 0;display: none;}
+.basement .wkflow-list-box .item .del-btn:hover{background-position: 0 -25px;}
+.basement .wkflow-list-box .item .text{width: 96px;height: 30px;margin-top: 10px;line-height: 30px;font-size: 14px;color: #333;text-align: center;position: relative;}
+.basement .wkflow-list-box .item .text.current:after{content: "";position: absolute;width: 16px;height: 3px;background-color: #E2384D;border-radius: 2px;left: 50%;margin-left: -8px;bottom: 0;}
+.basement .wkflow-list-box .item .text .ipt{width: 50px;}
+.basement .wkflow-list-box .step .flag:hover,.wkflow-list-box .add .flag:hover{filter:alpha(opacity=80);-moz-opacity:0.8;opacity: 0.8;cursor: pointer;}
+.basement .wkflow-list-box .item .door-btn{display: inline-block;width: 14px;height: 14px;margin-left: 5px;background: url(../images/icon_door.png) no-repeat;background-position: 0 -20px;vertical-align: middle;cursor: pointer;}
+.basement .wkflow-list-box .item .open{background-position: 0 0;}
+.basement .wkflow-con-box{width: 100%;padding-left: 83px;}
+.basement .wkflow-con-box .wkflow-con{padding-top: 24px;position: relative;}
+.basement .wkflow-con-box .wkflow-con[stepIndex='1']{padding-left: 2px;}
+.basement .wkflow-con-box .wkflow-con[stepIndex='2']{padding-left: 150px;}
+.basement .wkflow-con-box .wkflow-con[stepIndex='3']{padding-left: 298px;}
+.basement .wkflow-con-box .wkflow-con[stepIndex='4']{padding-left: 308px;}
+.basement .wkflow-con-box .line{width: 3px;height: 100%;background: #7EBC6C;position: absolute;top: 0;left: 165px;z-index: 0;}
+.basement .wkflow-con-box .add-box{width: 620px;height: 40px;border: 1px solid #ccc;background: #fff;line-height: 40px;text-align: center;font-size: 32px;color: #ccc;cursor: pointer;position: relative;z-index: 1;}
+.basement .wkflow-con-box .wkflow-info-box{width: 620px;border: 1px solid #ccc;padding: 12px 0 15px 0;margin-bottom: 12px;background: #fff;position: relative;z-index: 1;}
+.basement .wkflow-con-box .edit{position: absolute;top: 12px;right: 38px;width: 16px;height: 16px;background: url(../images/icon_edit.png) no-repeat center center;cursor: pointer;}
+.basement .wkflow-con-box .close{position: absolute;top: 12px;right: 10px;width: 16px;height: 16px;background: url(../images/icon_close.png) no-repeat center center;cursor: pointer;}
+.basement .wkflow-con-box .group{padding-bottom: 12px;}
+.basement .wkflow-con-box .group label{float: left;height: 28px;line-height: 28px;width: 100px;padding-left: 12px;font-size: 14px;color: #333;}
+.basement .wkflow-con-box .big-ipt{float: left;}
+.basement .wkflow-con-box .set-group{position: relative;padding: 0 10px 0 112px;font-size: 14px;margin-top: 8px;}
+.basement .wkflow-con-box .role{margin-top: 4px;}
+.basement .wkflow-con-box .set-group .item{position: absolute;top: 0;left: 0;width: 112px;height: 22px;line-height: 22px;text-align: right;color: #333;}
+.basement .wkflow-con-box .set-group i{float: left;color: #333;height: 22px;line-height: 22px;font-style: normal;margin-right: 8px;}
+.basement .wkflow-con-box .set-group .set-btn{float: left;height: 22px;background: url(../images/icon_set.png) no-repeat;background-position: 0 -9px;padding-left: 15px;line-height: 22px;color: #38577A;cursor: pointer;}
+.basement .wkflow-con-box .set-group .set-btn:hover{background-position: 0 -49px;}
+/* 任务中心 */
+.basement .task-box{border: 1px solid #ccc;background-color: #fff;}
+.basement .task-box .task-op-box{height: 54px;}
+.basement .task-box .task-op-box .op-btn{float: left;margin-left: 10px;margin-top: 13px;}
+.basement .task-box .task-op-box .info-btn{float: right;height: 34px;padding-left: 16px;margin: 10px 10px 0 0;line-height: 34px;font-size: 14px;color: #333;cursor: pointer;background: url(../images/icon_flow.png) no-repeat;background-position: 0 0;}
+.basement .task-box .task-op-box .info-btn:hover{background-position: 0 -34px;color: #0270D7;}
+.basement .task-box .task-opinion-box{border-top: 1px solid #ccc;height: 182px;display: none;}
+.basement .task-box .task-opinion-box .ipt-box{width: 1104px;height: 108px;border: 1px solid #ccc;margin: 20px auto 0;position: relative;}
+.basement .task-box .task-opinion-box .tit{position: absolute;top: -10px;left: 50px;height: 20px;padding: 0 24px;background: #fff;line-height: 20px;font-size: 14px;color: #333;}
+.basement .task-box .task-opinion-box .num{position: absolute;top: -10px;right: 30px;height: 20px;padding: 0 15px;background: #fff;line-height: 20px;font-size: 14px;color: #333;}
+.basement .task-box .task-opinion-box textarea{display: block;width: 1060px;height: 80px;border: 0;margin: 15px auto 0 auto;line-height: 25px;font-size: 18px;color: #333;resize: none;}
+.basement .task-box .task-opinion-box .btn-box{text-align: center;padding-top: 8px;}
+.basement .task-box .task-opinion-box .cancel{margin-left: 24px;line-height: 36px;font-size: 14px;color: #333;cursor: pointer;}
+.basement .task-box .task-opinion-box .cancel:hover{color: #0270D7;}
+.basement .task-box .process-cont{border-top: 1px solid #ccc;}
+.basement .task-box .task-con-box{border-top: 1px solid #ccc;height: 300px;padding: 15px 20px;}
+.basement .task-box .task-con-box .task-name{height: 24px;line-height: 24px;text-align: center;font-size: 14px;color: #333;font-weight: 600;}
+
+/* 流程 */
+.basement .process-cont-patch{border-top: 1px solid #ccc; margin-top: -1px; background-color: #fff;}
+.basement .ph-cont{padding: 34px 170px 34px 95px; font-size: 14px; line-height: 30px; color: #38577A;}
+.basement .ph-cont .row.title{color: #333; line-height: 1.2;}
+.basement .ph-cont .row.refused{color: #E2384D;}
+.basement .ph-cont .row{padding-bottom: 25px; position: relative; padding-left: 62px; border-left: 3px solid #ccc;}
+.basement .ph-cont .row>p{float: left; width: 20%; text-align: left;}
+.basement .ph-cont .row .index{width: 30px; height: 30px; background-color: #7EBC6C; border-radius: 15px; position: absolute; left: -17px; top: 0; font-size: 18px; line-height: 30px; color: #fff; text-align: center;}
+.basement .ph-cont .row.refused .index{background-color: #E2384D;}
+.basement .process-cont-patch.scroll{position: relative; overflow: hidden; height: 380px; width: 100%;}
+.basement .process-cont-patch.graph{padding: 25px 31px; font-size: 14px; line-height: 22px; color: #151515;}
+.basement .process-cont-patch .wkflow-list-box{padding-left: 0; margin-left: -28px;}
+.basement .process-cont-patch .wkflow-list-box .step .flag:hover{opacity: 1; cursor: default; filter: alpha(opacity=100);}
+.basement .process-cont-patch .wkflow-list-box .over{display: block;}
+/*企业信息*/
+.basement .list-patch .title{background-color: #EDF6FE; ; font-size: 14px; line-height: 30px; color: #333; padding-left: 38px; font-weight: bolder;}
+.basement .list-patch .cont{padding-left: 62px; font-size: 14px; line-height: 30px; color: #333;}
+.basement .info-grid .link{color: #0270D7;}
+.basement .info-grid .link:hover{text-decoration: underline;}
+.basement .search-op-box .text{font-size: 14px; line-height: 28px; color: #333; width: 80px; text-align: right; float: left;}
+.basement .grid-btn-box .tip{font-size: 14px; line-height: 26px; color: #151515;}
+/*新增用户*/
+.basement .user-cont .form-box{padding: 30px 0 30px 253px;}
+.basement .form-con .info-tip{font-size: 14px; line-height: 28px; color: #333; padding-left: 28px; background-repeat: no-repeat; background-position: left center; margin-left: 9px; margin-right: 20px; float: left;}
+.basement .form-con .info-tip.suc{background-image: url(../images/bg_right.png);display: none;}
+.basement .form-con .info-tip.failed{background-image: url(../images/icon_warn.png);display: none;}
+.basement .list-patch .btn-contain{padding-top: 10px; padding-left: 208px; font-size: 0;}
+.basement .bind-role{padding: 30px 0;}
+.basement .bind-box{width: 732px; margin: 0 auto;}
+.basement .bind-box .tip{font-size: 14px; line-height: 20px; color: #151515;}
+.basement .bind-oper{border: 1px solid #ccc; background-color: #fff; font-size: 12px; line-height: 1; color: #333; padding: 12px 20px;}
+.basement .bind-oper-patch{float: left;}
+.basement .bind-oper-patch .list{width: 302px; height: 207px; line-height: 24px; border: 1px solid #ccc; position: relative; overflow: hidden;}
+.basement .bind-oper-patch .list>li{padding: 0 10px;}
+.basement .bind-oper-patch .list>li:hover{background-color: #EDF6FE; cursor: pointer;}
+.basement .bind-oper-patch .list .on{background-color: #EDF6FE; color: #0270D7;}
+.basement .bind-oper-but{padding-top: 10px; float: left;}
+.basement .bind-oper-but .arrow{background-repeat: no-repeat; background-position: center; width: 28px; height: 28px; margin: 8px 27px 0; background-image: url(../images/bind_arrow.png); background-color: #fff; display: block; border: none;}
+.basement .bind-oper-but .arrow:hover{cursor: pointer;}
+.basement .bind-oper-but .arrow.one_right{background-position: 0 0;}
+.basement .bind-oper-but .arrow.two_right{background-position: 0 -51px;}
+.basement .bind-oper-but .arrow.one_left{background-position: 0 -104px;}
+.basement .bind-oper-but .arrow.two_left{background-position: 0 -158px;}
+.basement .bind-oper-but .arrow.up{background-position: 0 -221px;}
+.basement .bind-oper-but .arrow.down{background-position: 0 -299px;}
+.basement .ass-per-top{padding: 12px 0;}
+.basement .ass-per-top .msg{float: left; font-size: 14px; line-height: 28px; color: #333; padding-left: 58px; background: url(../images/account.png)no-repeat 40px center;}
+.basement .role_oper{padding: 12px 0 6px;}
+.basement .role_oper>li{font-size: 12px; line-height: 1; color: #333; padding-bottom: 6px;}
+.basement .role_oper .text input{margin-right: 5px;}
+.basement .oper-result{padding: 40px 0 30px 426px;}
+.basement .oper-result .msg{padding-left: 31px; font-size: 22px; line-height: 30px; color: #333; background: url(../images/bg_right.png) no-repeat left center;}
+.basement .oper-result .detail{font-size: 14px; line-height: 24px; color: #333; padding-top: 5px; text-align: left; padding-left: 31px;}
+/*新增角色*/
+.basement .role-cont .form-box{padding: 30px 0 30px 77px;}
+.basement .role-cont .form-box .form-con{margin-left: -15px; width: 100%;}
+.basement .form-box .little-title{font-size: 14px; line-height: 20px; color: #333; padding-left: 108px; padding-bottom: 16px; font-weight: bolder;}
+.basement .role-ahy{border: 1px solid #ccc; width: 730px; height: 235px; background-color: #fff; margin-left: 108px; font-size: 0;}
+.basement .role-ahy:after{content: ""; display: inline-block; vertical-align: middle; width: 0; height: 100%;}
+.basement .role-ahy .fct-set-box{width: 530px; border-right: 1px solid #ccc; display: inline-block; vertical-align: middle; position: relative; height: 100%; overflow: hidden;}
+.basement .role-ahy-but{width: 199px; display: inline-block; vertical-align: middle; text-align: center;}
+.basement .role-ahy-but .op-btn{display: block; margin-left: auto; margin-right: auto;}
+.basement .role-ahy .fct-set-box .item-box{padding: 25px 40px 0 25px;}
+/*分配账户*/
+.basement .cont-horizontal{font-size: 14px; line-height: 17px; color: #333; padding: 12px 0 12px 38px;}
+.basement .act-srh-box .search-op-box{margin-top: 8px;}
+.basement .user-aut-cont .ass-per-top{padding: 10px 0 0;}
+.basement .role-modify .role-ahy{margin: 20px auto 30px;}
+/*分配用户*/
+.basement .role-assign-user .form-con{margin: 30px 0 12px 62px;}
+
+/* 收件箱 tab切换 */
+
+.basement .type-list.msg-tab li {line-height: 40px; height: 40px;}
+.basement .cont-top .type-list li {line-height: 40px; height: 40px; padding: 0 20px;}
+.basement .cont-top .type-list li a{display: inline-block;padding: 0 20px;}
