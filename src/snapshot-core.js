@@ -10,7 +10,7 @@
  * 
  * !!TEXT~INPUTS~~!TEXT~INPUTS
  *  
- * 标签前缀：ss-
+ * 统一前缀：ss-
  * 
  */
 

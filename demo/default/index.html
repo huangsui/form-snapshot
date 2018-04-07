@@ -3,6 +3,7 @@
   <title>快照演示</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="./css/docs.min.css">
   <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
 </head>
 <body>
@@ -39,9 +40,47 @@
       <h2>简洁、直观、可扩展的快照框架，让web表单快速识别。</h2>
     </div>
   </div>
-  <div class="container bs-docs-container">
-    以下将补充使用说明文档（参照Bootstrap在线文档模式）
-  </div>
+  <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+<h2>快速开始</h2>
+<p>最简单的工单快照只需要通过依赖、注册、Ajax三步即可完成。</p>
+<h3 id="css"><div>依赖</div></h3>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"../../lib/jquery/jquery-3.2.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"../../dist/snapshot.standard-1.0.0.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></figure>
+
+<h3>注册</h3>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"./js/snapshot.tbsp.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></figure>
+<p> snapshot.tbsp.js 中对各类组件进行注册 :</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html">  Snapshot.register(<span class="s1">"default-filter"</span>);
+  Snapshot.register(<span class="s1">"form-filter"</span>);
+  Snapshot.register(<span class="s1">"form-processor"</span>);
+  Snapshot.register(<span class="s1">"form-convertor"</span>);
+  Snapshot.register(<span class="s1">"table-processor"</span>);
+  Snapshot.register(<span class="s1">"table-convertor"</span>);
+</code></pre></figure>
+<h3>Ajax</h3>
+<p>定义快照目标:</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html">$.ajax({
+    url: "http://www.baidu.com",
+    method: "post",
+    <span class="s1">ss: "#form1",</span>
+    data: {
+      "a": "b"
+    },
+    success: function() {}
+});
+</code></pre></figure>
+
+<h2>说明</h2>
+<p>快照组件目前还处在初期阶段，暂时还不能自动支持各种复杂元素或结构。</p>
+<p>snapshot.tbsp.js 中的注册组件在快照框架中已经提供，如果不满足需求是可以替换，或者补充更多的组件。</p>
+<p>快速开始 的demo请点击：<a href="./tryit/quickstart.html" target="_blank">Try it Yourself</a></p>
+        </main>
+      </div>
+    </div>
 
   
 

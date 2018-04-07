@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<title>Tryit Editor v2.7</title>
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./css/trystyle.css">
+<!--[if lt IE 8]>
+<style>
+.textareacontainer, .iframecontainer {width:48%;}
+.textarea, .iframe {height:800px;}
+#textareaCode, #iframeResult {height:700px;}
+.menu img {display:none;}
+</style>
+<![endif]-->
+
+
+<script type="text/javascript">
+function submitTryit() {
+  var text = document.getElementById("textareaCode").value;
+  var ifr = document.createElement("iframe");
+  ifr.setAttribute("frameborder", "0");
+  ifr.setAttribute("id", "iframeResult");  
+  document.getElementById("iframewrapper").innerHTML = "";
+  document.getElementById("iframewrapper").appendChild(ifr);
+  var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
+  ifrw.document.open();
+  ifrw.document.write(text);  
+  ifrw.document.close();
+  //23.02.2016: contentEditable is set to true, to fix text-selection (bug) in firefox.
+  //(and back to false to prevent the content from being editable)
+  //(To reproduce the error: Select text in the result window with, and without, the contentEditable statements below.)  
+  if (ifrw.document.body && !ifrw.document.body.isContentEditable) {
+    ifrw.document.body.contentEditable = true;
+    ifrw.document.body.contentEditable = false;
+  }
+}
+//horizontal = false;
+function restack(horizontal) {
+    var tc, ic, t, i, c, f, height, flt, width;
+//    horizontal = !horizontal;
+    tc = document.getElementsByClassName("textareacontainer")[0];
+    ic = document.getElementsByClassName("iframecontainer")[0];
+    t = document.getElementsByClassName("textarea")[0];
+    i = document.getElementsByClassName("iframe")[0];
+    c = document.getElementsByClassName("container")[0];    
+    f = document.getElementsByClassName("footerText")[0];
+    tc.className = tc.className.replace("horizontal", "");
+    ic.className = ic.className.replace("horizontal", "");        
+    t.className = t.className.replace("horizontal", "");        
+    i.className = i.className.replace("horizontal", "");        
+    c.className = c.className.replace("horizontal", "");                        
+    f.className = f.className.replace("horizontal", "");        
+    if (horizontal) {
+        tc.className = tc.className + " horizontal";
+        ic.className = ic.className + " horizontal";        
+        t.className = t.className + " horizontal";        
+        i.className = i.className + " horizontal";                
+        c.className = c.className + " horizontal";                
+        f.className = f.className + " horizontal";                                
+    }
+}
+</script>
+<style>
+.headerText {
+  line-height:2.2;
+}
+.textareawrapper {
+  height:93%;
+}
+.iframewrapper {
+  height:93%;
+}
+.textareacontainer,.iframecontainer{
+  transition:all ease 0.2s;
+}
+.textareacontainer.horizontal,.iframecontainer.horizontal{
+  height:48%;
+  float:none;
+  width:100%;
+}
+.textarea.horizontal{
+  height:98%;
+  padding-left:0.75%;
+}
+.iframe.horizontal{
+  padding-right:0.75%;
+  padding-bottom:0;
+}
+.container.horizontal{
+  min-width:260px;
+  min-height:550px;
+}
+.textarea, .iframe {
+  padding-top:0;
+}
+.textarea {
+  padding-left:1.5%;
+  padding-right:0.75%;  
+}
+.iframe {
+  padding-left:0.75%;
+  padding-right:1.5%;  
+}
+.footerText.horizontal{
+  display:none;
+}
+.seeResult {
+  line-height:2.2; 
+}
+.stackcontainer {
+    padding-top:8px;
+}
+.stackcontainer input {
+    width:16px;
+    height:16px;
+}
+@media only screen and (max-device-width: 768px) {
+    .headerText  {
+        line-height:1.5;
+    }
+    .seeResult {
+        font-size:12px; 
+        line-height:1.5; 
+    }
+    .textareawrapper, .iframewrapper {
+        height:97%;
+    }
+    @media screen and (orientation:portrait) {
+        .textareawrapper {
+            height:100%;
+        }
+        .iframewrapper {
+            height:98%;
+        }
+        .textarea, .iframe {
+            padding-left:1%;
+            padding-right:0;            
+        }
+    }
+}
+</style>
+</head>
+<body>
+
+
+<div class="container ">
+  <div class="textareacontainer ">
+    <div class="textarea ">
+      <div style="overflow:auto;">
+        <div class="headerText">Edit This Code:</div>
+        <button class="seeResult" type="button" onclick="submitTryit()">See Result »</button>
+      </div>
+      <div class="textareawrapper">
+        <textarea autocomplete="off" class="code_input" id="textareaCode" wrap="logical" spellcheck="false">
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="./../bootstrap/bootstrap.min.css">
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="../../../dist/snapshot.standard-1.0.0.js"></script>
+<script type="text/javascript" src="../../../plugin/snapshot-preview/snapshot-preview.js"></script>
+<script type="text/javascript">
+  Snapshot.register("default-filter");
+  Snapshot.register("form-filter");
+  Snapshot.register("form-processor");
+  Snapshot.register("form-convertor");
+  Snapshot.register("table-processor");
+  Snapshot.register("table-convertor");
+</script>
+<script>
+function test(){
+  $.ajax({
+    url: "http://www.baidu.com",
+    method:"post",
+    ss: "#form1",
+    data: {"a": "b"},
+    success: function() {
+      console.log("success!");
+    }
+  });
+  return false;
+}
+</script>
+</head>
+<body>
+<div class="col-md-8 order-md-1">
+    <h4 class="mb-3">Billing address</h4>
+    <form id="form1" class="needs-validation" novalidate="">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstName">First name</label>
+          <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+          <div class="invalid-feedback">
+            Valid first name is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Last name</label>
+          <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+          <div class="invalid-feedback">
+            Valid last name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="username">Username</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">@</span>
+          </div>
+          <input type="text" class="form-control" id="username" placeholder="Username" required="">
+          <div class="invalid-feedback" style="width: 100%;">
+            Your username is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email">Email <span class="text-muted">(Optional)</span></label>
+        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+        <div class="invalid-feedback">
+          Please enter a valid email address for shipping updates.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+        <div class="invalid-feedback">
+          Please enter your shipping address.
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5 mb-3">
+          <label for="country">Country</label>
+          <select class="custom-select d-block w-100" id="country" required="">
+            <option value="">Choose...</option>
+            <option>United States</option>
+          </select>
+          <div class="invalid-feedback">
+            Please select a valid country.
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" id="zip" placeholder="" required="">
+          <div class="invalid-feedback">
+            Zip code required.
+          </div>
+        </div>
+      </div>
+      <hr class="mb-4">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address">
+        <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="save-info">
+        <label class="custom-control-label" for="save-info">Save this information for next time</label>
+      </div>
+      <hr class="mb-4">
+
+      <h4 class="mb-3">Payment</h4>
+
+      <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+          <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+          <label class="custom-control-label" for="credit">Credit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+          <label class="custom-control-label" for="debit">Debit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+          <label class="custom-control-label" for="paypal">Paypal</label>
+        </div>
+      </div>
+      <hr class="mb-4">
+      <button onclick="test()" class="btn btn-primary btn-lg btn-block">Continue to checkout</button>
+    </form>
+  </div>
+</body>
+</html>
+
+</textarea>
+          <form autocomplete="off" style="margin:0px;display:none;">
+            <input type="hidden" name="code" id="code">
+            <input type="hidden" id="bt" name="bt">
+          </form>
+       </div>
+    </div>
+  </div>
+  <div class="iframecontainer ">
+    <div class="iframe ">
+      <div style="overflow:auto;">
+        <div class="headerText">Result:</div>
+        <div class="stackcontainer">
+          <label for="stackhorizontally" title="Horizontally"><img src="./images/stack_horizontally.png"></label><input id="stackhorizontally" type="radio" onclick="restack(true)" name="stack" title="Horizontally">        
+          <label for="stackvertically" title="Vertically"><img src="./images/stack_vertically.png" style="margin-right:10px;"></label><input id="stackvertically" type="radio" onclick="restack(false)" name="stack" title="Vertically" checked="">
+        </div>        
+      </div>
+      <div id="iframewrapper" class="iframewrapper"><iframe frameborder="0" id="iframeResult"></iframe></div>
+    </div>
+  </div>     
+</div>
+<script>
+submitTryit();
+//document.getElementById("stackhorizontally").click();
+</script>
+
+</body></html>
