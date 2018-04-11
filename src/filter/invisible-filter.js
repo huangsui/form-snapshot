@@ -2,8 +2,12 @@ const Snapshot = require('../snapshot-core');
 
 "use strict";
 
+/**
+    不可见元素过滤器 
+    过滤所有不可见元素，如果部分不可见元素需要正常加载，那么请添加“s-reborn”属性
+*/
 var filter = new function() {
-    this.name = "default-filter";
+    this.name = "invisible-filter";
     this.init = function(config) {
 
     };
@@ -18,8 +22,10 @@ var filter = new function() {
         var note = args[1];
         var ctx = args[2];
 
-        if ($(node).attr("s-ignore")) {
-            return;
+        if (node.nodeType == 1 && !$(node).is(":visible")) {
+            if(!$(node).attr("s-reborn")){
+                return;
+            }
         }
 
         return filterChain.filter.apply(filterChain, args);
@@ -27,3 +33,4 @@ var filter = new function() {
 }
 
 Snapshot.cache(filter);
+
