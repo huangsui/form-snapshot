@@ -50,8 +50,9 @@ var convertor = new function() {
                 default:
                     throw "nodeName is unknown!" + item2.nodeName;
             }
+            html += "</div></div>";
         } else if (/^!*(~*INPUTS\:(CHECKBOX|RADIO)~+TEXT)+$/g.test(note.manifest)) {
-            html = "<div class=\"col-sm-offset-1 form-group col-md-" + i + "\">";
+            html = "<div class=\"col-sm-offset-1 form-group\" style=\"display:inline-block;\">";
             for (var i = 0; i < note.subNotes.length; i++) {
                 var subNote = note.subNotes[i];
                 switch (subNote.nodeType) {
@@ -62,15 +63,16 @@ var convertor = new function() {
                         html += "<input type='checkbox' " + attrs2html(subNote.attrs) + "/> ";
                         break;
                     case "INPUTS:RADIO":
-                        html += "<input type='radio' " + attrs2html(subNote.attrs) + "/> ";
+                        html += "<input type='radio' " + attrs2html(subNote.attrs) + " /> ";
                         break;
                     default:
                         throw "nodeType is unknown!" + subNote.nodeType;
                 }
             }
+            html += "</div>";
         }
 
-        html += "</div></div>";
+        
 
         return html;
     };

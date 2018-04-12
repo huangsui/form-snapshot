@@ -41,7 +41,8 @@
 				desc:"",
 				cases:[//实例
 					"./case/checkbox1.html",
-					"./case/checkbox2.html"
+					"./case/checkbox2.html",
+					"./case/checkbox3.html"
 				]},
 				{//章节
 				id:"std-form-textarea",

@@ -93,7 +93,7 @@
 	 * 
 	 * !!TEXT~INPUTS~~!TEXT~INPUTS
 	 *  
-	 * 标签前缀：ss-
+	 * 统一前缀：ss-
 	 * 
 	 */
 
@@ -724,8 +724,9 @@
 	                default:
 	                    throw "nodeName is unknown!" + item2.nodeName;
 	            }
+	            html += "</div></div>";
 	        } else if (/^!*(~*INPUTS\:(CHECKBOX|RADIO)~+TEXT)+$/g.test(note.manifest)) {
-	            html = "<div class=\"col-sm-offset-1 form-group col-md-" + i + "\">";
+	            html = "<div class=\"col-sm-offset-1 form-group\" style=\"display:inline-block;\">";
 	            for (var i = 0; i < note.subNotes.length; i++) {
 	                var subNote = note.subNotes[i];
 	                switch (subNote.nodeType) {
@@ -736,15 +737,16 @@
 	                        html += "<input type='checkbox' " + attrs2html(subNote.attrs) + "/> ";
 	                        break;
 	                    case "INPUTS:RADIO":
-	                        html += "<input type='radio' " + attrs2html(subNote.attrs) + "/> ";
+	                        html += "<input type='radio' " + attrs2html(subNote.attrs) + " /> ";
 	                        break;
 	                    default:
 	                        throw "nodeType is unknown!" + subNote.nodeType;
 	                }
 	            }
+	            html += "</div>";
 	        }
 
-	        html += "</div></div>";
+	        
 
 	        return html;
 	    };
@@ -960,36 +962,6 @@
 	    }
 	});
 
-	/*
-	 * 消费展示快照
-	 */
-	function _consume(serialNo, callback) {
-
-	    var _ss = '{"type":"tpl","version":"1.0.0","tpl":"./tmpl/dsgj.art","data":{"relExaNo":"f7fac8dfab6f46e2b7ddae038b921a89","fdpAcctInfoDto":{"acctGenus":"11","acctKind":"01","acctType":"1","assetName":"小伙子有前途","assetRealNo":"12345678905678","assetUnit":"01","selfBal":2000,"startDate":"20170829","subProdCode":"11030300100000000004","upBal":0,"useBal":2000,"virUpBal":0},"fdpInterInfoDto":{"interType":"00","interCycle":"","interAssignFlag":""},"loanType":"0","fdpUpInfoDto":{"uType":"2","uCycleType":"1","uCycle":"2,3,2","uTime":"0:00","uTrgAmt":"10","uKeepAmt":"10","uMaxAmt":"100","uRule":"2","uPar":"0.1"},"fdpDownInfoDto":{"dType":"1","fdpPri":"1","dCycleType":"0","dCycle":",","dTime":"0:00,1:00","dRule":"2","dPar":"2","overUFlag":"0"},"bizSurtax":"","stampTax":"","bizTax":"","exceedLimit":"","fdpLoanDto":{"loanType":"0","bizSurtax":"","stampTax":"","bizTax":""}}}'
-	    var ss = JSON.parse(_ss)
-
-	    if (ss.type == 'tpl') {
-	        callback(ss)
-	    }
-
-	    /*  在业务代码中 加入用于渲染的逻辑
-
-	     var render = function(ss) {
-	     var el = $('.workflow')
-	     var tmpl = require('' + ss.tpl)
-	     var data = ss.data
-	     el.html(tmpl(data))
-
-	     //transfer
-
-	     }
-	     var snapshot = new Snapshot()
-	     snapshot.consume(serialNo, render)
-	     */
-
-
-	}
-
 	Snapshot.beforePublish = beforePublish;
 	Snapshot.consume = consume;
 
@@ -1104,20 +1076,17 @@
 	                if (options.data.indexOf("_ss=") > 0) {
 	                    throw "The parameter named \"_ss\" is reserved for Snapshot."
 	                }
-	                if (options.data.indexOf("?") < 0) {
-	                    options.data += "?";
-	                }
-	                options.data += "&_ss=" + ssResult;
+	                options.data += "&_ss=" + encodeURIComponent(JSON.stringify(ssResult));
 	            } else {
 	                if (typeof options.data._ss != "undefined") {
 	                    throw "The parameter named \"_ss\" is reserved for Snapshot."
 	                }
-	                options.data._ss = JSON.stringify(ssResult);
+	                options.data._ss = encodeURIComponent(JSON.stringify(ssResult));
 	            }
 	        }
 
 	        //delete options.ss;
-	        Snapshot._ajax_.apply($, arguments);
+	        return Snapshot._ajax_.apply($, arguments);
 	    }
 
 	    Snapshot.proxyAjax.proxy = "snapshot";
