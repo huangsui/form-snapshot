@@ -448,8 +448,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 __webpack_require__(2);
 
-__webpack_require__(10);
 __webpack_require__(11);
+__webpack_require__(12);
 
 
 
@@ -469,11 +469,12 @@ __webpack_require__(3);
 //--- Configurable behind here ---
 __webpack_require__(4);
 __webpack_require__(5);
-
 __webpack_require__(6);
+
 __webpack_require__(7);
 __webpack_require__(8);
 __webpack_require__(9);
+__webpack_require__(10);
 
 
 
@@ -586,6 +587,48 @@ Snapshot.cache(filter);
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+const Snapshot = __webpack_require__(0);
+
+"use strict";
+
+/**
+    不可见元素过滤器 
+    过滤所有不可见元素，如果部分不可见元素需要正常加载，那么请添加“s-reborn”属性
+*/
+var filter = new function() {
+    this.name = "invisible-filter";
+    this.init = function(config) {
+
+    };
+    /*
+        http://www.w3school.com.cn/jsref/prop_node_nodetype.asp
+        nodeType 属性返回以数字值返回指定节点的节点类型。
+        如果节点是元素节点，则 nodeType 属性将返回 1。
+        如果节点是Text节点，则 nodeType 属性将返回 3。
+    */
+    this.filter = function(args, filterChain) {
+        var node = args[0];
+        var note = args[1];
+        var ctx = args[2];
+
+        if (node.nodeType == 1 && !$(node).is(":visible")) {
+            if(!$(node).attr("s-reborn")){
+                return;
+            }
+        }
+
+        return filterChain.filter.apply(filterChain, args);
+    };
+}
+
+Snapshot.cache(filter);
+
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 
 
 const Snapshot = __webpack_require__(0);
@@ -640,7 +683,7 @@ Snapshot.cache(filter);
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -686,7 +729,7 @@ Snapshot.cache(pr);
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -781,7 +824,7 @@ Snapshot.cache(convertor);
 //module.exports = pr;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -859,7 +902,7 @@ Snapshot.cache(pr);
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -912,7 +955,7 @@ Snapshot.cache(convertor);
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const Snapshot = __webpack_require__(0);
@@ -982,7 +1025,7 @@ Snapshot.beforePublish = beforePublish;
 Snapshot.consume = consume;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 (function(global, Snapshot, $) {

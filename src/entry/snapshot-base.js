@@ -6,6 +6,7 @@ require('../filter/base-filter');
 
 //--- Configurable behind here ---
 require('../filter/default-filter');
+require('../filter/invisible-filter');
 require('../filter/form-filter');
 
 require('../processor/form-processor');
