@@ -6,6 +6,7 @@ const Snapshot = require('../snapshot-core');
 
 var convertor = new function(){
     this.name = "table-convertor";
+    this.bind = "table-processor";
     this.init = function(config){
 
     };

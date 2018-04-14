@@ -23,7 +23,7 @@ var ManifestFactory = function(){
                 var subNote = note.subNotes[i];
                 high = Math.max(subNote.high+1, high);
                 if(subNote.assign){
-                    manifest = "GROUP";
+                    manifest = "GROUP";//MANY
                     break;
                 }else{
                     manifest = (manifest?manifest+"||":"!")+subNote.manifest; 

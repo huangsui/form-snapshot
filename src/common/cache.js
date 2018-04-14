@@ -16,7 +16,18 @@ var Cache = function(){
         }else if(arguments.length==2){
             caches[arguments[0]] = arguments[1];
         }
+        return this;
     }
+
+    this.get = function(name){
+        return caches[name];
+    }
+
+    this.set = function(name, value){
+        caches[name] = value;
+        return this;
+    }
+
 };
 
 module.exports = Cache;

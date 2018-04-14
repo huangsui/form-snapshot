@@ -22,10 +22,15 @@
     const VERSION = "1.0.0";/*版本*/
     const Note = require('./core/note-factory.js');
     const FilterChain = require('./core/filter-chain.js');
+    const HtmlFactory = require('./core/note-convert.js');
     const Util = require('./common/util.js');
     const Cache = require('./common/cache.js');
 
     var that = this;
+    var htmlFactory = new HtmlFactory();
+    var aCache = new Cache();
+    var processors = [];
+    var filterChain = new FilterChain();
 
     var ProcessContext = function(node, opts){
         this.noteRoot = null;
@@ -50,20 +55,19 @@
         }
     }
 
-    var filterChain = new FilterChain();
-
     var scan = function(node, note, ctx){
         if(node.childNodes.length>0){
             var _pnote = ctx.pnote || ctx.noteRoot;
             ctx.pnote = note;
-            for( var i=0; i<node.childNodes.length; i++ ){
-                var subNode = node.childNodes[i];
+
+            $.each(node.childNodes, function(idx, subNode){
                 var subNote = note.createSubNote(subNode);
-                result = through( subNode, subNote, ctx );
+                var result = through( subNode, subNote, ctx );
                 if(result){
                     note.appendChild(result);
-                }               
-            }
+                }
+            });
+
             ctx.pnote = _pnote;            
         }
 
@@ -73,12 +77,10 @@
     var through = function( node, note, ctx ) {
         var result = note;
 
-        processorChain.reset();
-        while(processorChain.hashNext()){
-            var pr = processorChain.next();
+        for( var i=0; i < processors.length; i++ ){
+            var pr = processors[i];
             if(pr.matchNode && pr.matchNode(node, note, ctx)){
-                result = pr.process(node, note, ctx);
-                return result;
+                return pr.process(node, note, ctx);
             }else if(note.assign){
                 break;
             }
@@ -87,13 +89,16 @@
         scan( node, note, ctx );
         
         if(note.assign){
-            var pr = processorChain.get(note.assign);
-            return pr.process(node, note, ctx);
+            for( var i=0; i < processors.length; i++ ){
+                var pr = processors[i];
+                if(pr.name == note.assign){
+                    return pr.process(node, note, ctx);
+                }
+            }
         }else{
             //有货单
-            processorChain.reset();
-            while(processorChain.hashNext()){
-                var pr = processorChain.next();
+            for( var i=0; i < processors.length; i++ ){
+                var pr = processors[i];
                 if(pr.matchManifest && pr.matchManifest(node, note, ctx)){
                     return pr.process(node, note, ctx);
                 }
@@ -103,6 +108,8 @@
         return note;            
         
     };
+    
+    through = filterChain.weave(through);
 
     var Snapshot = function( options ) {
 
@@ -119,38 +126,10 @@
 
     };
 
-    var processorChain = {
-        chain:[],
-        curIdx:-1,
-        add:function(pr){
-            if(pr.init)pr.init();
-            this.chain.push(pr); 
-        },
-        reset:function(){
-            this.curIdx = -1;
-        },
-        hashNext:function(){
-            return (this.curIdx+1) < this.chain.length;
-        },
-        next:function(){
-            return this.chain[++this.curIdx];
-        },
-        get:function(name){
-            for (var i = chain.length - 1; i >= 0; i--) {
-                var pr = chain[i];
-                if(pr.name = name){
-                    return pr;
-                }
-            }
-        }        
-    };
 
-    var aCache = new Cache();
     Snapshot.cache = function(){
         return aCache.cache.apply(aCache, arguments);
     }
-
-    var convertors = new Cache();
 
     Snapshot.register = function(){
         for (var i = 0; i < arguments.length; i++) {
@@ -163,14 +142,16 @@
                     throw "Snapshot cannot find \""+arg+"\" in caches ";
                 }
             }else if(arg.name.indexOf("-processor")>0){
-                processorChain.add(arg);
+                processors.push(arg);
                 if(typeof arg.convert === "function"){
-                    convertors.cache(arg);
+                    htmlFactory.equip(arg);
+                    console.log("register convertor:"+arg.name);
                 }
             }else if(arg.name.indexOf("-filter")>0){
                 filterChain.add(arg);
             }else if(arg.name.endsWith("-convertor")){
-                convertors.cache(arg.bind, arg);
+                htmlFactory.equip(arg.bind, arg);
+                console.log("register convertor:"+arg.bind);
             }else{
                 Snapshot.cache(arg);
             }            
@@ -190,46 +171,12 @@
             }
             return this;
         }
-    }
-
-
-    through = filterChain.weave(through);
-
+    }    
     
-    var convertArray = function(arr, ctx){
-        var html = "";
-        for (var i = 0; i < arr.length; i++) {
-            html += convert(arr[i], ctx);
-        }
-        return html;
-    }
-
-    var convert = function(arg, ctx){
-        if(!arg){
-            throw "convert param is required.";
-        }else if(arg instanceof Array){
-            return convertArray.call(this, arg, ctx);
-        }
-
-        if(!ctx || !ctx.root){
-            ctx = {root:arg};
-        }
-
-        var html = "", note = arg;
-        var cvt = convertors.cache(note.assign);
-        html = cvt.convert(note, ctx);
-
-        if( note.manifest == "GROUP" || note.subNotes){
-            ctx.parent = note;
-            html += convert(note.subNotes, ctx);
-            //ctx.parent is dirty here.
-        }      
-
-        return html;
+    Snapshot.convert = function(){
+        return htmlFactory.convert.apply(htmlFactory, arguments);
     };
-
-    Snapshot.convert = convert;
-    Snapshot.fn.convert = convert;
+    Snapshot.fn.convert = Snapshot.convert;
     
     global.Snapshot = Snapshot;
 

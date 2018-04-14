@@ -4,7 +4,7 @@
 
 var convertor = new function() {
     this.name = "form-convertor";
-    this.bing = "form-processor";
+    this.bind = "form-processor";
 
     this.convert = function(note, ctx) {
         var i = 6,
