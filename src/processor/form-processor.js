@@ -6,9 +6,14 @@ const Snapshot = require('../snapshot-core');
 
 var pr = new function(){
     this.name = "form-processor";
-    this.init = function(config){
 
-    };
+    this.beforeProcess = function(node, note, ctx){
+
+    }
+
+    this.afterProcess = function(node, note, ctx){
+
+    }
 
     this.matchNode = function(node, note, ctx){
         return false;

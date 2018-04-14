@@ -4,13 +4,7 @@
 
 var convertor = new function() {
     this.name = "form-convertor";
-    this.init = function(config) {
-
-    };
-
-    this.match = function(note) {
-        return note.assign == "form-processor";
-    }
+    this.bing = "form-processor";
 
     this.convert = function(note, ctx) {
         var i = 6,
@@ -71,8 +65,6 @@ var convertor = new function() {
             }
             html += "</div>";
         }
-
-        
 
         return html;
     };

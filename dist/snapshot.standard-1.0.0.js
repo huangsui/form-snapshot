@@ -49,8 +49,8 @@
 
 	__webpack_require__(1);
 
-	__webpack_require__(10);
-	__webpack_require__(11);
+	__webpack_require__(16);
+	__webpack_require__(17);
 
 
 
@@ -64,21 +64,267 @@
 	"use strict";
 
 	__webpack_require__(2);
-	__webpack_require__(3);
-
-	//--- Configurable behind here ---
 	__webpack_require__(4);
-	__webpack_require__(5);
-
 	__webpack_require__(6);
 	__webpack_require__(7);
 	__webpack_require__(8);
+
+	//--- Configurable behind here ---
 	__webpack_require__(9);
+	__webpack_require__(10);
+	__webpack_require__(11);
+
+
+	__webpack_require__(12);
+	__webpack_require__(13);
+	__webpack_require__(14);
+	__webpack_require__(15);
 
 
 
 /***/ },
 /* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	"use strict";
+
+	const Cache = __webpack_require__(3);
+	var NoteContext = function(parent){
+	    
+	    this.parent = parent || null;
+
+	    var aCache = new Cache();
+	    this.data = function(){
+	        return aCache.cache.apply(aCache, arguments);
+	    };
+	    this.closesd = function(key){
+	    	if(typeof aCache.cache(key) === "undefined"){
+	    		if(this.parent){
+	    			return this.parent.closesd(key);
+	    		}else{
+	    			return undefined;
+	    		}
+	    	}
+	    	return aCache.cache(key);
+	    };
+	    
+	}
+
+	module.exports = NoteContext;
+
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	
+	"use strict";
+
+	var Cache = function(){
+		var caches = {};
+	    this.cache = function(){
+	        if(arguments.length==0){
+	            throw "arguments length must be greater then 0.";
+	        }
+	        if(arguments.length==1){
+	            if(typeof arguments[0] == "string"){
+	                return caches[arguments[0]];
+	            }else if(arguments[0] && arguments[0].name){
+	                caches[arguments[0].name] = arguments[0];
+	            }
+	        }else if(arguments.length==2){
+	            caches[arguments[0]] = arguments[1];
+	        }
+	    }
+	};
+
+	module.exports = Cache;
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	"use strict";
+
+	const NoteContext = __webpack_require__(2);
+	const Util = __webpack_require__(5);
+
+	var Note = function(node){
+
+	    this.init(node);
+	    this.baseInfo(node);
+	    this.parent = null;
+	    this.depth = 0;
+	    this.ctx = new NoteContext();
+
+	    this.createSubNote = function(node){
+	        var note = new Note(node);
+	        //note.parent = this;
+	        note.depth = this.depth + 1;
+	        note.ctx = new NoteContext();
+	        note.ctx.parent = this.ctx;
+	        return note;
+	    }
+
+	}
+
+	Note.prototype = {
+	    constructor:Note,
+	    hierarchy:0,
+	    init:function(node){
+	        this.nodeName = node.nodeName;
+	        return this;
+	    },
+	    baseInfo:function(node){
+	        this.attrs = {};
+	        //factor: 0|1，文本和各输入框为快照基本因子
+	        switch(node.nodeName){
+	            case "INPUT"://text,hidden,radio,checkbox,password
+	                var iptType = node.getAttribute("type");
+	                iptType = iptType||"TEXT";
+	                this.nodeType="INPUTS:"+iptType.toUpperCase();
+	                if(iptType=="checkbox" || iptType=="radio"){
+	                    if(node.checked)this.attrs.checked = node.checked;
+	                }else{
+	                    this.attrs.value = node.value||"";
+	                }
+	                
+	                break;
+	            case "SELECT"://multiple
+	                this.nodeType="INPUTS:SELECT";
+	                break;
+	            case "TEXTAREA":
+	                this.nodeType="INPUTS";
+	                break;
+	            case "#text"://button
+	                this.nodeType="TEXT";
+	                this.attrs.value=Util.trim(node.nodeValue);
+	                break;
+	            default:;
+	        }
+	        return this;
+	    },
+	    makeManifest:function(node, ctx){
+	        if(!this.subNotes || this.subNotes.length == 0){
+	            this.manifest = this.nodeType;
+	            this.hierarchy = 1;
+	            return this;
+	        }
+
+	        if(node.nodeName == "TEXTAREA"){
+	            this.manifest = "INPUTS";
+	        }
+
+	        if(!this.manifest){
+	            for(var i=0;i<this.subNotes.length;i++){
+	                var subNote = this.subNotes[i];
+	                this.hierarchy = Math.max(subNote.hierarchy+1, this.hierarchy);
+	                if(subNote.assign){
+	                    this.manifest = "GROUP";
+	                    break;
+	                }else{
+	                    this.manifest = (this.manifest?this.manifest+"||":"!")+subNote.manifest; 
+	                }                                   
+	            }
+	        }            
+
+	        var idx = Math.min(this.hierarchy, 5)-2;
+	        this.manifest=this.manifest.replace(/\|\|/g,["~","~~","~~~","~~~~","~~~~~"][idx]);
+
+	        return this;
+	    },
+	    appendChild:function(arg){
+	        this.subNotes = this.subNotes || [];
+	        if(arg instanceof Array ){
+	            this.subNotes = this.subNotes.concat(arg);
+	        }else{
+	            this.subNotes.push(arg);
+	        }
+	        
+	    },
+	    removeChild:function(note){
+	        for (var i = 0; i < this.subNotes.length; i++) {
+	            var subNote = this.subNotes[i];
+	            if(subNote == note){
+	                this.subNotes.splice(i, 1);
+	            }
+	        }
+	    }
+	};
+
+	module.exports = Note;
+
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	
+	"use strict";
+
+	var Util = {
+	    trim:function(x) {
+	        return x.replace(/^\s+|\s+$/gm,'');
+	    }
+	}
+
+
+	module.exports = Util;
+
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	
+
+	"use strict";
+
+	var FilterChain = function(){
+	    var filters = [],
+	    	curIdx = -1,
+	    	targetFn = null;
+	    this.add = function(filter){
+	        filters.push(filter);
+	    },
+	    this.resetIdx = function(){
+	        curIdx = -1;
+	    },
+	    this.filter = function(){
+	        curIdx++;
+	        if(curIdx < filters.length){                
+	            var result = filters[curIdx].filter(arguments, this);
+	            return result;
+	        }else{
+	            return this.invoke.apply(this, arguments);
+	        }            
+	    },
+	    this.invoke = function(){
+	        var result = targetFn.apply(this, arguments);
+	        return result;
+	    },
+	    this.weave = function(fn){
+	        targetFn = fn;
+	        return (function(chain){
+	            return function(){
+	            	chain.resetIdx();
+	            	return chain.filter.apply(chain, arguments);
+	            }            
+	        })(this);
+	    }
+	};
+
+	module.exports = FilterChain;
+
+
+/***/ },
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
@@ -87,13 +333,14 @@
 	 * 表单快照核心组件
 	 * 
 	 * Note: 便签，记录节点相关信息
-	 * Filter：过滤器，对每个节点扫描前进行过滤 
+	 * Filter：过滤器，对每个节点扫描前后进行过滤 
+	 * Catcher: 捕捉者，
 	 * ProcessContext：上下文，节点处理时提供上下文信息
 	 * Manifest：货单，简单的节点描述规则，方便识别
 	 * 
 	 * !!TEXT~INPUTS~~!TEXT~INPUTS
 	 *  
-	 * 统一前缀：ss-
+	 * 统一前缀：s-
 	 * 
 	 */
 
@@ -102,108 +349,12 @@
 	    "use strict"
 
 	    const VERSION = "1.0.0";/*版本*/
+	    const Note = __webpack_require__(4);
+	    const FilterChain = __webpack_require__(6);
+	    const Util = __webpack_require__(5);
+	    const Cache = __webpack_require__(3);
 
 	    var that = this;
-
-	    var NoteFactory = new function(){
-	        this.create = function(node, ctx){
-	            var note = new Note().init(node).baseInfo(node);
-	            note.depth = ctx.depth();
-	            return note;
-	        }
-	    };
-
-	    var Note = function(){
-	    }
-
-	    Note.prototype = {
-	        constructor:Note,
-	        depth:1,
-	        hierarchy:0,
-	        init:function(node){
-	            this.nodeName = node.nodeName;
-	            return this;
-	        },
-	        baseInfo:function(node){
-	            this.attrs = {};
-	            //factor: 0|1，文本和各输入框为快照基本因子
-	            switch(node.nodeName){
-	                case "INPUT"://text,hidden,radio,checkbox,password
-	                    var iptType = node.getAttribute("type");
-	                    iptType = iptType||"TEXT";
-	                    this.nodeType="INPUTS:"+iptType.toUpperCase();
-	                    if(iptType=="checkbox" || iptType=="radio"){
-	                        if(node.checked)this.attrs.checked = node.checked;
-	                    }else{
-	                        this.attrs.value = node.value||"";
-	                    }
-	                    
-	                    break;
-	                case "SELECT"://multiple
-	                    this.nodeType="INPUTS:SELECT";
-	                    break;
-	                case "TEXTAREA":
-	                    this.nodeType="INPUTS";
-	                    break;
-	                case "#text"://button
-	                    this.nodeType="TEXT";
-	                    this.attrs.value=trim(node.nodeValue);
-	                    break;
-	                default:;
-	            }
-	            return this;
-	        },
-	        makeManifest:function(node, ctx){
-	            if(!this.subNotes || this.subNotes.length == 0){
-	                this.manifest = this.nodeType;
-	                this.hierarchy = 1;
-	                return this;
-	            }
-
-	            if(node.nodeName == "TEXTAREA"){
-	                this.manifest = "INPUTS";
-	            }
-
-	            if(!this.manifest){
-	                for(var i=0;i<this.subNotes.length;i++){
-	                    var subNote = this.subNotes[i];
-	                    this.hierarchy = Math.max(subNote.hierarchy+1, this.hierarchy);
-	                    if(subNote.assign){
-	                        this.manifest = "GROUP";
-	                        break;
-	                    }else{
-	                        this.manifest = (this.manifest?this.manifest+"||":"!")+subNote.manifest; 
-	                    }                                   
-	                }
-	            }            
-
-	            var idx = Math.min(this.hierarchy, 5)-2;
-	            this.manifest=this.manifest.replace(/\|\|/g,["~","~~","~~~","~~~~","~~~~~"][idx]);
-
-	            return this;
-	        },
-	        appendChild:function(arg){
-	            this.subNotes = this.subNotes || [];
-	            if(arg instanceof Array ){
-	                this.subNotes = this.subNotes.concat(arg);
-	            }else{
-	                this.subNotes.push(arg);
-	            }
-	            
-	        },
-	        removeChild:function(note){
-	            for (var i = 0; i < this.subNotes.length; i++) {
-	                var subNote = this.subNotes[i];
-	                if(subNote == note){
-	                    this.subNotes.splice(i, 1);
-	                }
-	            }
-	        }
-	    };
-
-	    function trim(x) {
-	        return x.replace(/^\s+|\s+$/gm,'');
-	    }
 
 	    var ProcessContext = function(node, opts){
 	        this.noteRoot = null;
@@ -228,40 +379,7 @@
 	        }
 	    }
 
-	    var filterChain = {
-	        filters:[],
-	        curIdx:-1,
-	        targetFn:null,
-	        add:function(filter){
-	            this.filters.push(filter);
-	        },
-	        resetIdx:function(){
-	            this.curIdx = -1;
-	        },
-	        filter:function(){
-	            this.curIdx++;
-	            if(this.curIdx < this.filters.length){                
-	                var result = this.filters[this.curIdx].filter(arguments, this);
-	                return result;
-	            }else{
-	                return this.invoke.apply(this, arguments);
-	            }            
-	        },
-	        invoke:function(){
-	            var result = this.targetFn.apply(this, arguments);
-	            return result;
-	        },
-	        weave:function(fn){
-	            this.targetFn = fn;
-	            //节点为树状结构，遍历节点过程为递归式嵌套，过滤器链也在递归中被嵌套
-	            return function(){
-	                //过滤器链每次发起前进行下标重置
-	                filterChain.resetIdx();
-	                var result = filterChain.filter.apply(filterChain, arguments);
-	                return result;
-	            };
-	        }
-	    };
+	    var filterChain = new FilterChain();
 
 	    var through = function( node, note, ctx ) {
 	        var result = note;
@@ -279,7 +397,7 @@
 	            ctx.pnote = note;
 	            for( var i=0; i<node.childNodes.length; i++ ){
 	                var subNode = node.childNodes[i];
-	                var subNote = NoteFactory.create(subNode, ctx);
+	                var subNote = note.createSubNote(subNode);
 	                result = through( subNode, subNote, ctx );
 	                if(result){
 	                    note.appendChild(result);
@@ -308,7 +426,7 @@
 	        this.takeSnap = function( selector, opts ){
 	            var node = $(selector)[0];
 	            var pctx = new ProcessContext(node, opts);
-	            var note = NoteFactory.create(node, pctx);
+	            var note = new Note(node);
 	            pctx.appendNote(note);
 	            var result = through(node, note, pctx);
 	            return result;
@@ -322,7 +440,7 @@
 	        chain:[],
 	        curIdx:-1,
 	        add:function(pr){
-	            pr.init();
+	            if(pr.init)pr.init();
 	            this.chain.push(pr); 
 	        },
 	        reset:function(){
@@ -336,20 +454,9 @@
 	        }        
 	    };
 
-	    var caches = {};
+	    var aCache = new Cache();
 	    Snapshot.cache = function(){
-	        if(arguments.length==0){
-	            throw "arguments length must be greater then 0.";
-	        }
-	        if(arguments.length==1){
-	            if(typeof arguments[0] == "string"){
-	                return caches[arguments[0]];
-	            }else if(arguments[0] && arguments[0].name){
-	                caches[arguments[0].name] = arguments[0];
-	            }
-	        }else if(arguments.length==2){
-	            caches[arguments[0]] = arguments[1];
-	        }
+	        return aCache.cache.apply(aCache, arguments);
 	    }
 
 	    var convertors = [];
@@ -452,7 +559,7 @@
 
 
 /***/ },
-/* 3 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -462,7 +569,7 @@
 	 * 辅助快照核心组件完成节点筛选
 	 *  
 	 */
-	const Snapshot = __webpack_require__(2);
+	const Snapshot = __webpack_require__(7);
 
 	"use strict";
 
@@ -522,57 +629,90 @@
 
 
 /***/ },
-/* 4 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const Snapshot = __webpack_require__(2);
+	
+
+	const Snapshot = __webpack_require__(7);
 
 	"use strict";
 
+	/**
+	    属性过滤器 
+	    
+	*/
 	var filter = new function() {
-	    this.name = "default-filter";
-	    this.init = function(config) {
-
-	    };
-	    /*
-	        http://www.w3school.com.cn/jsref/prop_node_nodetype.asp
-	        nodeType 属性返回以数字值返回指定节点的节点类型。
-	        如果节点是元素节点，则 nodeType 属性将返回 1。
-	        如果节点是Text节点，则 nodeType 属性将返回 3。
-	    */
+	    this.name = "attrs-filter";
+	    
 	    this.filter = function(args, filterChain) {
 	        var node = args[0];
 	        var note = args[1];
 	        var ctx = args[2];
 
-	        //过滤不可见节点
-	        if (!ctx.opts || ctx.opts.visible !== false) {
-	            if (node.nodeType == 1 && !$(node).is(":visible")) {
-	                //console.log("过滤不可见节点: "+node.nodeName);
-	                return;
-	            }
-	        }
+	        //find all attrs start with "s-"
+		    $.each( node.attributes, function ( index, attribute ) {
+		    	if(attribute.name.startsWith("s-")){
+		    		note.ctx.data(attribute.name, attribute.value);
+		    	}	        
+		    } );
 
-	        if ($(node).data("ss-ignore")) {
-	            console.log("过滤ignore节点: " + node.nodeName);
-	            return;
-	        }
-
-	        var result = filterChain.filter.apply(filterChain, args);
-
-	        return result;
+	        return filterChain.filter.apply(filterChain, args);
 	    };
 	}
 
 	Snapshot.cache(filter);
 
+
+
 /***/ },
-/* 5 */
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const Snapshot = __webpack_require__(7);
+
+	"use strict";
+
+	/**
+	    不可见元素过滤器，
+	    默认情况过滤所有不可见元素
+	    如果需要自定义过滤规则，请使用属性“s-visible=false|true”
+	*/
+	var filter = new function() {
+	    this.name = "invisible-filter";
+
+	    this.filter = function(args, filterChain) {
+	        var node = args[0];
+	        var note = args[1];
+	        var ctx = args[2];
+
+	        var visible = note.ctx.closesd("s-visible");
+	        switch(visible){
+	            case "true":
+	                return filterChain.filter.apply(filterChain, args);
+	            case "false":
+	                return;
+	            default:
+	                if (node.nodeType == 1 && !$(node).is(":visible")) {
+	                    return;
+	                }else{
+	                    return filterChain.filter.apply(filterChain, args);
+	                }
+	        }
+	    };
+	}
+
+	Snapshot.cache(filter);
+
+
+
+/***/ },
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	const Snapshot = __webpack_require__(2);
+	const Snapshot = __webpack_require__(7);
 
 	"use strict";
 
@@ -624,20 +764,25 @@
 
 
 /***/ },
-/* 6 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
 	"use strict";
 
-	const Snapshot = __webpack_require__(2);
+	const Snapshot = __webpack_require__(7);
 
 	var pr = new function(){
 	    this.name = "form-processor";
-	    this.init = function(config){
 
-	    };
+	    this.beforeProcess = function(node, note, ctx){
+
+	    }
+
+	    this.afterProcess = function(node, note, ctx){
+
+	    }
 
 	    this.matchNode = function(node, note, ctx){
 	        return false;
@@ -669,7 +814,7 @@
 
 
 /***/ },
-/* 7 */
+/* 13 */
 /***/ function(module, exports) {
 
 	//const Snapshot = require('../snapshot-core');
@@ -765,11 +910,11 @@
 	//module.exports = pr;
 
 /***/ },
-/* 8 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	const Snapshot = __webpack_require__(2);
+	const Snapshot = __webpack_require__(7);
 
 	"use strict";
 
@@ -843,12 +988,12 @@
 
 
 /***/ },
-/* 9 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	const Snapshot = __webpack_require__(2);
+	const Snapshot = __webpack_require__(7);
 
 	"use strict";
 
@@ -896,10 +1041,10 @@
 
 
 /***/ },
-/* 10 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const Snapshot = __webpack_require__(2);
+	const Snapshot = __webpack_require__(7);
 
 	"use strict";
 
@@ -966,7 +1111,7 @@
 	Snapshot.consume = consume;
 
 /***/ },
-/* 11 */
+/* 17 */
 /***/ function(module, exports) {
 
 	(function(global, Snapshot, $) {
