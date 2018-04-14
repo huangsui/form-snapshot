@@ -70,8 +70,8 @@
         	var _ss = paramValue(options.data, "_ss")
         	if(_ss){
                 if (confirm("是否查看快照结果？")){
-                    console.log(_ss);
-				    var ss = JSON.parse(_ss);
+                    console.log(decodeURIComponent(_ss));
+				    var ss = JSON.parse(decodeURIComponent(_ss));
                     Snapshot.consume(ss);
 			    }else{
                     _ajax_.apply($, arguments);
