@@ -1,37 +1,42 @@
 
 "use strict";
 
-var Context = new function(){
+const Cache = require('./../common/cache.js');
+var ProcessContext = new function(){
 
-    this.noteRoot = null;
-    this.pnote = null;
-    this.curNote = null;
-    this.opts = opts;
-
-    this.init = function(){
-
+    var aCache = new Cache();
+    this.data = function(){
+        return aCache.cache.apply(aCache, arguments);
     };
 
-    this.depth = function(){
-        if(this.pnote){
-            return this.pnote.depth+1;
-        }
-        return 1;
-    };
-
-    this.appendNote = function(note){
-        if(this.noteRoot == null){
-            this.noteRoot = note;
-        }else{
-            this.pnote.appendChild(note);
-        }            
-    };
     
-    this.removeNote = function(note){
-        this.pnote.removeChild(note);
+    this.closesd = function(key){
+        if(typeof aCache.cache(key) === "undefined"){
+            if(this.parent){
+                return this.parent.closesd(key);
+            }else{
+                return undefined;
+            }
+        }
+        return aCache.cache(key);
+    };
+
+    var parents = [];
+    this.getParent = function(){
+        return parents[parents.length - 1];
+    }
+    this.popParent = function(){
+        return parents.pop();
+    }
+    this.pushParent = function(note){
+        parents.push(note);
+        return this;
+    }
+    this.getRoot = function(){
+        return parents.length==0?null:parents[0];
     }
 
 };
 
-module.exports = Context;
+module.exports = ProcessContext;
 

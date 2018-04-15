@@ -6,7 +6,7 @@ var FilterChain = function(){
     var filters = [],
     	curIdx = -1,
     	targetFn = null;
-    this.add = function(filter){
+    this.push = function(filter){
         filters.push(filter);
     },
     this.resetIdx = function(){

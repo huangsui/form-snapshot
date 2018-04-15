@@ -20,17 +20,15 @@
     "use strict"
 
     const VERSION = "1.0.0";/*版本*/
-    const Note = require('./core/note-factory.js');
-    const FilterChain = require('./core/filter-chain.js');
-    const HtmlFactory = require('./core/note-convert.js');
+    const HtmlFactory = require('./convert/note-convert.js');
     const Util = require('./common/util.js');
     const Cache = require('./common/cache.js');
+    const Noter = require('./core/noter.js');
 
     var that = this;
     var htmlFactory = new HtmlFactory();
     var aCache = new Cache();
-    var processors = [];
-    var filterChain = new FilterChain();
+    var noter = new Noter();
 
     var ProcessContext = function(node, opts){
         this.noteRoot = null;
@@ -55,77 +53,13 @@
         }
     }
 
-    var scan = function(node, note, ctx){
-        if(node.childNodes.length>0){
-            var _pnote = ctx.pnote || ctx.noteRoot;
-            ctx.pnote = note;
-
-            $.each(node.childNodes, function(idx, subNode){
-                var subNote = note.createSubNote(subNode);
-                var result = through( subNode, subNote, ctx );
-                if(result){
-                    note.appendChild(result);
-                }
-            });
-
-            ctx.pnote = _pnote;            
-        }
-
-        note.makeManifest(node, ctx);
-    }
-
-    var through = function( node, note, ctx ) {
-        var result = note;
-
-        for( var i=0; i < processors.length; i++ ){
-            var pr = processors[i];
-            if(pr.matchNode && pr.matchNode(node, note, ctx)){
-                return pr.process(node, note, ctx);
-            }else if(note.assign){
-                break;
-            }
-        }
-
-        scan( node, note, ctx );
-        
-        if(note.assign){
-            for( var i=0; i < processors.length; i++ ){
-                var pr = processors[i];
-                if(pr.name == note.assign){
-                    return pr.process(node, note, ctx);
-                }
-            }
-        }else{
-            //有货单
-            for( var i=0; i < processors.length; i++ ){
-                var pr = processors[i];
-                if(pr.matchManifest && pr.matchManifest(node, note, ctx)){
-                    return pr.process(node, note, ctx);
-                }
-            }
-        }
-       
-        return note;            
-        
-    };
-    
-    through = filterChain.weave(through);
-
     var Snapshot = function( options ) {
-
+        this.init( options );
         this.takeSnap = function( selector, opts ){
             var node = $(selector)[0];
-            var pctx = new ProcessContext(node, opts);
-            var note = new Note(node);
-            pctx.appendNote(note);
-            var result = through(node, note, pctx);
-            return result;
+            return noter.takeNote(node);
         };
-
-        this.init( options );
-
     };
-
 
     Snapshot.cache = function(){
         return aCache.cache.apply(aCache, arguments);
@@ -142,16 +76,14 @@
                     throw "Snapshot cannot find \""+arg+"\" in caches ";
                 }
             }else if(arg.name.indexOf("-processor")>0){
-                processors.push(arg);
+                noter.registerProcessor(arg);
                 if(typeof arg.convert === "function"){
                     htmlFactory.equip(arg);
-                    console.log("register convertor:"+arg.name);
                 }
             }else if(arg.name.indexOf("-filter")>0){
-                filterChain.add(arg);
-            }else if(arg.name.endsWith("-convertor")){
+                noter.registerFilter(arg);
+            }else if(arg.name.indexOf("-convertor")>0){
                 htmlFactory.equip(arg.bind, arg);
-                console.log("register convertor:"+arg.bind);
             }else{
                 Snapshot.cache(arg);
             }            

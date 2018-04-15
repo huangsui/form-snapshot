@@ -1,6 +1,9 @@
-const Snapshot = require('../snapshot-core');
+
 
 "use strict";
+
+const Snapshot = require('../snapshot-core');
+const context = require('./../core/process-context.js');
 
 /**
     不可见元素过滤器，
@@ -8,26 +11,33 @@ const Snapshot = require('../snapshot-core');
     如果需要自定义过滤规则，请使用属性“s-visible=false|true”
 */
 var filter = new function() {
-    this.name = "invisible-filter";
+    this.name = "node-invisible-filter";
 
     this.filter = function(args, filterChain) {
         var node = args[0];
-        var note = args[1];
-        var ctx = args[2];
 
-        var visible = note.ctx.closesd("s-visible");
+        //FIXME:待改造
+        var parentNote = context.getParent();
+        var visible = parentNote && parentNote.ctx.closesd("s-visible");
+        var note;
         switch(visible){
             case "true":
-                return filterChain.filter.apply(filterChain, args);
+                note = filterChain.filter.apply(filterChain, args);
             case "false":
                 return;
             default:
                 if (node.nodeType == 1 && !$(node).is(":visible")) {
                     return;
                 }else{
-                    return filterChain.filter.apply(filterChain, args);
+                    note = filterChain.filter.apply(filterChain, args);
                 }
         }
+
+        if(note.ctx.get("s-visible") == "false"){
+            note = undefined;
+        }
+
+        return note;
     };
 }
 

@@ -1,10 +1,12 @@
-//const Snapshot = require('../snapshot-core');
+
 
 "use strict";
 
+const Snapshot = require('../snapshot-core');
+
 var convertor = new function() {
-    this.name = "form-convertor";
-    this.bind = "form-processor";
+    this.name = "default-item-convertor";
+    this.bind = "default-item-processor";
 
     this.convert = function(note, ctx) {
         var i = 6,

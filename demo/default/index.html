@@ -23,6 +23,7 @@
       <div class="navbar-collapse collapse" role="navigation">
         <ul class="nav navbar-nav">
           <li class="hidden-sm hidden-md"><a href="form.html">表单快照</a></li>
+          <li><a href="tab.html">表单TAB</a></li>
           <li><a href="table.html">表格快照</a></li>
           <li><a href="tpl.html">模板</a></li>
           <li><a href="other.html">其他</a></li>
@@ -101,6 +102,11 @@ s-data-flag="required"
 
 上下文继承和覆盖特性
 
+
+FACTOR = TEXT|INPUTS
+ITEM = (LABEL|TEXT)(~FACTOR)+
+GROUP = (LABEL~)?ITEM+(~ITEM)*
+PANEL = GROUP(~GROUP)*
 
 
         </main>
