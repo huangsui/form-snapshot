@@ -3,13 +3,13 @@
 "use strict";
 
 const Snapshot = require('./../snapshot-core');
-const nodeRule = require('./../core/node-rule.js');
+const nodeRule = require('./../core/note-rule.js');
 
 var pr = new function(){
     this.name = "default-item-processor";
 
     this.afterScan = function(note, node, ctx){
-        return note.summary = nodeRule.ITEM;
+        return note.manifest == nodeRule.ITEM;
     }
 
     this.process= function(note, node, ctx){

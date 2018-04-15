@@ -5,7 +5,7 @@
 var FilterChain = function(){
     var filters = [],
     	curIdx = -1,
-    	targetFn = null;
+        weaved = {};
     this.push = function(filter){
         filters.push(filter);
     },
@@ -22,11 +22,11 @@ var FilterChain = function(){
         }            
     },
     this.invoke = function(){
-        var result = targetFn.apply(this, arguments);
-        return result;
+        return weaved.method.apply(weaved.target, arguments);
     },
-    this.weave = function(fn){
-        targetFn = fn;
+    this.weave = function(target, method){
+        weaved.target = target;
+        weaved.method = method;
         return (function(chain){
             return function(){
             	chain.resetIdx();

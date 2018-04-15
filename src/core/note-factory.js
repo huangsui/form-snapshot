@@ -3,13 +3,14 @@
 
 const Util = require('../common/util.js');
 const NoteContext = require('./note-context.js');
-const nodeRule = require('./node-rule.js');
-const context = require('./process-context.js');
+const nodeRule = require('./note-rule.js');
 
 var Note = function(node){
 
     this.parent = null;
+    this.subNotes = [],
     this.depth = 0;
+    this.ctx = new NoteContext();
 
     /*Object.defineProperty(this, "assign", {
             value:undefined,
@@ -29,11 +30,16 @@ Note.prototype = {
     constructor:Note,
     hierarchy:0,
     scan:function(node, noter){
-        if(nodeRule.isFactor(node.nodeName)){
+        if(nodeRule.isNodeNameFactor(node.nodeName)){
             this.recordFactor(node);
         }else if(node.childNodes){
             for (var i = 0; i < node.childNodes.length; i++) {
-                noter.takeNote( node.childNodes[i] );
+                var subNote = noter.createNote(node.childNodes[i]);
+                this.appendChild(subNote);
+                var result = noter.work( node.childNodes[i], subNote );
+                if(!result){
+                    this.removeChild(subNote);
+                }
             }        
         }
         this.makeManifest();
@@ -51,11 +57,16 @@ Note.prototype = {
                     case "checkbox":
                         this.checked = node.checked;
                         break;
+                    case "button":
+                    case "file":
+                        this.isFactor = false;
+                        this.isInvalid = true;
+                        break;
                     default:
-                        this.type = type || "text";
                         this.value = node.value||"";
                         break;
                 }
+                this.type = type || "text";
                 break;
             case "SELECT"://multiple
                 this.type = "select";
@@ -73,25 +84,23 @@ Note.prototype = {
     },
     makeManifest:function(){
         if(this.isFactor){
-            node.manifest = note.nodeName;
+            this.manifest = nodeRule.getManifest(this.nodeName);
             this.high = 1;
-        }else{
+        }else if(!this.isInvalid){
             for(var i=0;i<this.subNotes.length;i++){
                 var subNote = this.subNotes[i];
-                this.manifest = (this.manifest?this.manifest+"~":"")
-                    +(subNote.summary||subNote.manifest);                                   
+                this.manifest = (this.manifest?this.manifest+"~":"")+subNote.manifest;                                   
+            }
+            if(nodeRule.isItem(this.manifest)){
+                this.originalManifest = this.manifest;
+                this.manifest = nodeRule.ITEM;
+            }else if(nodeRule.isGroup(this.manifest)){
+                this.manifest = nodeRule.GROUP;
+            }else if(nodeRule.isPanel(this.manifest)){
+                this.manifest = nodeRule.PANEL;
             }
         }
 
-        if(nodeRule.isFactor(this.manifest)){
-            this.summary = nodeRule.getManifest(this.manifest);
-        }else if(nodeRule.isItem(this.manifest)){
-            this.summary = nodeRule.ITEM;
-        }else if(nodeRule.isGroup(this.manifest)){
-            this.summary = nodeRule.GROUP;
-        }else if(nodeRule.isPanel(this.manifest)){
-            this.summary = nodeRule.PANEL;
-        }           
         return this;
     },
     appendChild:function(note){

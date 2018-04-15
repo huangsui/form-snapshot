@@ -3,13 +3,17 @@
 "use strict";
 
 const Snapshot = require('./../snapshot-core');
-const nodeRule = require('./../core/node-rule.js');
+const nodeRule = require('./../core/note-rule.js');
 
 var pr = new function(){
     this.name = "default-group-processor";
 
     this.afterScan = function(note, node, ctx){
-        return note.summary = nodeRule.GROUP;
+    	var group = note.ctx.closesd("s-group");
+    	if(group){
+
+    	}
+        return group || (note.manifest == nodeRule.GROUP);
     }
 
     this.process= function(note, node, ctx){

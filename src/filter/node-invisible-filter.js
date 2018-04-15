@@ -15,28 +15,21 @@ var filter = new function() {
 
     this.filter = function(args, filterChain) {
         var node = args[0];
+        var note = args[1];
 
-        //FIXME:待改造
-        var parentNote = context.getParent();
-        var visible = parentNote && parentNote.ctx.closesd("s-visible");
-        var note;
+        var visible = note.ctx.closesd("s-visible");
         switch(visible){
             case "true":
-                note = filterChain.filter.apply(filterChain, args);
+                return filterChain.filter.apply(filterChain, args);
             case "false":
                 return;
             default:
                 if (node.nodeType == 1 && !$(node).is(":visible")) {
                     return;
                 }else{
-                    note = filterChain.filter.apply(filterChain, args);
+                    return filterChain.filter.apply(filterChain, args);
                 }
         }
-
-        if(note.ctx.get("s-visible") == "false"){
-            note = undefined;
-        }
-
         return note;
     };
 }

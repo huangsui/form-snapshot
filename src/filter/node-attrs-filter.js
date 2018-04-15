@@ -13,8 +13,8 @@ var filter = new function() {
     
     this.filter = function(args, filterChain) {
         var node = args[0];
-        var note = filterChain.filter.apply(filterChain, args);
-
+        var note = args[1];
+        
         //find all attrs start with "s-"
         $.each( node.attributes, function ( index, attribute ) {
             if(attribute.name.startsWith("s-")){
@@ -22,7 +22,7 @@ var filter = new function() {
             }           
         } );
 
-        return note;
+        return filterChain.filter.apply(filterChain, args);
     };
 }
 

@@ -5,15 +5,19 @@
 const Group = require('./../common/group.js');
 const context = require('./process-context.js');
 const Note = require('./note-factory.js');
-const NoteContext = require('./process-context.js');
+const NoteContext = require('./note-context.js');
 const FilterChain = require('./filter-chain.js');
+const NoteWasher = require('./note-washer.js');
+const noteRule = require('./note-rule.js');
 
 var Noter = function(){
 
-    var prs = new Group();
+    var prGroup = new Group();
     var filters = new FilterChain();
+    var noteWasher = new NoteWasher();
+
     this.registerProcessor=function(pr){
-        prs.pushWithName(pr);
+        prGroup.pushWithName(pr);
     }
     this.registerFilter=function(filter){
         filters.push(filter);
@@ -23,39 +27,50 @@ var Noter = function(){
         note.ctx = new NoteContext();
         return note;
     }
-    var work = function( node, note ) {
-        var parent = context.getParent();
-        if(parent){
-            parent.appendChild(note);
-        }
+
+    var work = function(node, note ) {
 
     	//notify before
-        for( var i=0; i < prs.length; i++ ){
-            var pr = prs.get(i);
-            if(pr.beforeScan){            	
-                pr.beforeScan(note, node, context);
-            	if(note.manifest){
-            		return note;
-            	}else if(note.assign){
-            		break;
-            	}
+        if(!noteRule.isFactor(node.nodeName)){
+            for( var i=0; i < prGroup.length; i++ ){
+                var pr = prGroup.get(i);
+                if(pr.beforeScan){              
+                    pr.beforeScan(note, node, context);
+                    if(note.manifest){
+                        return note;
+                    }else if(note.assign){
+                        break;
+                    }
+                }
             }
         }
 
         //scan
-        context.pushParent(note);
         note.scan( node, this );
-        context.popParent(note);
 
         //notify after
-        if(note.assign){
-            var pr = prs.getByName(note.assign);
-            return pr.process(note, node, context);
-        }else{
-            for( var i=0; i < prs.length; i++ ){
-                var pr = prs[i];
-                if(pr.afterScan && pr.afterScan(note, node, context)){
-                    return pr.process(node, note, ctx);
+        if(!noteRule.isFactor(note.manifest)){
+            if(note.assign){
+                var pr = prGroup.getByName(note.assign);
+                return pr.process(note, node, context);
+            }else{
+                for( var i=0; i < prGroup.length; i++ ){
+                    var pr = prGroup.get(i);
+                    if(pr.afterScan && pr.afterScan(note, node, context)){
+                        return pr.process(note, node, context);
+                    }
+                }
+
+                note.subNotes = noteWasher.wash(note.subNotes);
+                note.manifest = "";
+                note.makeManifest();
+                
+
+                for( var i=0; i < prGroup.length; i++ ){
+                    var pr = prGroup.get(i);
+                    if(pr.afterScan && pr.afterScan(note, node, context)){
+                        return pr.process(note, node, context);
+                    }
                 }
             }
         }
@@ -63,7 +78,12 @@ var Noter = function(){
         return note; 
     };
 
-    this.takeNote = filters.weave(work);
+    this.work = filters.weave(this, work);
+
+    this.takeNote = function(node){
+        var note = this.createNote(node);
+        return this.work( node, note );
+    };
 };
 
 module.exports = Noter;

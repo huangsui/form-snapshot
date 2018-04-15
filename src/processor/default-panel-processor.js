@@ -3,13 +3,17 @@
 "use strict";
 
 const Snapshot = require('./../snapshot-core');
-const nodeRule = require('./../core/node-rule.js');
+const nodeRule = require('./../core/note-rule.js');
 
 var pr = new function(){
     this.name = "default-panel-processor";
 
     this.afterScan = function(note, node, ctx){
-        return note.summary = nodeRule.PANEL;
+    	var panel = note.ctx.closesd("s-panel");
+    	if(panel){
+
+    	}
+        return panel || (note.manifest == nodeRule.PANEL);
     }
 
     this.process= function(note, node, ctx){

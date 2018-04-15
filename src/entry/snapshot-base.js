@@ -3,7 +3,7 @@
 
 //core
 require('../core/filter-chain');
-require('../core/node-rule');
+require('../core/note-rule');
 require('../core/note-context');
 require('../core/note-factory');
 require('../core/noter');

@@ -26,25 +26,25 @@ var filter = new function(){
             return;
         }
 
-    	var result = filterChain.filter.apply(filterChain, args);
+    	var note = filterChain.filter.apply(filterChain, args);
 
-        if(!result){
-            return result;
+        if(!note){
+            return note;
         }
         
         //已委派
-        if(result.assign){
-            return result;
+        if(note.assign){
+            return note;
         }
         
         //无货单，也无委派，进行丢弃
-        if(!result.manifest){            
-            //console.log("无效节点: "+result.nodeName);
+        if(!note.manifest){            
+            //console.log("无效节点: "+note.nodeName);
             return null;
         }
 
         //未委派，但是有正常货单的情况，直接返回
-    	return result;            
+    	return note;            
     };      
 }
 
