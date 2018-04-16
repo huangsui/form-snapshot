@@ -26,6 +26,10 @@ var filter = new function(){
             return;
         }
 
+        if(node.nodeName == "BUTTON"){
+            return;
+        }
+
     	var note = filterChain.filter.apply(filterChain, args);
 
         if(!note){

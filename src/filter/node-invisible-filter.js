@@ -3,7 +3,7 @@
 "use strict";
 
 const Snapshot = require('../snapshot-core');
-const context = require('./../core/process-context.js');
+const context = require('./../core/snapshot-context.js');
 
 /**
     不可见元素过滤器，

@@ -14,7 +14,7 @@ var filter = new function(){
             //console.log("剥离空壳: "+result.nodeName);
             var subNote = resultNote.subNotes[0];
             if(subNote.manifest == resultNote.manifest){
-            	return subNote;
+            	$.extend(resultNote, subNote);
             }
         }
 

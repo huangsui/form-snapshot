@@ -20,10 +20,11 @@
     "use strict"
 
     const VERSION = "1.0.0";/*版本*/
-    const HtmlFactory = require('./convert/note-convert.js');
+    const HtmlFactory = require('./extend/note-convert.js');
     const Util = require('./common/util.js');
     const Cache = require('./common/cache.js');
     const Noter = require('./core/noter.js');
+    const ssContext = require('./core/snapshot-context.js');
 
     var that = this;
     var htmlFactory = new HtmlFactory();
@@ -56,6 +57,7 @@
     var Snapshot = function( options ) {
         this.init( options );
         this.takeSnap = function( selector, opts ){
+            $.extend(ssContext.cfg, opts);
             var node = $(selector)[0];
             return noter.takeNote(node);
         };

@@ -12,8 +12,7 @@ Snapshot.register("default-item-processor");
 Snapshot.register("default-group-processor");
 Snapshot.register("default-panel-processor");
 
-// Snapshot.register("default-item-convertor");
-// Snapshot.register("default-group-convertor");
-// Snapshot.register("default-panel-convertor");
+Snapshot.register("default-table-convertor");
+Snapshot.register("default-table-processor");
 
-
+Snapshot.register("default-tab-processor");

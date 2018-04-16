@@ -5,15 +5,8 @@ const Snapshot = require('../snapshot-core');
 "use strict";
 
 var convertor = new function(){
-    this.name = "table-convertor";
-    this.bind = "table-processor";
-    this.init = function(config){
-
-    };
-
-    this.match = function(note){
-        return note.assign == "table-processor";
-    }
+    this.name = "default-table-convertor";
+    this.bind = "default-table-processor";
 
     this.convert= function(note){
 

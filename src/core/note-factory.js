@@ -58,6 +58,8 @@ Note.prototype = {
                         this.checked = node.checked;
                         break;
                     case "button":
+                    case "submit":
+                    case "reset":
                     case "file":
                         this.isFactor = false;
                         this.isInvalid = true;
@@ -70,9 +72,15 @@ Note.prototype = {
                 break;
             case "SELECT"://multiple
                 this.type = "select";
+                this.value = $(node).val();
+                this.textValue = $(node).find("option:selected").text();
+                //options
                 break;
             case "TEXTAREA":
                 this.type = "textarea";
+                this.textValue = $(node).val();
+                this.rows = $(node).attr("rows");
+                this.cols = $(node).attr("cols");                
                 break;
             case "#text"://button
                 this.type="text";

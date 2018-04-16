@@ -186,7 +186,7 @@
 
       var result = snapshot.takeSnap($node[0]);
       console.log(result);
-      var html = Snapshot.convert(result);
+      var html = Snapshot.convert(result, Snapshot);
       console.log(html);
       html = "<div class=\"clearfix\">"+html+"</div>";
       $node.siblings(".snp-json-render").html(html);

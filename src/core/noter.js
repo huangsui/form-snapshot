@@ -3,7 +3,7 @@
 "use strict";
 
 const Group = require('./../common/group.js');
-const context = require('./process-context.js');
+const context = require('./snapshot-context.js');
 const Note = require('./note-factory.js');
 const NoteContext = require('./note-context.js');
 const FilterChain = require('./filter-chain.js');
@@ -25,6 +25,7 @@ var Noter = function(){
     this.createNote = function(node){
         var note = new Note(node);
         note.ctx = new NoteContext();
+        note.noter = this;
         return note;
     }
 

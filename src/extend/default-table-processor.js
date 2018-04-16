@@ -4,21 +4,18 @@ const Snapshot = require('../snapshot-core');
 "use strict";
 
 var pr = new function(){
-    this.name = "table-processor";
-    this.init = function(config){
+    this.name = "default-table-processor";
 
-    };
-
-    this.matchNode = function(node, note, ctx){
-        if(note.nodeName == "TABLE" || "table" == $(node).attr("ss-type")){
-            return true;
+    this.beforeScan = function(note, node, ctx){
+        if(node.nodeName == "TABLE"){
+            note.assign = this.name;
         }
-        return false;
+        return note;
     }
 
-    this.process= function(node, note, ctx){
-        note.assign = this.name;
-        var opts = ctx.opts;
+    this.process= function(note, node, ctx){
+        note.manifest = "GROUP";
+        var opts = ctx.cfg;
         var rows = [];
         var table = node;
 
@@ -53,7 +50,6 @@ var pr = new function(){
             throw "have not got operated table records."
         }
 
-        console.log(rows);
         note.data=rows;
         return note;
     };

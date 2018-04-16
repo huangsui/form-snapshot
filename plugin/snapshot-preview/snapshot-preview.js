@@ -29,7 +29,7 @@
             if($("#ssModal").length==0){
                 $("body").append(createModal());
             }
-            var html = Snapshot.convert(data);
+            var html = Snapshot.convert(data, Snapshot);
             html = "<div class=\"clearfix\">" +html+ "</div>";
             $("#ssModal .modal-body").html(html);
             $('#ssModal').modal({
