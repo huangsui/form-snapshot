@@ -5,7 +5,7 @@
  * 辅助快照核心组件完成节点筛选
  *  
  */
-const Snapshot = require('../snapshot-core');
+const Snapshot = require('./../../snapshot');
 
 "use strict";
 

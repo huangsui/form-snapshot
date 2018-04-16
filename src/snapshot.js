@@ -20,14 +20,14 @@
     "use strict"
 
     const VERSION = "1.0.0";/*版本*/
-    const HtmlFactory = require('./extend/note-convert.js');
+    const Rebuilder = require('./rebuild/rebuilder.js');
     const Util = require('./common/util.js');
     const Cache = require('./common/cache.js');
-    const Noter = require('./core/noter.js');
-    const ssContext = require('./core/snapshot-context.js');
+    const Noter = require('./note/noter.js');
+    const ssContext = require('./snapshot-context.js');
 
     var that = this;
-    var htmlFactory = new HtmlFactory();
+    var builder = new Rebuilder();
     var aCache = new Cache();
     var noter = new Noter();
 
@@ -80,12 +80,12 @@
             }else if(arg.name.indexOf("-processor")>0){
                 noter.registerProcessor(arg);
                 if(typeof arg.convert === "function"){
-                    htmlFactory.equip(arg);
+                    builder.registerConvertor(arg);
                 }
             }else if(arg.name.indexOf("-filter")>0){
                 noter.registerFilter(arg);
             }else if(arg.name.indexOf("-convertor")>0){
-                htmlFactory.equip(arg.bind, arg);
+                builder.registerConvertor(arg.bind, arg);
             }else{
                 Snapshot.cache(arg);
             }            
@@ -108,7 +108,7 @@
     }    
     
     Snapshot.convert = function(){
-        return htmlFactory.convert.apply(htmlFactory, arguments);
+        return builder.work.apply(builder, arguments);
     };
     Snapshot.fn.convert = Snapshot.convert;
     

@@ -2,7 +2,7 @@
 
 "use strict";
 
-const Snapshot = require('../snapshot-core');
+const Snapshot = require('../snapshot');
 
 var convertor = new function() {
     this.name = "default-item-convertor";

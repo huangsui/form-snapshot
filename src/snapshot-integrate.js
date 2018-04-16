@@ -1,4 +1,4 @@
-const Snapshot = require('./snapshot-core');
+const Snapshot = require('./snapshot');
 
 "use strict";
 

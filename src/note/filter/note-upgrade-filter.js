@@ -1,7 +1,7 @@
 
 "use strict";
 
-const Snapshot = require('../snapshot-core');
+const Snapshot = require('./../../snapshot');
 
 var filter = new function(){
     this.name = "note-upgrade-filter";

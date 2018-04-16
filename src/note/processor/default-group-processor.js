@@ -2,18 +2,18 @@
 
 "use strict";
 
-const Snapshot = require('./../snapshot-core');
-const nodeRule = require('./../core/note-rule.js');
+const Snapshot = require('./../../snapshot');
+const nodeRule = require('./../../note/note-rule.js');
 
 var pr = new function(){
-    this.name = "default-panel-processor";
+    this.name = "default-group-processor";
 
     this.afterScan = function(note, node, ctx){
-    	var panel = note.ctx.closesd("s-panel");
-    	if(panel){
+    	var group = note.ctx.closesd("s-group");
+    	if(group){
 
     	}
-        return panel || (note.manifest == nodeRule.PANEL);
+        return group || (note.manifest == nodeRule.GROUP);
     }
 
     this.process= function(note, node, ctx){
@@ -21,15 +21,13 @@ var pr = new function(){
         return note;
     };
 
-    this.convert = function(note, converter) {
-
+    this.convert = function(note) {
         var html = "";
         html += '<div class="card">';
         html += '<div class="card-body">';
-        //<h5 class="card-title">Card title</h5>
         for (var i = 0; i < note.subNotes.length; i++) {
             var subNote = note.subNotes[i];
-            html += converter.convert(subNote, converter);
+            html += this.builder.work(subNote);
         }        
         html += '</div>'
         html += '</div>'

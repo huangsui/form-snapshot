@@ -1,5 +1,5 @@
 
-const Snapshot = require('../snapshot-core');
+const Snapshot = require('../snapshot');
 
 "use strict";
 
@@ -31,7 +31,7 @@ var pr = new function(){
         return note;
     }
 
-    this.convert=function(note, convertor){
+    this.convert=function(note){
         var html = "";
         html += '<div class="nav nav-tabs" id="nav-tab" role="tablist">'
         for (var i = 0; i < note.tabNames.length; i++) {
@@ -43,7 +43,7 @@ var pr = new function(){
         for (var i = 0; i < note.contents.length; i++) {
             var contentNote = note.contents[i];
             html += '<div class="tab-pane fade active show in" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">';
-            html += convertor.convert(contentNote, convertor);
+            html += this.builder.work(contentNote);
             html += '</div>';
         }
         

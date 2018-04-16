@@ -1,7 +1,7 @@
 
 "use strict";
 
-const Cache = require('./../common/cache.js');
+const Cache = require('./common/cache.js');
 var ssContext = new function(){
 
     this.cfg = {};

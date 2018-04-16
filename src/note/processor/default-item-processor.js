@@ -2,8 +2,8 @@
 
 "use strict";
 
-const Snapshot = require('./../snapshot-core');
-const nodeRule = require('./../core/note-rule.js');
+const Snapshot = require('./../../snapshot');
+const nodeRule = require('./../../note/note-rule.js');
 
 var pr = new function(){
     this.name = "default-item-processor";
@@ -17,7 +17,7 @@ var pr = new function(){
         return note;
     };
 
-    this.convert = function(note, converter) {
+    this.convert = function(note) {
     	var subNote1 = note.subNotes[0];
     	var subNote2 = note.subNotes[1];
 

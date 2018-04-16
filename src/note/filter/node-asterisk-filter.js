@@ -2,8 +2,8 @@
 
 "use strict";
 
-const Snapshot = require('../snapshot-core');
-const Util = require('../common/util.js');
+const Snapshot = require('./../../snapshot');
+const Util = require('./../../common/util.js');
 
 var filter = new function(){
     this.name = "node-asterisk-filter";

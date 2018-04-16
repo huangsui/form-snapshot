@@ -2,8 +2,8 @@
 
 "use strict";
 
-const Snapshot = require('../snapshot-core');
-const context = require('./../core/snapshot-context.js');
+const Snapshot = require('./../../snapshot');
+const context = require('./../../snapshot-context.js');
 
 /**
     不可见元素过滤器，

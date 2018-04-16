@@ -1,7 +1,7 @@
 
 
-const Snapshot = require('../snapshot-core');
-const Util = require('../common/util.js');
+const Snapshot = require('./../../snapshot');
+const Util = require('./../../common/util.js');
 
 "use strict";
 

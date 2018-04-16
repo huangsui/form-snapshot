@@ -3,10 +3,10 @@
 "use strict";
 
 const Group = require('./../common/group.js');
-const context = require('./snapshot-context.js');
-const Note = require('./note-factory.js');
+const FilterChain = require('./../common/filter-chain.js');
+const context = require('./../snapshot-context.js');
+const Note = require('./note.js');
 const NoteContext = require('./note-context.js');
-const FilterChain = require('./filter-chain.js');
 const NoteWasher = require('./note-washer.js');
 const noteRule = require('./note-rule.js');
 
