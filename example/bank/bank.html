@@ -109,7 +109,7 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="http://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-<script type="text/javascript" src="../../dist/snapshot.standard-1.0.0.js"></script>
+<script type="text/javascript" src="../../dist/snapshot.standard.bank-1.0.0.js"></script>
 <script type="text/javascript" src="./js/snapshot.bank.tbsp.js"></script>
 <script type="text/javascript" src="./js/config.js"></script>
 <script type="text/javascript" src="../../lib/tmpl.js"></script>
@@ -191,7 +191,7 @@
 
       var result = snapshot.takeSnap($node[0]);
       console.log(result);
-      var html = snapshot.convert(result);
+      var html = snapshot.convert(result, snapshot);
       console.log(html);
       $node.siblings(".snp-json-render").html(html);
       $node.siblings(".snp-json").text(JSON.stringify(result, null, 4));

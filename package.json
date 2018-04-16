@@ -6,6 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack --config webpack.config.js",
+        "build:bank": "webpack --config webpack.config.bank.js",
         "server": "webpack-dev-server --colors --progress --open --config webpack.config.js"
     },
     "repository": {

@@ -11,7 +11,6 @@ GROUP = ((LABEL|TEXT)?~)?ITEM+(~ITEM)*
 GROUP = (LABEL|TEXT)~GROUP
 PANEL = GROUP(~GROUP)*
 PANEL = (LABEL|TEXT)~PANEL
-CUSTOM=.{0,100}
 */
 const ManifestFactors = ["TEXT", "INPUTS", "LABEL"];
 const NodeNameFacotrs = ["#text","SELECT","INPUT", "TEXTAREA"];
@@ -25,7 +24,6 @@ var NoteRule = new function(){
 	this.ITEM="ITEM";
 	this.GROUP="GROUP";
 	this.PANEL="PANEL";
-	this.CUSTOM="CUSTOM";
 
     const GRADE = {
         "TEXT":"0",
@@ -33,13 +31,12 @@ var NoteRule = new function(){
         "INPUTS":"0",
         "ITEM":"1",
         "GROUP":"2",
-        "PANEL":"3",
-        "CUSTOM":"9"
+        "PANEL":"3"
     }
 
     this.isNodeNameFactor = function(nodeName){
         return NodeNameFacotrs.indexOf(nodeName)!=-1;
-    },
+    };
     this.isFactor = function(manifest){
     	return ManifestFactors.indexOf(manifest)!=-1;
     };
@@ -51,9 +48,6 @@ var NoteRule = new function(){
     };
     this.isPanel = function(manifest){
     	return /^GROUP(~GROUP)+$/g.test(manifest) || /^(LABEL|TEXT)~PANEL$/g.test(manifest);
-    };
-    this.isCustom = function(){
-    	return CUSTOM = manifest;
     };
     this.getManifest = function(factor){
     	return ManifestMapping[factor];

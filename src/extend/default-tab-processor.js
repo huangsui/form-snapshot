@@ -11,22 +11,22 @@ var pr = new function(){
         if(note.ctx.data("s-type") == "tab"){
             note.assign = this.name;
             note.manifest = "GROUP";
+
+            var tabNames = [];
+            var contents = [];
+
+            $(node).find("a").each(function(idx, el){
+                tabNames.push($(el).text());
+            });
+
+            note.tabNames = tabNames;
+
+            $(node).find(".tab-pane").each(function(idx, el){
+                var contentNode = note.noter.takeNote(el);
+                contents.push(contentNode);//考虑空节点
+            }); 
+            note.contents = contents;
         }
-
-        var tabNames = [];
-        var contents = [];
-
-        $(node).find("a").each(function(idx, el){
-            tabNames.push($(el).text());
-        });
-
-        note.tabNames = tabNames;
-
-        $(node).find(".tab-pane").each(function(idx, el){
-            var contentNode = note.noter.takeNote(el);
-            contents.push(contentNode);//考虑空节点
-        }); 
-        note.contents = contents;       
 
         return note;
     }
