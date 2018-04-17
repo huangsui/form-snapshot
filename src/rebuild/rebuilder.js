@@ -23,6 +23,11 @@ var Rebuilder = function(){
         if(note.assign){
             var cvt = cvts.cache(note.assign);
             result = cvt.convert(note);
+        }else if(note.subNotes){
+            for (var i = 0; i < note.subNotes.length; i++) {
+                var subNote = note.subNotes[i];
+                result += this.work(subNote);
+            }
         }
         return result;
     };

@@ -36,6 +36,7 @@ var filter = new function(){
             return note;
         }
         
+        note.nodeName = node.nodeName;
         //已委派
         if(note.assign){
             return note;

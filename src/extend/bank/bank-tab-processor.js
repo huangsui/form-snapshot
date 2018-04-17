@@ -4,12 +4,12 @@ const Snapshot = require('../../snapshot');
 "use strict";
 
 var pr = new function(){
-    this.name = "bankTab-processor";
+    this.name = "bank-tab-processor";
 
     this.beforeScan = function(note, node, ctx){
         if(node.className == "nav nav-tabs"||node.className == "panel-heading"){
             note.assign = this.name;
-            note.manifest = "GROUP";
+            note.manifest = "CARD";
         }
         return note;
     };
@@ -26,7 +26,7 @@ var pr = new function(){
             note.nodeName = "#text";
             note.value =$.trim($(node).find(".panel-title").text());
             note.nodeType = "TEXT";
-            note.manifest = "TABPANEL";
+            note.manifest = "PANEL";
             note.hierarchy=1;
         }
         return note;
@@ -39,7 +39,7 @@ var pr = new function(){
         if(note.manifest=="TEXT"){
             html += note.value;
         }
-        if(note.manifest=="TABPANEL"){
+        if(note.manifest=="PANEL"){
             html +="<h4 class='panel-title'>"+note.value+"</h4>";
         }
 
@@ -49,5 +49,5 @@ var pr = new function(){
     };
 }
 
-Snapshot.register(pr);
+Snapshot.cache(pr);
 

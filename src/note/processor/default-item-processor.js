@@ -9,11 +9,12 @@ var pr = new function(){
     this.name = "default-item-processor";
 
     this.afterScan = function(note, node, ctx){
-        return note.manifest == nodeRule.ITEM;
+        return /^TEXT~INPUTS$/g.test(note.manifest) || /^INPUTS~TEXT$/g.test(note.manifest);
     }
 
     this.process= function(note, node, ctx){
         note.assign = this.name;
+        note.manifest = "ITEM";
         return note;
     };
 

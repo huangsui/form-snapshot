@@ -9,14 +9,9 @@ var pr = new function(){
     this.beforeScan = function(note, node, ctx){
         if(node.className == "fixed-table-body"){       //代理bootstrap-table
             note.assign = this.name;
-            note.manifest = "GROUP";
-        }
-        return note;
-    };
+            note.manifest = "CARD";
 
-    this.process= function(note, node, ctx){
-
-        if(node.className == "fixed-table-body"){
+            if(node.className == "fixed-table-body"){
             var array=[];
             var array1=[];
             var $ths=$(node).find("tr").eq(0).find("th");
@@ -65,33 +60,32 @@ var pr = new function(){
         }
         
         note.assign = this.name;
+        }
         return note;
     };
 
     this.convert= function(note,ctx){
 
-        if(note.nodeName.toUpperCase()=="TABLE"){
-            var html = '<table class="table table-bordered">';
+        var html = '<table class="table table-bordered">';
 
-            html += '<thead>';
-            var ths = '';
-            for(var j=0;j<note.value[0].length;j++){
-                ths += '<th>' + note.value[0][j] + '</th>';
-            }
-            html += '<tr style="background-color: #F3F3F3;">' + ths + '</tr>';
-            html += '</thead>';
-
-            html += '<tbody>';
-            for(var i=1;i<note.value.length;i++){
-                var tds = '';
-                for(var j=0;j<note.value[i].length;j++){
-                    tds += '<td>' + note.value[i][j] + '</td>';
-                }
-                html += '<tr>' + tds + '</tr>';
-            }
-            html += '</tbody>';
-            html += '</table>';
+        html += '<thead>';
+        var ths = '';
+        for(var j=0;j<note.value[0].length;j++){
+            ths += '<th>' + note.value[0][j] + '</th>';
         }
+        html += '<tr style="background-color: #F3F3F3;">' + ths + '</tr>';
+        html += '</thead>';
+
+        html += '<tbody>';
+        for(var i=1;i<note.value.length;i++){
+            var tds = '';
+            for(var j=0;j<note.value[i].length;j++){
+                tds += '<td>' + note.value[i][j] + '</td>';
+            }
+            html += '<tr>' + tds + '</tr>';
+        }
+        html += '</tbody>';
+        html += '</table>';
 
         return html;
     };
@@ -104,5 +98,5 @@ var pr = new function(){
     }
 }
 
-Snapshot.register(pr);
+Snapshot.cache(pr);
 

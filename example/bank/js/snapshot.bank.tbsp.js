@@ -10,21 +10,20 @@ Snapshot.register("note-upgrade-filter");//空壳note升级
 
 
 
-
-//bank
-Snapshot.register("bank-select2-processor");
-Snapshot.register("bank-tab-processor");
-Snapshot.register("bank-bttable-processor");
-Snapshot.register("bank-other-processor");
-
-
 //default
 
 Snapshot.register("default-item-processor");
-Snapshot.register("default-group-processor");
-Snapshot.register("default-panel-processor");
+Snapshot.register("default-card-processor");
 
 Snapshot.register("default-table-convertor");
 Snapshot.register("default-table-processor");
 
 Snapshot.register("default-tab-processor");
+
+//bank
+
+Snapshot.register("bank-tab-processor");
+Snapshot.register("bank-bttable-processor");
+Snapshot.register("bank-other-processor");
+Snapshot.register("bank-select2-processor");
+

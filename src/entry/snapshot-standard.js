@@ -16,8 +16,7 @@ require('../note/filter/note-upgrade-filter');//空壳note升级
 
 //processor
 require('../note/processor/default-item-processor');
-require('../note/processor/default-group-processor');
-require('../note/processor/default-panel-processor');
+require('../note/processor/default-card-processor');
 
 //extend
 require('../extend/default-table-processor');

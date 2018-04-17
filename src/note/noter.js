@@ -61,18 +61,6 @@ var Noter = function(){
                         return pr.process(note, node, context);
                     }
                 }
-
-                note.subNotes = noteWasher.wash(note.subNotes);
-                note.manifest = "";
-                note.makeManifest();
-                
-
-                for( var i=0; i < prGroup.length; i++ ){
-                    var pr = prGroup.get(i);
-                    if(pr.afterScan && pr.afterScan(note, node, context)){
-                        return pr.process(note, node, context);
-                    }
-                }
             }
         }
        

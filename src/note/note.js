@@ -93,19 +93,11 @@ Note.prototype = {
     makeManifest:function(){
         if(this.isFactor){
             this.manifest = nodeRule.getManifest(this.nodeName);
-            this.high = 1;
+            this.grade = 0;
         }else if(!this.isInvalid){
             for(var i=0;i<this.subNotes.length;i++){
                 var subNote = this.subNotes[i];
                 this.manifest = (this.manifest?this.manifest+"~":"")+subNote.manifest;                                   
-            }
-            if(nodeRule.isItem(this.manifest)){
-                this.originalManifest = this.manifest;
-                this.manifest = nodeRule.ITEM;
-            }else if(nodeRule.isGroup(this.manifest)){
-                this.manifest = nodeRule.GROUP;
-            }else if(nodeRule.isPanel(this.manifest)){
-                this.manifest = nodeRule.PANEL;
             }
         }
 

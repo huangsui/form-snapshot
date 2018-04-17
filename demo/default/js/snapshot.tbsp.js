@@ -9,8 +9,7 @@ Snapshot.register("note-width-filter");//宽度
 Snapshot.register("note-upgrade-filter");//空壳note升级
 
 Snapshot.register("default-item-processor");
-Snapshot.register("default-group-processor");
-Snapshot.register("default-panel-processor");
+Snapshot.register("default-card-processor");
 
 Snapshot.register("default-table-convertor");
 Snapshot.register("default-table-processor");
