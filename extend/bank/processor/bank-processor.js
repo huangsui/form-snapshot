@@ -5,9 +5,6 @@ const Snapshot = require('../snapshot-core');
 
 var pr = new function(){
     this.name = "bank-processor";
-    this.init = function(config){
-
-    };
 
     this.matchNode = function(node, note, ctx){
         if(node.className == "fixed-table-body"){       //代理bootstrap-table

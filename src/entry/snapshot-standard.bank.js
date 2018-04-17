@@ -29,3 +29,6 @@ require('../snapshot-integrate');
 require('../snapshot-ajax');
 require('../extend/default-tab-processor');
 require('../extend/bank/bank-select2-processor');
+require('../extend/bank/bank-tab-processor');
+require('../extend/bank/bank-bttable-processor');
+require('../extend/bank/bank-other-processor');
