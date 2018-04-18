@@ -1,8 +1,9 @@
 
 
-const Snapshot = require('./../../snapshot');
-
 "use strict";
+
+const Snapshot = require('./../../snapshot');
+const Util = require('../../common/util.js');
 
 /**
     属性过滤器 
@@ -16,11 +17,13 @@ var filter = new function() {
         var note = args[1];
         
         //find all attrs start with "s-"
-        $.each( node.attributes, function ( index, attribute ) {
-            if(attribute.name.startsWith("s-")){
-                note.ctx.data(attribute.name, attribute.value);
-            }           
-        } );
+        if(Util.isElement(node)){
+            $.each( node.attributes, function ( index, attribute ) {
+                if(attribute.name.startsWith("s-")){
+                    note.ctx.data(attribute.name, attribute.value);
+                }           
+            } );
+        }
 
         return filterChain.filter.apply(filterChain, args);
     };
