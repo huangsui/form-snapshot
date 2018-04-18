@@ -31,4 +31,7 @@ require('../extend/default-tab-processor');
 require('../extend/bank/bank-select2-processor');
 require('../extend/bank/bank-tab-processor');
 require('../extend/bank/bank-bttable-processor');
-require('../extend/bank/bank-other-processor');
+require('../extend/bank/bank-ztree-processor');
+require('../extend/bank/bank-checkboxgroup-processor');
+require('../extend/bank/bank-item-convertor');
+

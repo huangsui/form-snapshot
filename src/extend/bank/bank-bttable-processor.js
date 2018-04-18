@@ -7,11 +7,10 @@ var pr = new function(){
     this.name = "bank-bttable-processor";
 
     this.beforeScan = function(note, node, ctx){
-        if(node.className == "fixed-table-body"){       //代理bootstrap-table
+        if(note.ctx.data("s-type") == "form-table"){       //代理bootstrap-table
             note.assign = this.name;
             note.manifest = "CARD";
 
-            if(node.className == "fixed-table-body"){
             var array=[];
             var array1=[];
             var $ths=$(node).find("tr").eq(0).find("th");
@@ -55,11 +54,7 @@ var pr = new function(){
                 array.push(array2);
             }
             note.value=array;
-            note.nodeName="table";
-            console.log(note);
-        }
-        
-        note.assign = this.name;
+
         }
         return note;
     };
@@ -90,12 +85,6 @@ var pr = new function(){
         return html;
     };
 
-    function node2Html(value){
-        if(typeof value=="string" && $.trim(value)=="请选择"){
-            value="";
-        }
-        return value;
-    }
 }
 
 Snapshot.cache(pr);

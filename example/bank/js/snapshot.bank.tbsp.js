@@ -24,6 +24,8 @@ Snapshot.register("default-tab-processor");
 
 Snapshot.register("bank-tab-processor");
 Snapshot.register("bank-bttable-processor");
-Snapshot.register("bank-other-processor");
+Snapshot.register("bank-ztree-processor");
+Snapshot.register("bank-checkboxgroup-processor");
 Snapshot.register("bank-select2-processor");
+Snapshot.register("bank-item-convertor");
 

@@ -78,6 +78,9 @@
 	__webpack_require__(28);
 	__webpack_require__(29);
 	__webpack_require__(30);
+	__webpack_require__(31);
+	__webpack_require__(32);
+
 
 
 /***/ },
@@ -1100,30 +1103,32 @@
 	    };
 
 	    this.convert = function(note) {
-	    	var subNote1 = note.subNotes[0];
-	    	var subNote2 = note.subNotes[1];
+	        var subNote1 = note.subNotes[0];
+	        var subNote2 = note.subNotes[1];
 
 	        var html = "";
-	    	html += '<p>';
-	    	if(subNote1.type == "checkbox" || subNote1.type == "radio"){
-				html += "<input type='"+subNote1.type+"'/> ";
-		        html += '<label for="input">';
-		    	html += subNote2.value;
-		    	html += '</label>';
-	    	}else{
-	    		html += '<label for="input">';
-		    	html += subNote1.value;
-		    	html += '</label>';
-	    		if (/^INPUT$/g.test(subNote2.nodeName)) {
-		        	html += '<input type="text" value="'+subNote2.value+'">';
-		        }else if(/^SELECT$/g.test(subNote2.nodeName)){
-		        	html += '<select><option value="'+subNote2.value+'">'+subNote2.textValue+'</option></select>';
-		        }else if(/^TEXTAREA$/g.test(subNote2.nodeName)){
+	        html += '<p>';
+	        if(subNote1.type == "checkbox" || subNote1.type == "radio"){
+	            html += "<input type='"+subNote1.type+"'/> ";
+	            html += '<label for="input">';
+	            html += subNote2.value;
+	            html += '</label>';
+	        }else if(subNote2.assign){
+	            html += note.builder.work(subNote2);
+	        }else{
+	            html += '<label for="input">';
+	            html += subNote1.value;
+	            html += '</label>';
+	            if (/^INPUT$/g.test(subNote2.nodeName)) {
+	                html += '<input type="text" value="'+subNote2.value+'">';
+	            }else if(/^SELECT$/g.test(subNote2.nodeName)){
+	                html += '<select><option value="'+subNote2.value+'">'+subNote2.textValue+'</option></select>';
+	            }else if(/^TEXTAREA$/g.test(subNote2.nodeName)){
 	                html += '<textarea '+((subNote2.rows)?(' rows="'+subNote2.rows+'" '):'')+'>'+subNote2.textValue+'</textarea>';
 	            }else{
-		        	html += '<input type="text" value="'+subNote2.value+'">';
-		        }
-	    	}
+	                html += '<input type="text" value="'+subNote2.value+'">';
+	            }
+	        }
 
 	        html += '</p>'
 	        return html;
@@ -1660,11 +1665,10 @@
 	    this.name = "bank-bttable-processor";
 
 	    this.beforeScan = function(note, node, ctx){
-	        if(node.className == "fixed-table-body"){       //代理bootstrap-table
+	        if(note.ctx.data("s-type") == "form-table"){       //代理bootstrap-table
 	            note.assign = this.name;
 	            note.manifest = "CARD";
 
-	            if(node.className == "fixed-table-body"){
 	            var array=[];
 	            var array1=[];
 	            var $ths=$(node).find("tr").eq(0).find("th");
@@ -1708,11 +1712,7 @@
 	                array.push(array2);
 	            }
 	            note.value=array;
-	            note.nodeName="table";
-	            console.log(note);
-	        }
-	        
-	        note.assign = this.name;
+
 	        }
 	        return note;
 	    };
@@ -1743,12 +1743,6 @@
 	        return html;
 	    };
 
-	    function node2Html(value){
-	        if(typeof value=="string" && $.trim(value)=="请选择"){
-	            value="";
-	        }
-	        return value;
-	    }
 	}
 
 	Snapshot.cache(pr);
@@ -1765,35 +1759,9 @@
 	"use strict";
 
 	var pr = new function(){
-	    this.name = "bank-other-processor";
+	    this.name = "bank-ztree-processor";
 
 	    this.beforeScan = function(note, node, ctx){
-	        if(typeof node=="object" && $(node).children().is('.checkbox-custom') && $(node).prev().get(0)){  //代理checkbox组(带label的组)
-	            if($(node).prev().get(0).nodeName=="LABEL" && $($(node).prev().get(0)).text()!==""){
-	                note.assign = this.name;
-	                note.manifest = "INPUT";
-
-	                note.nodeName="#checkboxes";
-	                note.nodeType ="CHECKBOXES";
-	                note.subNotes=[];
-	                var $checkboxes=$(node).find(".checkbox-custom");
-	                for(var i=0;i<$checkboxes.length;i++){
-	                    var checkbox={};
-	                    checkbox.nodeName="#checkbox";
-	                    checkbox.nodeType="checkbox";
-	                    if($checkboxes.eq(i).find("input[type='checkbox']").attr('checked')){
-	                        checkbox.attrs={"checked":true,"value":$checkboxes.eq(i).find("label").text()};
-	                    }else {
-	                        checkbox.attrs={"checked":false,"value":$checkboxes.eq(i).find("label").text()};
-	                    }
-	                    checkbox.manifest="CHECKBOX~TEXT";
-	                    note.subNotes.push(checkbox);
-	                }
-	                ctx.pnote.manifest="!TEXT~CHECKBOXES";
-	            }
-	        }
-
-
 	        if(typeof node.className=="string" && node.className.indexOf("ztree")>=0){          //代理树结构
 	            note.assign = this.name;
 	            note.manifest = "ITEM";
@@ -1810,29 +1778,8 @@
 
 
 	    this.convert= function(note,ctx){
-	        var i=6,j=4,k=8;
-	        /*if(Number(note.attrs.width*2)>Number(ctx.root.attrs.width)){
-	            i=12;
-	            j=2;
-	            k=10;
-	        }*/
 
-	        if(note.manifest=="!TEXT~CHECKBOXES"){
-	            var html = "<div  class=\"form-group col-md-"+i+"\">";
-
-	            var item1 = note.subNotes[0], item2 = note.subNotes[1];
-	            html += "<label for='' >"+item1.attrs.value+"</label>";
-
-	            if(item2.nodeType=="CHECKBOXES"){
-	                for(var i=0;i<item2.subNotes.length;i++){
-	                    if(item2.subNotes[i].manifest=="CHECKBOX~TEXT"){
-	                        html += "<input type='checkbox' disabled='disabled'"+(item2.subNotes[i].attrs.checked?"checked":"")+"/><label class='cursor-hand'>"+node2Html(item2.subNotes[i].attrs.value)+"</label>";
-	                    }
-	                }
-	            }
-
-	            html +="</div>";
-	        }else if(note.nodeType=="ZTREE"){
+	        if(note.nodeType=="ZTREE"){
 	            var html = '<div class="zTreeDemoBackground left">' +
 	                    '<ul id="tree" class="ztree menu-right-tree"></ul>' +
 	                '</div>';
@@ -1870,18 +1817,112 @@
 
 	        return html;
 	    };
-
-	    function node2Html(value){
-	        if(typeof value=="string" && $.trim(value)=="请选择"){
-	            value="";
-	        }
-	        return value;
-	    }
 	}
 
 	Snapshot.cache(pr);
 
 
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	const Snapshot = __webpack_require__(1);
+
+	"use strict";
+
+	var pr = new function(){
+	    this.name = "bank-checkboxgroup-processor";
+
+	    this.beforeScan = function(note, node, ctx){
+	        if(note.ctx.data("s-type")=="checkbox-group"){
+	            note.assign = this.name;
+	            note.manifest = "INPUTS";
+	            note.subNotes = note.subNotes || [];
+	            for (var i = 0; i < node.childNodes.length; i++) {
+	                var cnode = node.childNodes[i];
+	                var cnote = note.noter.takeNote(cnode);
+	                cnote.stype = "display: inline-block;";
+	                note.subNotes.push(cnote);
+	            }
+	        }
+	        return note;
+	    };
+
+	    this.convert= function(note,ctx){
+	        var html = "";
+	        for(var i=0;i<note.subNotes.length;i++){
+	            html += note.noter.takeNote(note.subNotes[i]);
+	        }
+	        return html;
+	    };
+
+	}
+
+	Snapshot.cache(pr);
+
+
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+
+	"use strict";
+
+	const Snapshot = __webpack_require__(1);
+
+	var convertor = new function() {
+	    this.name = "bank-item-convertor";
+	    this.bind = "default-item-processor";
+
+	    this.convert = function(note) {
+	        var subNote1 = note.subNotes[0];
+	        var subNote2 = note.subNotes[1];
+
+	        var html = "";
+	        if (subNote1.type == "checkbox" || subNote1.type == "radio") {
+	            html = "<div class=\"col-sm-offset-1 form-group\" style=\"display:inline-block;\">";
+	            
+	            html += "<input type='"+subNote1.type+"' "+((subNote1.checked)?" checked='checked' ":"")+"/> ";
+	            html += '<label for="input">';
+	            html += subNote2.value;
+	            html += '</label>';
+
+	            html += "</div>";
+	        }else if(subNote2.assign){
+	            //html = "<div class=\"col-sm-offset-1 form-group\" style=\"display:inline-block;\">";
+	            html += note.builder.work(subNote2);
+	            //html += "</div>";
+	        }else{
+	            var i=6,j=4,k=8;
+	            
+	            html = "<div class=\"form-group col-md-" + i + "\">";
+	            html += "<label for='' class='col-md-" + j + "'>" + subNote1.value + "</label>";
+	            html += "<div class='col-md-" + k + "'>";
+
+	            if (/^INPUT$/g.test(subNote2.nodeName)) {
+	                html += '<input class="form-control" type="text" value="'+subNote2.value+'">';
+	            }else if(/^SELECT$/g.test(subNote2.nodeName)){
+	                html += '<select><option value="'+subNote2.value+'">'+subNote2.textValue+'</option></select>';
+	            }else if(/^TEXTAREA$/g.test(subNote2.nodeName)){
+	                html += '<textarea class="form-control" '+((subNote2.rows)?(' rows="'+subNote2.rows+'" '):'')+'>'+subNote2.textValue+'</textarea>';
+	            }else{
+	                html += '<input type="text" value="'+subNote2.value+'">';
+	            }
+
+	            html += "</div></div>";
+	        }
+
+	        return html;
+	    };
+
+	}
+
+	Snapshot.cache(convertor);
+	//module.exports = pr;
 
 /***/ }
 /******/ ]);
