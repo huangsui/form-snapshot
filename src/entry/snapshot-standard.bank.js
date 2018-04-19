@@ -14,10 +14,6 @@ require('../note/filter/note-clean-filter');//清理已不需要的信息
 require('../note/filter/note-width-filter');//宽度
 require('../note/filter/note-upgrade-filter');//空壳note升级
 
-//processor
-require('../note/processor/default-item-processor');
-require('../note/processor/default-card-processor');
-
 //extend
 require('../extend/default-table-processor');
 require('../extend/default-table-convertor');
@@ -26,12 +22,12 @@ require('../extend/default-table-convertor');
 //bank version
 require('../snapshot-integrate');
 require('../snapshot-ajax');
-require('../extend/default-tab-processor');
 
 require('../extend/bank/bank-select2-processor');
 require('../extend/bank/bank-tab-processor');
 require('../extend/bank/bank-bttable-processor');
 require('../extend/bank/bank-ztree-processor');
 require('../extend/bank/bank-checkboxgroup-processor');
-require('../extend/bank/bank-item-convertor');
+require('../extend/bank/bank-panel-processor');
+require('../extend/bank/bank-item-processor');
 

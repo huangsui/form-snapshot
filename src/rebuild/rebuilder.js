@@ -4,7 +4,7 @@
 
 const Cache = require('./../common/cache.js');
 
-/*重建者：通过Note记录重建Html*/
+/*重建者：通过Note重建Html*/
 var Rebuilder = function(){
 
     var cvts = new Cache();

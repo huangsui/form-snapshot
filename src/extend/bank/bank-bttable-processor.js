@@ -9,7 +9,7 @@ var pr = new function(){
     this.beforeScan = function(note, node, ctx){
         if(note.ctx.data("s-type") == "form-table"){       //代理bootstrap-table
             note.assign = this.name;
-            note.manifest = "CARD";
+            note.manifest = "ITEM";
 
             var array=[];
             var array1=[];

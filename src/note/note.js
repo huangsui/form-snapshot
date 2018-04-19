@@ -7,7 +7,6 @@ const nodeRule = require('./note-rule.js');
 
 var Note = function(node){
 
-    this.parent = null;
     this.subNotes = [],
     this.depth = 0;
     this.ctx = new NoteContext();

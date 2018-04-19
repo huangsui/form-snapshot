@@ -7,7 +7,7 @@ var pr = new function(){
     this.name = "bank-tab-processor";
 
     this.beforeScan = function(note, node, ctx){
-        if(node.className == "nav nav-tabs"||node.className == "panel-heading"){
+        if(node.className == "nav nav-tabs"){
             note.assign = this.name;
             note.manifest = "CARD";
         }

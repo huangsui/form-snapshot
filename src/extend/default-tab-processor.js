@@ -8,7 +8,7 @@ var pr = new function(){
 
 
     this.beforeScan = function(note, node, ctx){
-        if(note.ctx.data("s-type") == "tab"){
+        if(note.ctx.data("s-type") == "tabs"){
             note.assign = this.name;
             note.manifest = "GROUP";
 

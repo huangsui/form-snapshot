@@ -12,7 +12,7 @@ var pr = new function(){
             note.manifest = "INPUTS";
             note.nodeName = "INPUT";
             note.type = "text";
-            note.value = $(node).find(".select2-selection__rendered").text();
+            note.value = $(node).find(".select2-selection__rendered:last").text();
 
             note.orign = "select2";
         }

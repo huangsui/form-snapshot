@@ -30,7 +30,7 @@ var pr = new function(){
             html += subNote2.value;
             html += '</label>';
         }else if(subNote2.assign){
-            html += note.builder.work(subNote2);
+            html += this.builder.work(subNote2);
         }else{
             html += '<label for="input">';
             html += subNote1.value;

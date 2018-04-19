@@ -1,0 +1,155 @@
+<form name="thisform" action="/bank-main/bank/teller/editSave" id="from1325774195" method="post" class="form form-horizontal ">
+<input type="hidden" name="orgId" id="hiddenOrgId" value="410000090000" data-value="410000090000">
+<input type="hidden" name="tellerId" value="6cd899dcabb34736a41c06ed24168281" data-value="6cd899dcabb34736a41c06ed24168281">
+    			<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		<label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">机构：</label>
+	    <div class="col-xs-12 col-md-8 pl-0 " style="">        	<input type="text" name="orgName" value="交易银行" class="form-control " readonly="true" size="10" data-value="交易银行">
+    </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>
+
+    			<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		<label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style=""></label>
+	    <div class="col-xs-12 col-md-8 pl-0 " style="">    </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>
+
+    			<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		<label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">柜员类别：</label>
+	    <div class="col-xs-12 col-md-8 pl-0 " style="">            	<select name="tellerCategory" value="2" class="form-control select2" id="teller_type_id" style="height: 32px; display: none;" datatype="*" nullmsg="柜员类别为空" disabled="" "="" tabindex="-1">
+					<option value="2">平台用户</option>
+			<option value="3">核心用户</option>
+		</select><span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr" style="width: 100px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-labelledby="select2-teller_type_id-container"><span class="select2-selection__rendered" id="select2-teller_type_id-container" title="平台用户">平台用户</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+	<script type="text/javascript">
+
+        $(function(){
+            $("#teller_type_id").each(function() {
+                var that=this;
+                var placeholder = $(that).attr("placeholder") ? $(this).attr("placeholder") : "";
+                $(this).select2({
+                    allowClear: true,
+                    placeholder: placeholder
+
+                });
+            });
+                            var valuestr="2";
+                var values=valuestr.split(",");
+                if(values.length>1){
+                    $("#teller_type_id").val(values).trigger("change");
+                }else{
+                    $("#teller_type_id").val(valuestr).trigger("change");
+                }
+                                    $.extend($.fn.select2.defaults.defaults.language, {
+                    noResults: function() { return '无数据'; }
+            });
+        });
+    </script>
+    </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>
+
+    			<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		<label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">柜员类型：</label>
+	    <div class="col-xs-12 col-md-8 pl-0 " style="">            	<select name="tellerType" value="3" class="form-control select2" id="teller_type" style="height: 32px; display: none;" datatype="*" disabled="" "="" tabindex="-1">
+					<option value="1">管理员</option>
+			<option value="3">操作员</option>
+		</select><span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr" style="width: 100px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-labelledby="select2-teller_type-container"><span class="select2-selection__rendered" id="select2-teller_type-container" title="操作员">操作员</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+	<script type="text/javascript">
+
+        $(function(){
+            $("#teller_type").each(function() {
+                var that=this;
+                var placeholder = $(that).attr("placeholder") ? $(this).attr("placeholder") : "";
+                $(this).select2({
+                    allowClear: true,
+                    placeholder: placeholder
+
+                });
+            });
+                            var valuestr="3";
+                var values=valuestr.split(",");
+                if(values.length>1){
+                    $("#teller_type").val(values).trigger("change");
+                }else{
+                    $("#teller_type").val(valuestr).trigger("change");
+                }
+                                    $.extend($.fn.select2.defaults.defaults.language, {
+                    noResults: function() { return '无数据'; }
+            });
+        });
+    </script>
+    <input type="hidden" name="tellerType" value="3" data-value="3">
+    </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>
+
+    			<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		<label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">柜员代码：</label>
+	    <div class="col-xs-12 col-md-8 pl-0 " style="">        	<input type="text" name="tellerCode" value="zhangjf010" class="form-control " id="tcode_id" maxlength="10" errormsg="请输入1-10位的数字或字母" datatype="/^[0-9a-zA-Z]+$/" nullmsg="请输入柜员代码！" readonly="true" size="10" data-value="zhangjf010">
+    </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>
+
+    			<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		<label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style=""><font color="red">*</font>柜员名称：</label>
+	    <div class="col-xs-12 col-md-8 pl-0 " style="">        	<input type="text" name="tellerName" value="操作员01" class="form-control " maxlength="32" errormsg="柜员名称含有不允许的特殊符号：^#&quot;<>;%'_&amp;" datatype="/^[^\^%_;'#<>&quot;&amp;]+$/" nullmsg="请输入柜员名称！" size="10" data-value="操作员01">
+    </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>
+    			<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		<label class="col-xs-12 col-md-4 control-label pl-0 pr-5" style="">手机号码：</label>
+	    <div class="col-xs-12 col-md-8 pl-0 " style="">        	<input type="text" name="phoneNum" value="12121212121" class="form-control " maxlength="20" errormsg="手机格式有误" datatype="/^1\d{10}$/" nullmsg="手机号码不能为空！" readonly="true" size="10" data-value="12121212121">
+    </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>
+    		<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="" id="roleList">
+		        			<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+		<label class="col-xs-12 col-md-2 control-label pl-0 pr-5" style="">角色分配：</label>
+	    <div class="col-xs-12 col-md-10 pl-0 " style="" id="roleallot" s-type="checkbox-group">                                                            		<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		                        <div class="checkbox-custom pt-5 checkbox-">
+    <input type="checkbox" id="check831455458" name="roleAllot" value="1ee9e3a871954173b1c79d22701c92e0" class="default" data-value="1ee9e3a871954173b1c79d22701c92e0">
+    <label for="check831455458" class="cursor-hand">郑小丽测试操作员角色</label>
+</div>
+                    	</div>
+                                                		<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		                        <div class="checkbox-custom pt-5 checkbox-">
+    <input type="checkbox" id="check1476450340" name="roleAllot" value="3dcebaad8e6b4fbfb7057b93178adb83" class="default" data-value="3dcebaad8e6b4fbfb7057b93178adb83">
+    <label for="check1476450340" class="cursor-hand">chen</label>
+</div>
+                    	</div>
+                                                		<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		                        <div class="checkbox-custom pt-5 checkbox-">
+    <input type="checkbox" id="check295195383" name="roleAllot" value="40C580709F855682E053508C3F26C3DH" class="default" data-value="40C580709F855682E053508C3F26C3DH">
+    <label for="check295195383" class="cursor-hand">总行系统操作员</label>
+</div>
+                    	</div>
+                                                		<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		                        <div class="checkbox-custom pt-5 checkbox-">
+    <input type="checkbox" id="check1467840390" name="roleAllot" value="bc840db1a7084fb9bac7b20c7d308794" class="default" data-value="bc840db1a7084fb9bac7b20c7d308794">
+    <label for="check1467840390" class="cursor-hand">test1</label>
+</div>
+                    	</div>
+                                                		<div class="form-group tbsp-form-item col-xs-12 col-md-6" style="">
+		                        <div class="checkbox-custom pt-5 checkbox-">
+    <input type="checkbox" id="check2089896213" name="roleAllot" value="c434e7c507bc44b19619b99870ed7199" class="default" data-value="c434e7c507bc44b19619b99870ed7199">
+    <label for="check2089896213" class="cursor-hand">121·</label>
+</div>
+                    	</div>
+                            <script type="text/javascript">
+$(function(){
+	var checkval=[];
+						checkval.push("bc840db1a7084fb9bac7b20c7d308794");
+				$("input[name='roleAllot']").each(function(e){
+		if(checkval.indexOf(this.value)>-1){
+			this.checked=true;
+		}else{
+			this.checked=false;
+		}
+	});
+})
+</script>
+        </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>
+    	</div>
+</form>

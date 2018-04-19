@@ -60,26 +60,22 @@
 	__webpack_require__(18);//宽度
 	__webpack_require__(19);//空壳note升级
 
-	//processor
+	//extend
 	__webpack_require__(20);
 	__webpack_require__(21);
 
-	//extend
+
+	//bank version
 	__webpack_require__(22);
 	__webpack_require__(23);
 
-
-	//bank version
 	__webpack_require__(24);
 	__webpack_require__(25);
 	__webpack_require__(26);
-
 	__webpack_require__(27);
 	__webpack_require__(28);
 	__webpack_require__(29);
 	__webpack_require__(30);
-	__webpack_require__(31);
-	__webpack_require__(32);
 
 
 
@@ -227,7 +223,7 @@
 
 	const Cache = __webpack_require__(3);
 
-	/*重建者：通过Note记录重建Html*/
+	/*重建者：通过Note重建Html*/
 	var Rebuilder = function(){
 
 	    var cvts = new Cache();
@@ -549,7 +545,6 @@
 
 	var Note = function(node){
 
-	    this.parent = null;
 	    this.subNotes = [],
 	    this.depth = 0;
 	    this.ctx = new NoteContext();
@@ -1064,9 +1059,7 @@
 	        if(resultNote && resultNote.subNotes && resultNote.subNotes.length == 1){
 	            //console.log("剥离空壳: "+result.nodeName);
 	            var subNote = resultNote.subNotes[0];
-	            if(subNote.manifest == resultNote.manifest){
-	            	$.extend(resultNote, subNote);
-	            }
+	            $.extend(true, resultNote, subNote);
 	        }
 
 	    	return resultNote;            
@@ -1080,110 +1073,6 @@
 
 /***/ },
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-
-	"use strict";
-
-	const Snapshot = __webpack_require__(1);
-	const nodeRule = __webpack_require__(11);
-
-	var pr = new function(){
-	    this.name = "default-item-processor";
-
-	    this.afterScan = function(note, node, ctx){
-	        return /^TEXT~INPUTS$/g.test(note.manifest) || /^INPUTS~TEXT$/g.test(note.manifest);
-	    }
-
-	    this.process= function(note, node, ctx){
-	        note.assign = this.name;
-	        note.manifest = "ITEM";
-	        return note;
-	    };
-
-	    this.convert = function(note) {
-	        var subNote1 = note.subNotes[0];
-	        var subNote2 = note.subNotes[1];
-
-	        var html = "";
-	        html += '<p>';
-	        if(subNote1.type == "checkbox" || subNote1.type == "radio"){
-	            html += "<input type='"+subNote1.type+"'/> ";
-	            html += '<label for="input">';
-	            html += subNote2.value;
-	            html += '</label>';
-	        }else if(subNote2.assign){
-	            html += note.builder.work(subNote2);
-	        }else{
-	            html += '<label for="input">';
-	            html += subNote1.value;
-	            html += '</label>';
-	            if (/^INPUT$/g.test(subNote2.nodeName)) {
-	                html += '<input type="text" value="'+subNote2.value+'">';
-	            }else if(/^SELECT$/g.test(subNote2.nodeName)){
-	                html += '<select><option value="'+subNote2.value+'">'+subNote2.textValue+'</option></select>';
-	            }else if(/^TEXTAREA$/g.test(subNote2.nodeName)){
-	                html += '<textarea '+((subNote2.rows)?(' rows="'+subNote2.rows+'" '):'')+'>'+subNote2.textValue+'</textarea>';
-	            }else{
-	                html += '<input type="text" value="'+subNote2.value+'">';
-	            }
-	        }
-
-	        html += '</p>'
-	        return html;
-	    };
-	}
-
-	Snapshot.cache(pr);
-
-
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-
-	"use strict";
-
-	const Snapshot = __webpack_require__(1);
-	const nodeRule = __webpack_require__(11);
-
-	var pr = new function(){
-	    this.name = "default-card-processor";
-
-	    this.afterScan = function(note, node, ctx){
-	        return /^ITEM(~ITEM)+$/g.test(note.manifest);
-	    }
-
-	    this.process= function(note, node, ctx){
-	        note.assign = this.name;
-	        note.manifest = "CARD";
-	        return note;
-	    };
-
-	    this.convert = function(note) {
-	        var html = "";
-	        html += '<div class="card">';
-	        html += '<div class="card-body">';
-	        for (var i = 0; i < note.subNotes.length; i++) {
-	            var subNote = note.subNotes[i];
-	            html += this.builder.work(subNote);
-	        }        
-	        html += '</div>'
-	        html += '</div>'
-
-	        return html;
-	    };
-	}
-
-	Snapshot.cache(pr);
-
-
-
-/***/ },
-/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1257,7 +1146,7 @@
 
 
 /***/ },
-/* 23 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1304,7 +1193,7 @@
 
 
 /***/ },
-/* 24 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	const Snapshot = __webpack_require__(1);
@@ -1374,7 +1263,7 @@
 	Snapshot.consume = consume;
 
 /***/ },
-/* 25 */
+/* 23 */
 /***/ function(module, exports) {
 
 	(function(global, Snapshot, $) {
@@ -1503,68 +1392,7 @@
 	})(typeof window !== "undefined" ? window : this, Snapshot, jQuery);
 
 /***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	const Snapshot = __webpack_require__(1);
-
-	"use strict";
-
-	var pr = new function(){
-	    this.name = "default-tab-processor";
-
-
-	    this.beforeScan = function(note, node, ctx){
-	        if(note.ctx.data("s-type") == "tab"){
-	            note.assign = this.name;
-	            note.manifest = "GROUP";
-
-	            var tabNames = [];
-	            var contents = [];
-
-	            $(node).find("a").each(function(idx, el){
-	                tabNames.push($(el).text());
-	            });
-
-	            note.tabNames = tabNames;
-
-	            $(node).find(".tab-pane").each(function(idx, el){
-	                var contentNode = note.noter.takeNote(el);
-	                contents.push(contentNode);//考虑空节点
-	            }); 
-	            note.contents = contents;
-	        }
-
-	        return note;
-	    }
-
-	    this.convert=function(note){
-	        var html = "";
-	        html += '<div class="nav nav-tabs" id="nav-tab" role="tablist">'
-	        for (var i = 0; i < note.tabNames.length; i++) {
-	            var tabName = note.tabNames[i];
-	            html += '<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">'+tabName+'</a>'
-	        }
-	        html += '</div>'
-
-	        for (var i = 0; i < note.contents.length; i++) {
-	            var contentNote = note.contents[i];
-	            html += '<div class="tab-pane fade active show in" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">';
-	            html += this.builder.work(contentNote);
-	            html += '</div>';
-	        }
-	        
-	        return html;
-	    }
-	}
-
-	Snapshot.cache(pr);
-
-
-
-/***/ },
-/* 27 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1581,7 +1409,7 @@
 	            note.manifest = "INPUTS";
 	            note.nodeName = "INPUT";
 	            note.type = "text";
-	            note.value = $(node).find(".select2-selection__rendered").text();
+	            note.value = $(node).find(".select2-selection__rendered:last").text();
 
 	            note.orign = "select2";
 	        }
@@ -1594,7 +1422,7 @@
 
 
 /***/ },
-/* 28 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1606,7 +1434,7 @@
 	    this.name = "bank-tab-processor";
 
 	    this.beforeScan = function(note, node, ctx){
-	        if(node.className == "nav nav-tabs"||node.className == "panel-heading"){
+	        if(node.className == "nav nav-tabs"){
 	            note.assign = this.name;
 	            note.manifest = "CARD";
 	        }
@@ -1653,7 +1481,7 @@
 
 
 /***/ },
-/* 29 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1667,7 +1495,7 @@
 	    this.beforeScan = function(note, node, ctx){
 	        if(note.ctx.data("s-type") == "form-table"){       //代理bootstrap-table
 	            note.assign = this.name;
-	            note.manifest = "CARD";
+	            note.manifest = "ITEM";
 
 	            var array=[];
 	            var array1=[];
@@ -1750,7 +1578,7 @@
 
 
 /***/ },
-/* 30 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1824,7 +1652,7 @@
 
 
 /***/ },
-/* 31 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1837,14 +1665,18 @@
 
 	    this.beforeScan = function(note, node, ctx){
 	        if(note.ctx.data("s-type")=="checkbox-group"){
+	            var itemClass = note.ctx.data("s-item-class");
+	            note.itemClass = itemClass || "col-xs-12 col-md-6";
+
 	            note.assign = this.name;
 	            note.manifest = "INPUTS";
 	            note.subNotes = note.subNotes || [];
 	            for (var i = 0; i < node.childNodes.length; i++) {
 	                var cnode = node.childNodes[i];
 	                var cnote = note.noter.takeNote(cnode);
-	                cnote.stype = "display: inline-block;";
-	                note.subNotes.push(cnote);
+	                if(cnote){
+	                    note.subNotes.push(cnote);
+	                }
 	            }
 	        }
 	        return note;
@@ -1853,7 +1685,20 @@
 	    this.convert= function(note,ctx){
 	        var html = "";
 	        for(var i=0;i<note.subNotes.length;i++){
-	            html += note.noter.takeNote(note.subNotes[i]);
+	            //html += this.builder.work(note.subNotes[i]);
+
+	            var subNote = note.subNotes[i];
+	            var labelNote = subNote.subNotes[1];
+	            var inputNote = subNote.subNotes[0];
+
+	            html += "<div class=\"form-group "+note.itemClass+"\" style=\"display:inline-block;\">";
+	            
+	            html += "<input onclick='return false;' type='"+inputNote.type+"' "+((inputNote.checked)?" checked='checked' ":"")+"/> ";
+	            html += '<label for="input">';
+	            html += labelNote.value;
+	            html += '</label>';
+
+	            html += "</div>";
 	        }
 	        return html;
 	    };
@@ -1865,7 +1710,7 @@
 
 
 /***/ },
-/* 32 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1873,44 +1718,149 @@
 	"use strict";
 
 	const Snapshot = __webpack_require__(1);
+	const nodeRule = __webpack_require__(11);
 
-	var convertor = new function() {
-	    this.name = "bank-item-convertor";
-	    this.bind = "default-item-processor";
+	var pr = new function(){
+	    this.name = "bank-panel-processor";
+
+	    this.afterScan = function(note, node, ctx){
+	        return /^ITEM(~ITEM)+$/g.test(note.manifest) || /^(TEXT~CARD)+$/g.test(note.manifest);
+	    }
+
+	    this.process= function(note, node, ctx){
+	        note.assign = this.name;
+	        
+	        if(/^ITEM(~ITEM)+$/g.test(note.manifest)){
+	            note.manifest = "CARD";
+	        }else if(/^(TEXT~CARD)$/g.test(note.manifest)){
+	            note.header = note.subNotes[0];
+	            note.body = note.subNotes[1];
+	            note.subNotes = null;
+	            note.manifest = "CARD";
+	        }else if(/^(TEXT~CARD)+$/g.test(note.manifest)){
+	            var _subNotes = note.subNotes;
+	            note.subNotes = [];
+	            for (var i = 0; i < _subNotes.length; i++) {
+	                var header =  _subNotes[i];
+	                var body = _subNotes[i+1];
+	                var newNote = {assign:this.name, header:header, body:body, manifest:"CARD"};
+	                note.subNotes.push(newNote);
+	                i++;
+	            }
+	            note.manifest = "CARDS";
+	        }
+	        
+	        return note;
+	    };
 
 	    this.convert = function(note) {
+	        var html = "";
+	        if(note.manifest == "CARDS"){
+	            html += '<div class="panel-group">';
+	            for (var i = 0; i < note.subNotes.length; i++) {
+	                var subNote = note.subNotes[i];
+	                html += this.convert(subNote);
+	            }
+	            html += '</div>';
+	        }else if(note.manifest == "CARD"){
+	            html += '<div class="panel panel-default">';
+	            if(note.header){
+	                html += '<div class="panel-heading" role="tab">';
+	                    html += '<h4 class="panel-title">';
+	                        html += note.header.value;
+	                    html += '</h4>';
+	                html += '</div>';
+	            }
+	            html += '<div class="panel-body">';
+	            if(note.body){
+	                for (var i = 0; i < note.body.subNotes.length; i++) {
+	                    var subNote = note.body.subNotes[i];
+	                    html += this.builder.work(subNote);
+	                }
+	            }else if(note.subNotes){
+	                for (var i = 0; i < note.subNotes.length; i++) {
+	                    var subNote = note.subNotes[i];
+	                    html += this.builder.work(subNote);
+	                }
+	            }
+	            html += '</div>';
+	            html += '</div>';
+	        }
+
+	        return html;
+	    };
+	}
+
+	Snapshot.cache(pr);
+
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+
+	"use strict";
+
+	const Snapshot = __webpack_require__(1);
+	const nodeRule = __webpack_require__(11);
+
+	var pr = new function(){
+	    this.name = "bank-item-processor";
+
+	    this.afterScan = function(note, node, ctx){
+	        return /^TEXT~INPUTS$/g.test(note.manifest) || /^INPUTS~TEXT$/g.test(note.manifest);
+	    }
+
+	    this.process= function(note, node, ctx){
+	        note.assign = this.name;
+	        note.manifest = "ITEM";
+
+	        var itemClass = note.ctx.closesd("s-item-class");
+	        if(itemClass){
+	            note.itemClass = itemClass;
+	        }
+
+	        return note;
+	    };
+
+	    this.convert = function(note) {
+
 	        var subNote1 = note.subNotes[0];
 	        var subNote2 = note.subNotes[1];
 
+	        note.itemClass = note.itemClass || "col-xs-12 col-md-6";
+
 	        var html = "";
 	        if (subNote1.type == "checkbox" || subNote1.type == "radio") {
-	            html = "<div class=\"col-sm-offset-1 form-group\" style=\"display:inline-block;\">";
+	            html = "<div class=\"form-group "+note.itemClass+"\" style=\"display:inline-block;\">";
 	            
-	            html += "<input type='"+subNote1.type+"' "+((subNote1.checked)?" checked='checked' ":"")+"/> ";
+	            html += "<input onclick='return false;' type='"+subNote1.type+"' "+((subNote1.checked)?" checked='checked' ":"")+"/> ";
 	            html += '<label for="input">';
 	            html += subNote2.value;
 	            html += '</label>';
 
 	            html += "</div>";
-	        }else if(subNote2.assign){
+	        }else if(subNote2.assign == "bank-checkboxgroup-processor"){
+	            html += '<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">';
+	            html += '<label class="col-xs-12 col-md-2 control-label pl-0 pr-5">'+subNote1.value+'</label>';
+	            html += '<div class="col-xs-12 col-md-10 pl-0 ">';
 	            //html = "<div class=\"col-sm-offset-1 form-group\" style=\"display:inline-block;\">";
-	            html += note.builder.work(subNote2);
-	            //html += "</div>";
-	        }else{
-	            var i=6,j=4,k=8;
-	            
-	            html = "<div class=\"form-group col-md-" + i + "\">";
-	            html += "<label for='' class='col-md-" + j + "'>" + subNote1.value + "</label>";
-	            html += "<div class='col-md-" + k + "'>";
+	            html += this.builder.work(subNote2);
+	            html += "</div>";
+	            html += "</div>";
 
-	            if (/^INPUT$/g.test(subNote2.nodeName)) {
-	                html += '<input class="form-control" type="text" value="'+subNote2.value+'">';
-	            }else if(/^SELECT$/g.test(subNote2.nodeName)){
-	                html += '<select><option value="'+subNote2.value+'">'+subNote2.textValue+'</option></select>';
-	            }else if(/^TEXTAREA$/g.test(subNote2.nodeName)){
-	                html += '<textarea class="form-control" '+((subNote2.rows)?(' rows="'+subNote2.rows+'" '):'')+'>'+subNote2.textValue+'</textarea>';
+	        }else{
+	            html = "<div class=\"form-group "+note.itemClass+"\">";
+	            html += "<label for='' class='col-md-4'>" + subNote1.value + "</label>";
+	            html += "<div class='col-md-8'>";
+
+	            if(subNote2.type=="select"){
+	                html += '<select readonly="readonly"><option value="'+subNote2.value+'">'+subNote2.textValue+'</option></select>';
+	            }else if(subNote2.type=="textarea"){
+	                html += '<textarea readonly="readonly" class="form-control" '+((subNote2.rows)?(' rows="'+subNote2.rows+'" '):'')+'>'+subNote2.textValue+'</textarea>';
 	            }else{
-	                html += '<input type="text" value="'+subNote2.value+'">';
+	                html += '<input readonly="readonly" class="form-control" type="'+subNote2.type+'" value="'+subNote2.value+'" >';
 	            }
 
 	            html += "</div></div>";
@@ -1918,11 +1868,11 @@
 
 	        return html;
 	    };
-
 	}
 
-	Snapshot.cache(convertor);
-	//module.exports = pr;
+	Snapshot.cache(pr);
+
+
 
 /***/ }
 /******/ ]);

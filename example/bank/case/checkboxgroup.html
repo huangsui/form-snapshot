@@ -1,0 +1,39 @@
+<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">
+		<label class="col-xs-12 col-md-2 control-label pl-0 pr-5" style="">开通渠道：</label>
+	    <div class="col-xs-12 col-md-10 pl-0 " s-item-class="col-xs-12 col-md-4" s-type="checkbox-group">                            <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+    <input type="checkbox" id="check113936171" name="channel" value="23" class="default" datatype="*" nullmsg="开通渠道不能为空！" data-value="23">
+    <label for="check113936171" class="cursor-hand">柜面</label>
+</div>
+                <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+    <input type="checkbox" id="check1355281804" name="channel" value="11" class="default" datatype="*" nullmsg="开通渠道不能为空！" data-value="11">
+    <label for="check1355281804" class="cursor-hand">企业客户端</label>
+</div>
+                <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+    <input type="checkbox" id="check486854484" name="channel" value="21" class="default" datatype="*" nullmsg="开通渠道不能为空！" data-value="21">
+    <label for="check486854484" class="cursor-hand">企业网银</label>
+</div>
+                <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+    <input type="checkbox" id="check235112059" name="channel" value="13" class="default" datatype="*" nullmsg="开通渠道不能为空！" data-value="13">
+    <label for="check235112059" class="cursor-hand">企业直连</label>
+</div>
+                <div class="checkbox-custom pt-5 checkbox-class java.util.HashMap">
+    <input type="checkbox" id="check751492845" name="channel" value="12" class="default" datatype="*" nullmsg="开通渠道不能为空！" data-value="12">
+    <label for="check751492845" class="cursor-hand">移动APP</label>
+</div>
+            <script type="text/javascript">
+$(function(){
+	var checkval=[];
+			var checkvalstr="";
+		checkval=checkvalstr.split(",");
+		$("input[name='channel']").each(function(e){
+		if(checkval.indexOf(this.value)>-1){
+			this.checked=true;
+		}else{
+			this.checked=false;
+		}
+	});
+})
+</script>
+        </div>
+	    <div class="col-xs-12 col-md-0 valid-msg"></div>
+	</div>

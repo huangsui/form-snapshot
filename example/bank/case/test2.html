@@ -1,0 +1,66 @@
+<div class="tab-pane active" id="profile">            		<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="margin: 20px 50px 20px 50px" id="roleList">
+		                                                                                    		<div class="form-group tbsp-form-item col-xs-12 col-md-8" style="">
+		                        <div class="checkbox-custom pt-5 checkbox-">
+    <input type="checkbox" id="check689251548" name="roleAllot" value="05ba7c8461404c8aaaf39cd6644bc3f2" class="default" data-value="05ba7c8461404c8aaaf39cd6644bc3f2">
+    <label for="check689251548" class="cursor-hand">jefzha01</label>
+</div>
+                    	</div>
+                                                                                                    		<div class="form-group tbsp-form-item col-xs-12 col-md-8" style="">
+		                        <div class="checkbox-custom pt-5 checkbox-">
+    <input type="checkbox" id="check1442963872" name="roleAllot" value="478e4d0ff5c146339ad4731474e3e370" class="default" data-value="478e4d0ff5c146339ad4731474e3e370">
+    <label for="check1442963872" class="cursor-hand">jsCaozuo</label>
+</div>
+                    	</div>
+                                                                                                    		<div class="form-group tbsp-form-item col-xs-12 col-md-8" style="">
+		                        <div class="checkbox-custom pt-5 checkbox-">
+    <input type="checkbox" id="check1461780272" name="roleAllot" value="fecd94dd67774725acede05674659b28" class="default" data-value="fecd94dd67774725acede05674659b28">
+    <label for="check1461780272" class="cursor-hand">2134</label>
+</div>
+                    	</div>
+                                                                                        <script type="text/javascript">
+$(function(){
+	var checkval=[];
+					$("input[name='roleAllot']").each(function(e){
+		if(checkval.indexOf(this.value)>-1){
+			this.checked=true;
+		}else{
+			this.checked=false;
+		}
+	});
+})
+</script>
+        	</div>
+        <script type="text/javascript">
+            /*$(function () {
+                queryRoleList();
+            });*/
+            $(function () {
+                        });
+            $("select[name='orgLevel']").on("change",function () {
+                        });
+
+            function queryRoleList() {
+                var level = $("select[name='orgLevel']").val();
+//                var level = $("input:hidden[name='orgLevelName']").val();
+                var custNo = $("input:hidden[name='custNo']").val();
+                console.log(level);
+                console.log(custNo);
+//                var type = $("select[name='addType']").val();
+                /*var type = $("select[name='type']").val();*/
+                $.ajax({
+                    method: "post",
+                    url: "/bank-main/bank/role/query/custToRole",
+                    data: {
+                        roleLevel: level,
+                        custNo:custNo,
+                        sysRoleflag:1
+//                        type: type
+                    },
+                    success: function (data) {
+                        $("#roleList").empty();
+                        $("#roleList").append(data);
+                    }
+                });
+            }
+        </script>
+        </div>

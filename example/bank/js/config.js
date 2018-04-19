@@ -89,7 +89,16 @@
                     desc:"",
                     cases:[//实例
                         "./case/b10.html"
-                ]}
+                ]},
+                {
+                    id:"std-form-module1111",
+                    title:"包商测试用例",
+                    desc:"",
+                    cases:[//实例
+                        "./case/checkboxgroup.html",
+                        "./case/test1.html",
+                        "./case/test2.html"
+                ]},
 			]
 		}]
 	}
