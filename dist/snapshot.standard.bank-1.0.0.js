@@ -76,6 +76,7 @@
 	__webpack_require__(28);
 	__webpack_require__(29);
 	__webpack_require__(30);
+	__webpack_require__(31);
 
 
 
@@ -1676,7 +1677,7 @@
 	                var cnote = note.noter.takeNote(cnode);
 	                if(cnote){
 	                    note.subNotes.push(cnote);
-	                }
+	                }                
 	            }
 	        }
 	        return note;
@@ -1711,6 +1712,66 @@
 
 /***/ },
 /* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	const Snapshot = __webpack_require__(1);
+
+	"use strict";
+
+	var pr = new function(){
+	    this.name = "bank-checkboxgroup2-processor";
+
+	    this.beforeScan = function(note, node, ctx){
+	        if(note.ctx.data("s-type")=="checkbox-group"){
+	            var itemClass = note.ctx.data("s-item-class");
+	            note.itemClass = itemClass || "col-xs-12 col-md-6";
+
+	            note.assign = this.name;
+	            note.manifest = "INPUTS";
+	            note.subNotes = note.subNotes || [];
+	            
+	            var $checkboxItems = $(node).find(".checkbox-custom");
+	            for (var j = 0; j < $checkboxItems.length; j++) {
+	                var item = $checkboxItems[j];
+	                var $input = $(item).find("input");
+	                var $label = $(item).find("label");
+	                cnote = {label:$label.text(), input:{type:$input.attr("type"), checked:$input[0].checked}};
+	                note.subNotes.push(cnote);
+	            }
+	        }
+	        return note;
+	    };
+
+	    this.convert= function(note,ctx){
+	        var html = "";
+	        for(var i=0;i<note.subNotes.length;i++){
+	            //html += this.builder.work(note.subNotes[i]);
+
+	            var subNote = note.subNotes[i];
+	            var labelText = subNote.label;
+	            var inputNote = subNote.input;
+
+	            html += "<div class=\"form-group "+note.itemClass+"\" style=\"display:inline-block;\">";
+	            
+	            html += "<input onclick='return false;' type='"+inputNote.type+"' "+((inputNote.checked)?" checked='checked' ":"")+"/> ";
+	            html += '<label for="input">';
+	            html += labelText;
+	            html += '</label>';
+
+	            html += "</div>";
+	        }
+	        return html;
+	    };
+
+	}
+
+	Snapshot.cache(pr);
+
+
+
+/***/ },
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1795,7 +1856,7 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1841,7 +1902,7 @@
 	            html += '</label>';
 
 	            html += "</div>";
-	        }else if(subNote2.assign == "bank-checkboxgroup-processor"){
+	        }else if(subNote2.assign){
 	            html += '<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">';
 	            html += '<label class="col-xs-12 col-md-2 control-label pl-0 pr-5">'+subNote1.value+'</label>';
 	            html += '<div class="col-xs-12 col-md-10 pl-0 ">';

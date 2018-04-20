@@ -41,7 +41,7 @@ var pr = new function(){
             html += '</label>';
 
             html += "</div>";
-        }else if(subNote2.assign == "bank-checkboxgroup-processor"){
+        }else if(subNote2.assign){
             html += '<div class="form-group tbsp-form-item col-xs-12 col-md-12" style="">';
             html += '<label class="col-xs-12 col-md-2 control-label pl-0 pr-5">'+subNote1.value+'</label>';
             html += '<div class="col-xs-12 col-md-10 pl-0 ">';

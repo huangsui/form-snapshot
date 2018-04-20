@@ -28,6 +28,7 @@ require('../extend/bank/bank-tab-processor');
 require('../extend/bank/bank-bttable-processor');
 require('../extend/bank/bank-ztree-processor');
 require('../extend/bank/bank-checkboxgroup-processor');
+require('../extend/bank/bank-checkboxgroup2-processor');
 require('../extend/bank/bank-panel-processor');
 require('../extend/bank/bank-item-processor');
 

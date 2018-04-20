@@ -19,7 +19,7 @@ Snapshot.register("default-table-processor");
 Snapshot.register("bank-tab-processor");
 Snapshot.register("bank-bttable-processor");
 Snapshot.register("bank-ztree-processor");
-Snapshot.register("bank-checkboxgroup-processor");
+Snapshot.register("bank-checkboxgroup2-processor");
 Snapshot.register("bank-select2-processor");
 Snapshot.register("bank-item-processor");
 Snapshot.register("bank-panel-processor");
