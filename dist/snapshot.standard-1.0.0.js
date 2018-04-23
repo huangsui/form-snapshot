@@ -220,7 +220,7 @@
 
 	const Cache = __webpack_require__(3);
 
-	/*重建者：通过Note记录重建Html*/
+	/*重建者：通过Note重建Html*/
 	var Rebuilder = function(){
 
 	    var cvts = new Cache();
@@ -542,7 +542,6 @@
 
 	var Note = function(node){
 
-	    this.parent = null;
 	    this.subNotes = [],
 	    this.depth = 0;
 	    this.ctx = new NoteContext();
@@ -1057,9 +1056,7 @@
 	        if(resultNote && resultNote.subNotes && resultNote.subNotes.length == 1){
 	            //console.log("剥离空壳: "+result.nodeName);
 	            var subNote = resultNote.subNotes[0];
-	            if(subNote.manifest == resultNote.manifest){
-	            	$.extend(resultNote, subNote);
-	            }
+	            $.extend(true, resultNote, subNote);
 	        }
 
 	    	return resultNote;            
@@ -1096,30 +1093,32 @@
 	    };
 
 	    this.convert = function(note) {
-	    	var subNote1 = note.subNotes[0];
-	    	var subNote2 = note.subNotes[1];
+	        var subNote1 = note.subNotes[0];
+	        var subNote2 = note.subNotes[1];
 
 	        var html = "";
-	    	html += '<p>';
-	    	if(subNote1.type == "checkbox" || subNote1.type == "radio"){
-				html += "<input type='"+subNote1.type+"'/> ";
-		        html += '<label for="input">';
-		    	html += subNote2.value;
-		    	html += '</label>';
-	    	}else{
-	    		html += '<label for="input">';
-		    	html += subNote1.value;
-		    	html += '</label>';
-	    		if (/^INPUT$/g.test(subNote2.nodeName)) {
-		        	html += '<input type="text" value="'+subNote2.value+'">';
-		        }else if(/^SELECT$/g.test(subNote2.nodeName)){
-		        	html += '<select><option value="'+subNote2.value+'">'+subNote2.textValue+'</option></select>';
-		        }else if(/^TEXTAREA$/g.test(subNote2.nodeName)){
+	        html += '<p>';
+	        if(subNote1.type == "checkbox" || subNote1.type == "radio"){
+	            html += "<input type='"+subNote1.type+"'/> ";
+	            html += '<label for="input">';
+	            html += subNote2.value;
+	            html += '</label>';
+	        }else if(subNote2.assign){
+	            html += this.builder.work(subNote2);
+	        }else{
+	            html += '<label for="input">';
+	            html += subNote1.value;
+	            html += '</label>';
+	            if (/^INPUT$/g.test(subNote2.nodeName)) {
+	                html += '<input type="text" value="'+subNote2.value+'">';
+	            }else if(/^SELECT$/g.test(subNote2.nodeName)){
+	                html += '<select><option value="'+subNote2.value+'">'+subNote2.textValue+'</option></select>';
+	            }else if(/^TEXTAREA$/g.test(subNote2.nodeName)){
 	                html += '<textarea '+((subNote2.rows)?(' rows="'+subNote2.rows+'" '):'')+'>'+subNote2.textValue+'</textarea>';
 	            }else{
-		        	html += '<input type="text" value="'+subNote2.value+'">';
-		        }
-	    	}
+	                html += '<input type="text" value="'+subNote2.value+'">';
+	            }
+	        }
 
 	        html += '</p>'
 	        return html;
@@ -1507,7 +1506,7 @@
 
 
 	    this.beforeScan = function(note, node, ctx){
-	        if(note.ctx.data("s-type") == "tab"){
+	        if(note.ctx.data("s-type") == "tabs"){
 	            note.assign = this.name;
 	            note.manifest = "GROUP";
 
